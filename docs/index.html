@@ -62,6 +62,75 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-在Hexo博客上添加可爱的Live-2D模型" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/my-static-blog/2018/09/15/在Hexo博客上添加可爱的Live-2D模型/" class="article-date">
+  <time datetime="2018-09-15T14:56:47.000Z" itemprop="datePublished">2018-09-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/my-static-blog/2018/09/15/在Hexo博客上添加可爱的Live-2D模型/">在Hexo博客上添加可爱的Live 2D模型</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在查找资料的偶然间，我发现一个博客上有非常可爱的Live 2D模型，当时我就被打动了，马上开启审查元素，试图找出这个Live 2D模型的信息，可是找了半天没找到。最后通过截图-&gt;谷歌图片的方式，终于一层一层的找到了相关资料，我正好有一个Hexo博客，所以今天就来在博客上添加一波Live 2D模型！</p>
+<p>首先，安装npm包：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save hexo-helper-live2d</span><br></pre></td></tr></table></figure></p>
+<p>然后在hexo的配置文件<code>_config.yml</code>中添加如下配置，详细配置可以参考<a href="https://github.com/EYHN/hexo-helper-live2d/blob/master/README.zh-CN.md" target="_blank" rel="noopener">文档</a>：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">live2d:</span><br><span class="line">  enable: true</span><br><span class="line">  scriptFrom: local</span><br><span class="line">  pluginRootPath: live2dw/</span><br><span class="line">  pluginJsPath: lib/</span><br><span class="line">  pluginModelPath: assets/</span><br><span class="line">  tagMode: false</span><br><span class="line">  debug: false</span><br><span class="line">  model:</span><br><span class="line">    use: live2d-widget-model-shizuku</span><br><span class="line">  display:</span><br><span class="line">    position: right</span><br><span class="line">    width: 150</span><br><span class="line">    height: 300</span><br><span class="line">  mobile:</span><br><span class="line">    show: true</span><br></pre></td></tr></table></figure></p>
+<p>然后下载模型，模型名称可以到<a href="https://github.com/xiazeyu/live2d-widget-models" target="_blank" rel="noopener">这里</a>参考，一些模型的预览可以在<a href="https://huaji8.top/post/live2d-plugin-2.0/" target="_blank" rel="noopener">这里</a>。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install live2d-widget-model-shizuku</span><br></pre></td></tr></table></figure></p>
+<p>所有模型列表如下：</p>
+<ul>
+<li><code>live2d-widget-model-chitose</code></li>
+<li><code>live2d-widget-model-epsilon2_1</code></li>
+<li><code>live2d-widget-model-gf</code></li>
+<li><code>live2d-widget-model-haru/01</code> (use <code>npm install --save live2d-widget-model-haru</code>)</li>
+<li><code>live2d-widget-model-haru/02</code> (use <code>npm install --save live2d-widget-model-haru</code>)</li>
+<li><code>live2d-widget-model-haruto</code></li>
+<li><code>live2d-widget-model-hibiki</code></li>
+<li><code>live2d-widget-model-hijiki</code></li>
+<li><code>live2d-widget-model-izumi</code></li>
+<li><code>live2d-widget-model-koharu</code></li>
+<li><code>live2d-widget-model-miku</code></li>
+<li><code>live2d-widget-model-ni-j</code></li>
+<li><code>live2d-widget-model-nico</code></li>
+<li><code>live2d-widget-model-nietzsche</code></li>
+<li><code>live2d-widget-model-nipsilon</code></li>
+<li><code>live2d-widget-model-nito</code></li>
+<li><code>live2d-widget-model-shizuku</code></li>
+<li><code>live2d-widget-model-tororo</code></li>
+<li><code>live2d-widget-model-tsumiki</code></li>
+<li><code>live2d-widget-model-unitychan</code></li>
+<li><code>live2d-widget-model-wanko</code></li>
+<li><code>live2d-widget-model-z16</code></li>
+</ul>
+<p>下载完之后，在Hexo根目录中新建文件夹live2d_models，然后在node_modules文件夹中找到刚刚下载的live2d模型，将其复制到live2d_models中，然后编辑配置文件中的<code>model.use</code>项，将其修改为live2d_models文件夹中的模型文件夹名称。</p>
+<p>一切就绪之后，用<code>hexo server</code>命令启动服务器，稍等一下就可以看到右下角出现了一个可爱的萌萌哒的妹纸！</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://techstay.github.io/2018/09/15/在Hexo博客上添加可爱的Live-2D模型/" data-id="cjm3k4m5r000aqcesn38v187z" class="article-share-link">Share</a>
+      
+        <a href="https://techstay.github.io/2018/09/15/在Hexo博客上添加可爱的Live-2D模型/#disqus_thread" class="article-comment-link">留言</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-windows安装scrapy出现utf-8-codec-can-t-decode-byte的解决办法" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/my-static-blog/2017/12/03/windows安装scrapy出现utf-8-codec-can-t-decode-byte的解决办法/" class="article-date">
@@ -93,7 +162,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://techstay.github.io/2017/12/03/windows安装scrapy出现utf-8-codec-can-t-decode-byte的解决办法/" data-id="cjm3ju2ua00000kes4e1mqap3" class="article-share-link">Share</a>
+      <a data-url="https://techstay.github.io/2017/12/03/windows安装scrapy出现utf-8-codec-can-t-decode-byte的解决办法/" data-id="cjm3k4m530001qcesz9ul3582" class="article-share-link">Share</a>
       
         <a href="https://techstay.github.io/2017/12/03/windows安装scrapy出现utf-8-codec-can-t-decode-byte的解决办法/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -139,7 +208,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://techstay.github.io/2017/11/15/使用FTP向服务器上传文件时出现550-The-filename-directory-name-or-volume-label-syntax-is-incorrect错误的解决办法/" data-id="cjm3ju2uf00010kes6rzi6iof" class="article-share-link">Share</a>
+      <a data-url="https://techstay.github.io/2017/11/15/使用FTP向服务器上传文件时出现550-The-filename-directory-name-or-volume-label-syntax-is-incorrect错误的解决办法/" data-id="cjm3k4m4z0000qcesu4k9yh2z" class="article-share-link">Share</a>
       
         <a href="https://techstay.github.io/2017/11/15/使用FTP向服务器上传文件时出现550-The-filename-directory-name-or-volume-label-syntax-is-incorrect错误的解决办法/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -213,7 +282,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://techstay.github.io/2017/11/14/用Hexo制作自己的静态博客/" data-id="cjm3ju2va000f0kesbh2jrjou" class="article-share-link">Share</a>
+      <a data-url="https://techstay.github.io/2017/11/14/用Hexo制作自己的静态博客/" data-id="cjm3k4m64000gqcesbe5s05ok" class="article-share-link">Share</a>
       
         <a href="https://techstay.github.io/2017/11/14/用Hexo制作自己的静态博客/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -259,7 +328,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://techstay.github.io/2017/11/13/在客户端上登录微软邮箱时提示您输出的用户名或密码不起作用的解决办法/" data-id="cjm3ju2uu000a0kes7iijx54p" class="article-share-link">Share</a>
+      <a data-url="https://techstay.github.io/2017/11/13/在客户端上登录微软邮箱时提示您输出的用户名或密码不起作用的解决办法/" data-id="cjm3k4m5t000bqcesyemcvvbg" class="article-share-link">Share</a>
       
         <a href="https://techstay.github.io/2017/11/13/在客户端上登录微软邮箱时提示您输出的用户名或密码不起作用的解决办法/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -311,7 +380,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/my-static-blog/archives/2017/12/">十二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/my-static-blog/archives/2017/11/">十一月 2017</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/my-static-blog/archives/2018/09/">九月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/my-static-blog/archives/2017/12/">十二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/my-static-blog/archives/2017/11/">十一月 2017</a></li></ul>
     </div>
   </div>
 
@@ -322,6 +391,10 @@
     <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/my-static-blog/2018/09/15/在Hexo博客上添加可爱的Live-2D模型/">在Hexo博客上添加可爱的Live 2D模型</a>
+          </li>
         
           <li>
             <a href="/my-static-blog/2017/12/03/windows安装scrapy出现utf-8-codec-can-t-decode-byte的解决办法/">windows安装scrapy出现utf-8 codec can&#39;t decode byte的解决办法</a>

@@ -15,7 +15,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/832668-63febdf496729638.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/832668-3f6285f159931e02.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2018-09-20T09:22:34.737Z">
+<meta property="og:updated_time" content="2018-10-14T16:51:09.031Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="用Hexo制作自己的静态博客">
 <meta name="twitter:description" content="博客是一个老东西了，如果我们想写博客的话，有两种选择，第一种是在博客网站上，例如QQ空间、新浪博客、简书等网站上申请账号，然后编写博客；第二种就是自己找服务器搭一个博客。搭建博客也有两种选择，第一种是搭建动态博客，这方面最流行的就是WordPress，第二种就是搭建静态博客，这方面有很多选择。说到功能上，动态博客当然更胜一筹，但是所需的服务器资源比较大，如果想取得较好的效果，就必须花钱购买服务器资">
@@ -109,7 +109,8 @@
 <p>还有一些命令这里就不介绍了，需要详细了解的话可以直接查看官方文档。</p>
 <h2 id="编写新文章"><a href="#编写新文章" class="headerlink" title="编写新文章"></a>编写新文章</h2><p>编写新文章使用下面的命令。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new [layout] &lt;title&gt;</span><br></pre></td></tr></table></figure></p>
 <p>默认情况下布局有<code>post</code>、<code>page</code>、<code>draft</code>三个，它们所在的文件夹位置也不同。默认使用<code>post</code>布局，生成的文章会放在<code>source/_posts</code>下。执行完这个命令之后，在该文件夹会出现名为<code>&lt;title&gt;.md</code>的markdown格式文件，这就是我们的博客文件，我们可以按照markdown语法来编辑它。</p>
-<p>项目中还有一个名为<code>scaffolds</code>的文件夹，里面存放的不同布局的模板。我希望所有文章都有分类属性，所以需要在<code>post.md</code>中添加<code>categories:</code>一行。这里在<code>---</code>之间包括的代码是文章的属性，将会由Hexo渲染为实际的样式。我们的博客文章需要写在这一部分的后面。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: &#123;&#123; title &#125;&#125;</span><br><span class="line">date: &#123;&#123; date &#125;&#125;</span><br><span class="line">tags:</span><br><span class="line">categories:</span><br><span class="line">---</span><br></pre></td></tr></table></figure></p>
+<p>项目中还有一个名为<code>scaffolds</code>的文件夹，里面存放的不同布局的模板。我希望所有文章都有分类属性，所以需要在<code>post.md</code>中添加<code>categories:</code>一行。这里在<code>---</code>之间包括的代码是文章的属性，将会由Hexo渲染为实际的样式。我们的博客文章需要写在这一部分的后面。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: &#123;&#123; title &#125;&#125;</span><br><span class="line">date: &#123;&#123; date &#125;&#125;</span><br><span class="line">tags:</span><br><span class="line">categories:</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
 <p>这里我写了一篇小文章，介绍了一点经验。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: 在客户端上登录微软邮箱时提示您输出的用户名或密码不起作用的解决办法</span><br><span class="line">date: 2017-11-13 18:42:56</span><br><span class="line">tags:</span><br><span class="line"> - 疑难杂症</span><br><span class="line"> - 电子邮箱</span><br><span class="line">categories:</span><br><span class="line"> - 疑难杂症</span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">有些同学可能会在用微软邮箱登录outlook或者其他邮箱客户端的时候，明明输入的是正确的用户名和密码，但是却提示“您输入的用户名或密码不起作用”。其实原因很简单，这是因为你的微软账号开启了二次验证，而邮箱客户端并不支持这个功能。</span><br><span class="line"></span><br><span class="line">当然解决办法也很简单，登录[微软账户更多安全选项](https://account.live.com/proofs/Manage/additional)中，然后找到应用密码这个，将应用密码作为邮箱密码输入到邮箱客户端中即可解决问题。当然对于Xbox等无法登陆的问题，也可以使用这个方法来解决。</span><br></pre></td></tr></table></figure></p>
 <p>写完之后，使用下面的命令启动本地服务器，然后访问<a href="http://localhost:4000/" target="_blank" rel="noopener">http://localhost:4000/</a>查看一下博客效果。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure></p>
 <p><img src="http://upload-images.jianshu.io/upload_images/832668-63febdf496729638.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="博客效果"></p>
@@ -132,7 +133,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://techstay.github.io/2017/11/14/用Hexo制作自己的静态博客/" data-id="cjm3k4m64000gqcesbe5s05ok" class="article-share-link">Share</a>
+      <a data-url="https://techstay.github.io/2017/11/14/用Hexo制作自己的静态博客/" data-id="cjn941blm000ppcesw5ga0es8" class="article-share-link">Share</a>
       
         <a href="https://techstay.github.io/2017/11/14/用Hexo制作自己的静态博客/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -208,7 +209,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/my-static-blog/archives/2018/09/">九月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/my-static-blog/archives/2017/12/">十二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/my-static-blog/archives/2017/11/">十一月 2017</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/my-static-blog/archives/2018/10/">十月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/my-static-blog/archives/2018/09/">九月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/my-static-blog/archives/2017/12/">十二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/my-static-blog/archives/2017/11/">十一月 2017</a></li></ul>
     </div>
   </div>
 
@@ -219,6 +220,10 @@
     <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/my-static-blog/2018/10/15/gnome桌面共享vnc客户端连接失败需要降低加密级别的解决办法/">gnome桌面共享vnc客户端连接失败需要降低加密级别的解决办法</a>
+          </li>
         
           <li>
             <a href="/my-static-blog/2018/09/15/在Hexo博客上添加可爱的Live-2D模型/">在Hexo博客上添加可爱的Live 2D模型</a>
@@ -234,10 +239,6 @@
         
           <li>
             <a href="/my-static-blog/2017/11/14/用Hexo制作自己的静态博客/">用Hexo制作自己的静态博客</a>
-          </li>
-        
-          <li>
-            <a href="/my-static-blog/2017/11/13/在客户端上登录微软邮箱时提示您输出的用户名或密码不起作用的解决办法/">在客户端上登录微软邮箱时提示您输出的用户名或密码不起作用的解决办法</a>
           </li>
         
       </ul>

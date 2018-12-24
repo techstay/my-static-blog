@@ -3,6 +3,29 @@
   
     
     <entry>
+      <title>Win10系统无法访问局域网文件的解决办法</title>
+      <link href="/my-static-blog/2018/12/24/Win10%E7%B3%BB%E7%BB%9F%E6%97%A0%E6%B3%95%E8%AE%BF%E9%97%AE%E5%B1%80%E5%9F%9F%E7%BD%91%E6%96%87%E4%BB%B6%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/"/>
+      <url>/my-static-blog/2018/12/24/Win10%E7%B3%BB%E7%BB%9F%E6%97%A0%E6%B3%95%E8%AE%BF%E9%97%AE%E5%B1%80%E5%9F%9F%E7%BD%91%E6%96%87%E4%BB%B6%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/</url>
+      
+        <content type="html"><![CDATA[<p>最近重装了系统，发现无法访问小米路由器连接的移动硬盘了，而且连我局域网里的笔记本的共享文件都没办法访问了。经过一番研究，发现是Win10默认关闭了SMB文件共享，只要打开即可。</p><p>方法很简单，打开控制面板-&gt;程序和功能-&gt;添加或关闭Windows功能，然后搜索找到SMB1.0/CIFS文件共享支持，打开即可，然后重启电脑，应该就可以看到共享文件夹了。</p><img src="/my-static-blog/2018/12/24/Win10系统无法访问局域网文件的解决办法/feature.png" title="添加和删除功能">]]></content>
+      
+      
+      <categories>
+          
+          <category> 疑难杂症 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 疑难杂症 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>gnome桌面共享vnc客户端连接失败需要降低加密级别的解决办法</title>
       <link href="/my-static-blog/2018/10/15/gnome%E6%A1%8C%E9%9D%A2%E5%85%B1%E4%BA%ABvnc%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%BF%9E%E6%8E%A5%E5%A4%B1%E8%B4%A5%E9%9C%80%E8%A6%81%E9%99%8D%E4%BD%8E%E5%8A%A0%E5%AF%86%E7%BA%A7%E5%88%AB%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/"/>
       <url>/my-static-blog/2018/10/15/gnome%E6%A1%8C%E9%9D%A2%E5%85%B1%E4%BA%ABvnc%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%BF%9E%E6%8E%A5%E5%A4%B1%E8%B4%A5%E9%9C%80%E8%A6%81%E9%99%8D%E4%BD%8E%E5%8A%A0%E5%AF%86%E7%BA%A7%E5%88%AB%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/</url>

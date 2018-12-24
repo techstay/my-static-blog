@@ -3,20 +3,22 @@
 <head>
   <meta charset="utf-8">
   
-  <title>使用FTP向服务器上传文件时出现550 The filename, directory name, or volume label syntax is incorrect错误的解决办法 | 易天的静态个人博客</title>
+  <title>Win10系统无法访问局域网文件的解决办法 | 易天的静态个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="这种情况一般是由于服务器不支持非ASCII字符（例如中文），解决办法很简单，所有文件都改成英文名称！ 顺便说一下，对于自建Linux服务器，可以通过修改locale等方式让服务器支持中文。对于另外一些不太灵活的应用容器（比如Azure），大概就只能老老实实改文件名为英文了。">
+  <meta name="description" content="最近重装了系统，发现无法访问小米路由器连接的移动硬盘了，而且连我局域网里的笔记本的共享文件都没办法访问了。经过一番研究，发现是Win10默认关闭了SMB文件共享，只要打开即可。 方法很简单，打开控制面板-&amp;gt;程序和功能-&amp;gt;添加或关闭Windows功能，然后搜索找到SMB1.0/CIFS文件共享支持，打开即可，然后重启电脑，应该就可以看到共享文件夹了。">
 <meta name="keywords" content="疑难杂症">
 <meta property="og:type" content="article">
-<meta property="og:title" content="使用FTP向服务器上传文件时出现550 The filename, directory name, or volume label syntax is incorrect错误的解决办法">
-<meta property="og:url" content="https://techstay.github.io/2017/11/15/使用FTP向服务器上传文件时出现550-The-filename-directory-name-or-volume-label-syntax-is-incorrect错误的解决办法/index.html">
+<meta property="og:title" content="Win10系统无法访问局域网文件的解决办法">
+<meta property="og:url" content="https://techstay.github.io/2018/12/24/Win10系统无法访问局域网文件的解决办法/index.html">
 <meta property="og:site_name" content="易天的静态个人博客">
-<meta property="og:description" content="这种情况一般是由于服务器不支持非ASCII字符（例如中文），解决办法很简单，所有文件都改成英文名称！ 顺便说一下，对于自建Linux服务器，可以通过修改locale等方式让服务器支持中文。对于另外一些不太灵活的应用容器（比如Azure），大概就只能老老实实改文件名为英文了。">
+<meta property="og:description" content="最近重装了系统，发现无法访问小米路由器连接的移动硬盘了，而且连我局域网里的笔记本的共享文件都没办法访问了。经过一番研究，发现是Win10默认关闭了SMB文件共享，只要打开即可。 方法很简单，打开控制面板-&amp;gt;程序和功能-&amp;gt;添加或关闭Windows功能，然后搜索找到SMB1.0/CIFS文件共享支持，打开即可，然后重启电脑，应该就可以看到共享文件夹了。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-11-14T19:01:12.711Z">
+<meta property="og:image" content="https://techstay.github.io/my-static-blog/2018/12/24/Win10系统无法访问局域网文件的解决办法/feature.png">
+<meta property="og:updated_time" content="2018-12-24T13:57:46.173Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="使用FTP向服务器上传文件时出现550 The filename, directory name, or volume label syntax is incorrect错误的解决办法">
-<meta name="twitter:description" content="这种情况一般是由于服务器不支持非ASCII字符（例如中文），解决办法很简单，所有文件都改成英文名称！ 顺便说一下，对于自建Linux服务器，可以通过修改locale等方式让服务器支持中文。对于另外一些不太灵活的应用容器（比如Azure），大概就只能老老实实改文件名为英文了。">
+<meta name="twitter:title" content="Win10系统无法访问局域网文件的解决办法">
+<meta name="twitter:description" content="最近重装了系统，发现无法访问小米路由器连接的移动硬盘了，而且连我局域网里的笔记本的共享文件都没办法访问了。经过一番研究，发现是Win10默认关闭了SMB文件共享，只要打开即可。 方法很简单，打开控制面板-&amp;gt;程序和功能-&amp;gt;添加或关闭Windows功能，然后搜索找到SMB1.0/CIFS文件共享支持，打开即可，然后重启电脑，应该就可以看到共享文件夹了。">
+<meta name="twitter:image" content="https://techstay.github.io/my-static-blog/2018/12/24/Win10系统无法访问局域网文件的解决办法/feature.png">
   
     <link rel="alternate" href="/atom.xml" title="易天的静态个人博客" type="application/atom+xml">
   
@@ -65,10 +67,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-使用FTP向服务器上传文件时出现550-The-filename-directory-name-or-volume-label-syntax-is-incorrect错误的解决办法" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-Win10系统无法访问局域网文件的解决办法" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/my-static-blog/2017/11/15/使用FTP向服务器上传文件时出现550-The-filename-directory-name-or-volume-label-syntax-is-incorrect错误的解决办法/" class="article-date">
-  <time datetime="2017-11-14T18:59:01.000Z" itemprop="datePublished">2017-11-15</time>
+    <a href="/my-static-blog/2018/12/24/Win10系统无法访问局域网文件的解决办法/" class="article-date">
+  <time datetime="2018-12-24T13:46:11.000Z" itemprop="datePublished">2018-12-24</time>
 </a>
     
   <div class="article-category">
@@ -83,7 +85,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      使用FTP向服务器上传文件时出现550 The filename, directory name, or volume label syntax is incorrect错误的解决办法
+      Win10系统无法访问局域网文件的解决办法
     </h1>
   
 
@@ -91,15 +93,15 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>这种情况一般是由于服务器不支持非ASCII字符（例如中文），解决办法很简单，所有文件都改成英文名称！</p>
-<p>顺便说一下，对于自建Linux服务器，可以通过修改locale等方式让服务器支持中文。对于另外一些不太灵活的应用容器（比如Azure），大概就只能老老实实改文件名为英文了。</p>
-
+        <p>最近重装了系统，发现无法访问小米路由器连接的移动硬盘了，而且连我局域网里的笔记本的共享文件都没办法访问了。经过一番研究，发现是Win10默认关闭了SMB文件共享，只要打开即可。</p>
+<p>方法很简单，打开控制面板-&gt;程序和功能-&gt;添加或关闭Windows功能，然后搜索找到SMB1.0/CIFS文件共享支持，打开即可，然后重启电脑，应该就可以看到共享文件夹了。</p>
+<img src="/my-static-blog/2018/12/24/Win10系统无法访问局域网文件的解决办法/feature.png" title="添加和删除功能">
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://techstay.github.io/2017/11/15/使用FTP向服务器上传文件时出现550-The-filename-directory-name-or-volume-label-syntax-is-incorrect错误的解决办法/" data-id="cjq2dzkno0004awux5vfu1zo5" class="article-share-link">Share</a>
+      <a data-url="https://techstay.github.io/2018/12/24/Win10系统无法访问局域网文件的解决办法/" data-id="cjq2dzknc0000awuxhlusq3it" class="article-share-link">Share</a>
       
-        <a href="https://techstay.github.io/2017/11/15/使用FTP向服务器上传文件时出现550-The-filename-directory-name-or-volume-label-syntax-is-incorrect错误的解决办法/#disqus_thread" class="article-comment-link">留言</a>
+        <a href="https://techstay.github.io/2018/12/24/Win10系统无法访问局域网文件的解决办法/#disqus_thread" class="article-comment-link">留言</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/my-static-blog/tags/疑难杂症/">疑难杂症</a></li></ul>
@@ -110,19 +112,10 @@
     
 <nav id="article-nav">
   
-    <a href="/my-static-blog/2017/12/03/windows安装scrapy出现utf-8-codec-can-t-decode-byte的解决办法/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          windows安装scrapy出现utf-8 codec can&#39;t decode byte的解决办法
-        
-      </div>
-    </a>
   
-  
-    <a href="/my-static-blog/2017/11/14/用Hexo制作自己的静态博客/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/my-static-blog/2018/10/15/gnome桌面共享vnc客户端连接失败需要降低加密级别的解决办法/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">用Hexo制作自己的静态博客</div>
+      <div class="article-nav-title">gnome桌面共享vnc客户端连接失败需要降低加密级别的解决办法</div>
     </a>
   
 </nav>
@@ -234,7 +227,7 @@
 <script>
   var disqus_shortname = 'yitian-static-blog';
   
-  var disqus_url = 'https://techstay.github.io/2017/11/15/使用FTP向服务器上传文件时出现550-The-filename-directory-name-or-volume-label-syntax-is-incorrect错误的解决办法/';
+  var disqus_url = 'https://techstay.github.io/2018/12/24/Win10系统无法访问局域网文件的解决办法/';
   
   (function(){
     var dsq = document.createElement('script');

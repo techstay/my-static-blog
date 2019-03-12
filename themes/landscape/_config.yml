@@ -29,13 +29,13 @@ show_count: false
 
 # Miscellaneous
 google_analytics:
+gauges_analytics:
 favicon: /favicon.png
 twitter:
 google_plus:
 fb_admins:
 fb_app_id:
 
-# live2d
 live2d:
   enable: true
   scriptFrom: local

@@ -15,12 +15,12 @@
 <meta property="og:site_name" content="易天的静态个人博客">
 <meta property="og:description" content="虽然装了双系统，但是平时我用的主要还是 Windows 系统，另外一个 Manjaro 好久没更新了，这几天忽然想起来，于是赶紧打开更新。果然，滚动式更新时间一长想要在更新的话肯定会出问题。这次遇到的问题是更新到一半图形界面会突然挂掉。前几天更新台式机的时候同样也遇到了这个错误，不过切一下终端，然后在终端里面更新完就好了。没想到笔记本这次遇到问题了，由于平时我设置的 locale 是中文，在笔记本">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-12T14:52:28.443Z">
+<meta property="og:updated_time" content="2019-04-15T09:23:08.773Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="更新Manjaro出现Gpgme错误，无效的加密引擎的解决办法">
 <meta name="twitter:description" content="虽然装了双系统，但是平时我用的主要还是 Windows 系统，另外一个 Manjaro 好久没更新了，这几天忽然想起来，于是赶紧打开更新。果然，滚动式更新时间一长想要在更新的话肯定会出问题。这次遇到的问题是更新到一半图形界面会突然挂掉。前几天更新台式机的时候同样也遇到了这个错误，不过切一下终端，然后在终端里面更新完就好了。没想到笔记本这次遇到问题了，由于平时我设置的 locale 是中文，在笔记本">
   
-    <link rel="alternate" href="/my-static-blog/atom.xml" title="易天的静态个人博客" type="application/atom+xml">
+    <link rel="alternate" href="../../../../atom.xml" title="易天的静态个人博客" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
@@ -28,7 +28,7 @@
   
     <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   
-  <link rel="stylesheet" href="/my-static-blog/css/style.css">
+  <link rel="stylesheet" href="../../../../css/style.css">
 </head>
 </html>
 <body>
@@ -39,7 +39,7 @@
   <div id="header-outer" class="outer">
     <div id="header-title" class="inner">
       <h1 id="logo-wrap">
-        <a href="/my-static-blog/" id="logo">易天的静态个人博客</a>
+        <a href="../../../../index.html" id="logo">易天的静态个人博客</a>
       </h1>
       
     </div>
@@ -47,14 +47,14 @@
       <nav id="main-nav">
         <a id="main-nav-toggle" class="nav-icon"></a>
         
-          <a class="main-nav-link" href="/my-static-blog/">Home</a>
+          <a class="main-nav-link" href="../../../../index.html">Home</a>
         
-          <a class="main-nav-link" href="/my-static-blog/archives">Archives</a>
+          <a class="main-nav-link" href="../../../../archives">Archives</a>
         
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/my-static-blog/atom.xml" title="RSS Feed"></a>
+          <a id="nav-rss-link" class="nav-icon" href="../../../../atom.xml" title="RSS Feed"></a>
         
         <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
       </nav>
@@ -67,12 +67,12 @@
       <div class="outer">
         <section id="main"><article id="post-更新Manjaro出现Gpgme错误，无效的加密引擎的解决办法" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/my-static-blog/2019/03/06/更新Manjaro出现Gpgme错误，无效的加密引擎的解决办法/" class="article-date">
+    <a href class="article-date">
   <time datetime="2019-03-06T12:08:24.000Z" itemprop="datePublished">2019-03-06</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/my-static-blog/categories/疑难杂症/">疑难杂症</a>
+    <a class="article-category-link" href="../../../../categories/疑难杂症/">疑难杂症</a>
   </div>
 
   </div>
@@ -95,26 +95,26 @@
 <p>笔记本上遇到的问题是“Gpgme 错误，无效的加密引擎”，英文错误信息是“manjaro gpgme error invalid crypto engine”，谷歌一下果然有很多类似信息，这下就方便多了。不过由于我之前瞎试了几次，走了不少弯路。在此直接说解决办法吧。首先这个错误原因我猜测是在图形界面挂掉的时候正好碰到 gpg 这些软件更新，然后导致 gpg 数据库损坏，进而 pacman 无法安装软件。那么解决办法就很明显了，修复 gpg 软件即可。具体可参考<a href="https://wiki.manjaro.org/index.php/Pacman_troubleshooting#Errors_about_Keys" target="_blank" rel="noopener">官方文档</a>。</p>
 <hr>
 <p>首先删除掉 pacman 原来的可能已经损坏的 key。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo rm -r /etc/pacman.d/gnupg</span><br></pre></td></tr></table></figure>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo rm -r <span class="regexp">/etc/</span>pacman.d<span class="regexp">/gnupg</span></span><br></pre></td></tr></table></figure>
 <p>然后重新安装密钥环，一开始我搜索到的解决方案和这个类似，不过没有 gnupg，所以一直失败。这一点上还是官方文档比较好。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -Sy gnupg archlinux-keyring manjaro-keyring</span><br></pre></td></tr></table></figure>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">sudo pacman -Sy gnupg archlinux-keyring manjaro-keyring</span></span><br></pre></td></tr></table></figure>
 <p>然后重新初始化密钥环。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman-key --init</span><br></pre></td></tr></table></figure>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman-key <span class="comment">--init</span></span><br></pre></td></tr></table></figure>
 <p>然后加载那些密钥。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman-key --populate archlinux manjaro</span><br></pre></td></tr></table></figure>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman-key <span class="comment">--populate archlinux manjaro</span></span><br></pre></td></tr></table></figure>
 <p>最后一步是可选的，删除那些密钥损坏时下载的软件包。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -Sc</span><br></pre></td></tr></table></figure>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">sudo pacman -Sc</span></span><br></pre></td></tr></table></figure>
 <p>经过这么几步，我终于成功修复了 Manjaro，然后在终端中更新系统并重启之后，终于成功再次进入了 Manjaro 图形界面，真是可喜可贺！</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://techstay.github.io/2019/03/06/更新Manjaro出现Gpgme错误，无效的加密引擎的解决办法/" data-id="cjt5x43fp000yusg5dsr0lkn6" class="article-share-link">Share</a>
+      <a data-url="https://techstay.github.io/2019/03/06/更新Manjaro出现Gpgme错误，无效的加密引擎的解决办法/" data-id="cjui8esw1000gpkg5palewq20" class="article-share-link">Share</a>
       
         <a href="https://techstay.github.io/2019/03/06/更新Manjaro出现Gpgme错误，无效的加密引擎的解决办法/#disqus_thread" class="article-comment-link">留言</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/my-static-blog/tags/疑难杂症/">疑难杂症</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/疑难杂症/">疑难杂症</a></li></ul>
 
     </footer>
   </div>
@@ -123,7 +123,7 @@
 <nav id="article-nav">
   
   
-    <a href="/my-static-blog/2019/03/06/FC游戏AV麻将俱乐部牌型表/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="../FC游戏AV麻将俱乐部牌型表/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
       <div class="article-nav-title">FC游戏AV麻将俱乐部牌型表</div>
     </a>
@@ -147,7 +147,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/my-static-blog/categories/前端/">前端</a></li><li class="category-list-item"><a class="category-list-link" href="/my-static-blog/categories/游戏/">游戏</a></li><li class="category-list-item"><a class="category-list-link" href="/my-static-blog/categories/疑难杂症/">疑难杂症</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="../../../../categories/前端/">前端</a></li><li class="category-list-item"><a class="category-list-link" href="../../../../categories/游戏/">游戏</a></li><li class="category-list-item"><a class="category-list-link" href="../../../../categories/疑难杂症/">疑难杂症</a></li></ul>
     </div>
   </div>
 
@@ -157,7 +157,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/my-static-blog/tags/Hexo/">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/my-static-blog/tags/前端/">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/my-static-blog/tags/游戏/">游戏</a></li><li class="tag-list-item"><a class="tag-list-link" href="/my-static-blog/tags/电子邮箱/">电子邮箱</a></li><li class="tag-list-item"><a class="tag-list-link" href="/my-static-blog/tags/疑难杂症/">疑难杂症</a></li><li class="tag-list-item"><a class="tag-list-link" href="/my-static-blog/tags/静态博客/">静态博客</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="../../../../tags/Hexo/">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../../../tags/前端/">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../../../tags/游戏/">游戏</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../../../tags/电子邮箱/">电子邮箱</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../../../tags/疑难杂症/">疑难杂症</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../../../tags/静态博客/">静态博客</a></li></ul>
     </div>
   </div>
 
@@ -167,7 +167,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/my-static-blog/tags/Hexo/" style="font-size: 15px;">Hexo</a> <a href="/my-static-blog/tags/前端/" style="font-size: 15px;">前端</a> <a href="/my-static-blog/tags/游戏/" style="font-size: 10px;">游戏</a> <a href="/my-static-blog/tags/电子邮箱/" style="font-size: 10px;">电子邮箱</a> <a href="/my-static-blog/tags/疑难杂症/" style="font-size: 20px;">疑难杂症</a> <a href="/my-static-blog/tags/静态博客/" style="font-size: 15px;">静态博客</a>
+      <a href="../../../../tags/Hexo/" style="font-size: 15px;">Hexo</a> <a href="../../../../tags/前端/" style="font-size: 15px;">前端</a> <a href="../../../../tags/游戏/" style="font-size: 10px;">游戏</a> <a href="../../../../tags/电子邮箱/" style="font-size: 10px;">电子邮箱</a> <a href="../../../../tags/疑难杂症/" style="font-size: 20px;">疑难杂症</a> <a href="../../../../tags/静态博客/" style="font-size: 15px;">静态博客</a>
     </div>
   </div>
 
@@ -176,7 +176,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/my-static-blog/archives/2019/03/">三月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/my-static-blog/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/my-static-blog/archives/2018/10/">十月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/my-static-blog/archives/2018/09/">九月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/my-static-blog/archives/2017/12/">十二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/my-static-blog/archives/2017/11/">十一月 2017</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../../../archives/2019/03/">三月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../archives/2018/10/">十月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../archives/2018/09/">九月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../archives/2017/12/">十二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../archives/2017/11/">十一月 2017</a></li></ul>
     </div>
   </div>
 
@@ -189,23 +189,23 @@
       <ul>
         
           <li>
-            <a href="/my-static-blog/2019/03/06/更新Manjaro出现Gpgme错误，无效的加密引擎的解决办法/">更新Manjaro出现Gpgme错误，无效的加密引擎的解决办法</a>
+            <a href>更新Manjaro出现Gpgme错误，无效的加密引擎的解决办法</a>
           </li>
         
           <li>
-            <a href="/my-static-blog/2019/03/06/FC游戏AV麻将俱乐部牌型表/">FC游戏AV麻将俱乐部牌型表</a>
+            <a href="../FC游戏AV麻将俱乐部牌型表/">FC游戏AV麻将俱乐部牌型表</a>
           </li>
         
           <li>
-            <a href="/my-static-blog/2018/12/24/Win10系统无法访问局域网文件的解决办法/">Win10系统无法访问局域网文件的解决办法</a>
+            <a href="../../../../2018/12/24/Win10系统无法访问局域网文件的解决办法/">Win10系统无法访问局域网文件的解决办法</a>
           </li>
         
           <li>
-            <a href="/my-static-blog/2018/10/15/gnome桌面共享vnc客户端连接失败需要降低加密级别的解决办法/">gnome桌面共享vnc客户端连接失败需要降低加密级别的解决办法</a>
+            <a href="../../../../2018/10/15/gnome桌面共享vnc客户端连接失败需要降低加密级别的解决办法/">gnome桌面共享vnc客户端连接失败需要降低加密级别的解决办法</a>
           </li>
         
           <li>
-            <a href="/my-static-blog/2018/09/15/在Hexo博客上添加可爱的Live-2D模型/">在Hexo博客上添加可爱的Live 2D模型</a>
+            <a href="../../../../2018/09/15/在Hexo博客上添加可爱的Live-2D模型/">在Hexo博客上添加可爱的Live 2D模型</a>
           </li>
         
       </ul>
@@ -228,9 +228,9 @@
     </div>
     <nav id="mobile-nav">
   
-    <a href="/my-static-blog/" class="mobile-nav-link">Home</a>
+    <a href="../../../../index.html" class="mobile-nav-link">Home</a>
   
-    <a href="/my-static-blog/archives" class="mobile-nav-link">Archives</a>
+    <a href="../../../../archives" class="mobile-nav-link">Archives</a>
   
 </nav>
     
@@ -252,14 +252,14 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 
-  <link rel="stylesheet" href="/my-static-blog/fancybox/jquery.fancybox.css">
-  <script src="/my-static-blog/fancybox/jquery.fancybox.pack.js"></script>
+  <link rel="stylesheet" href="../../../../fancybox/jquery.fancybox.css">
+  <script src="../../../../fancybox/jquery.fancybox.pack.js"></script>
 
 
-<script src="/my-static-blog/js/script.js"></script>
+<script src="../../../../js/script.js"></script>
 
 
 
   </div>
-<script src="/my-static-blog/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+<script src="/my-static-blog/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>

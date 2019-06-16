@@ -62,6 +62,82 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-购买VPS之后要做的几件事" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="2019/06/16/购买VPS之后要做的几件事/" class="article-date">
+  <time datetime="2019-06-16T15:53:50.000Z" itemprop="datePublished">2019-06-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="2019/06/16/购买VPS之后要做的几件事/">购买VPS之后要做的几件事</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="配置用户账户"><a href="#配置用户账户" class="headerlink" title="配置用户账户"></a>配置用户账户</h2><p>刚买的 VPS，系统给你的肯定只有一个 root 账户，但是一般不要用 root 账户来登录，可能存在安全风险。所以我们这里就来创建一个新用户用来登录。由于这时候用的是 root 账户来操作，所以这里的命令不需要在前面加 sudo。有的系统管理员组叫做 wheel，有的叫做 sudo，大家根据自己的 VPS 系统来选择。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">useradd yitian -m -G sudo,wheel</span><br></pre></td></tr></table></figure>
+<p>创建完用户之后，别忘了为用户添加密码，为了安全，密码应该设置的比较复杂，最好使用密码管理软件生成强密码，反正照着这里设置的话，可能以后再也用不到这个密码了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">passwd yitian</span><br></pre></td></tr></table></figure>
+<p>如果你怕麻烦，现在就可以设置免密码输入 sudo 命令。首先打开 sudoers 文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nano /etc/sudoers</span><br></pre></td></tr></table></figure>
+<p>然后找到类似下面的一行，然后在后面的<code>ALL</code>之前添加<code>NOPASSWD:</code>，改为下面这样的。这个操作一定要注意，整错了可能就没办法登录 VPS 了。设置成功的话，sudo 组里的用户就再也不需要输入密码确认了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">%sudo   ALL=(ALL:ALL) NOPASSWD: ALL</span><br></pre></td></tr></table></figure>
+<p>现在，使用刚刚创建的用户登录。可以顺便测试一下 sudo 命令，不需要输入密码就是爽！但是在使用 SSH 登录的时候还是需要密码来登录，所以现在就来设置免密码登录 SSH。</p>
+<p>首先打开 SSH 的配置文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nano /etc/ssh/sshd_config</span><br></pre></td></tr></table></figure>
+<p>找到下面一行，去掉前面的注释，开启公钥登录功能：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PubkeyAuthentication yes</span><br></pre></td></tr></table></figure>
+<p>然后打开本用户的用户目录下的 ssh 文件夹，没有则创建。在其中新建验证文件并输入你的 SSH 公钥。公钥文件就是你当前操作系统下<code>.ssh/id_rsa.pub</code>文件里的内容。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nano .ssh/authorized_keys</span><br></pre></td></tr></table></figure>
+<p>完成之后，重启 SSH 服务，然后退出用户并重新登录一下，应该可以看到不再需要密码就可以登录了。好了，现在你可以把刚刚的用户密码忘掉了，这样一来，几乎没人可以登录你的系统了，安全性妥妥的。甚至你可以做的绝一点，在 SSH 配置文件里直接禁用 ROOT 账户登录和密码登录，这样安全性几乎为 100%。但是这样做的问题就是一旦你的密钥对丢失（虽然这种情况几乎不可能发生），包括你自己都无法登录了。所以怎么做还是得看自己取舍。</p>
+<h2 id="升级系统"><a href="#升级系统" class="headerlink" title="升级系统"></a>升级系统</h2><p>前面的做完了，下面就是系统维护工作了。首先是升级系统，刚安装的 VPS 系统一般都是比较老的，更新到最新可以体验系统的各项新功能。</p>
+<p>如果是 Ubuntu：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt upgrade</span><br></pre></td></tr></table></figure>
+<h2 id="安装必要软件"><a href="#安装必要软件" class="headerlink" title="安装必要软件"></a>安装必要软件</h2><p>如果是 Ubuntu：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install zsh git python3-pip screenfetch</span><br></pre></td></tr></table></figure>
+<p>如果你想的话还可以安装 oh-my-zsh：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sh -c &quot;$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)&quot;</span><br></pre></td></tr></table></figure>
+<h2 id="安装并配置-shadowsocks"><a href="#安装并配置-shadowsocks" class="headerlink" title="安装并配置 shadowsocks"></a>安装并配置 shadowsocks</h2><p>之前我用 Ubuntu 的时候，pip 里面的 shadowsocks 要比 Ubuntu 源里的更新。但是不知道为啥原因 pip 里面的影梭停更了，到了 Ubuntu 18.04，现在 Ubuntu 里的已经是更新的了。所以我们安装的时候，直接从 Ubuntu 源里安装就行了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install shadowsocks</span><br></pre></td></tr></table></figure>
+<p>然后随便建一个文件夹，准备存放翻墙软件的配置文件。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir fq</span><br><span class="line">cd fq</span><br></pre></td></tr></table></figure>
+<p>首先新建一个影梭的配置文件，比方说就叫<code>ss.json</code>。为了保证不被封，最好将端口号改一下，密码也改成一个比较复杂的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;server&quot;: &quot;0.0.0.0&quot;,</span><br><span class="line">    &quot;server_port&quot;: 8388,</span><br><span class="line">    &quot;local_address&quot;: &quot;127.0.0.1&quot;,</span><br><span class="line">    &quot;local_port&quot;: 1080,</span><br><span class="line">    &quot;password&quot;: &quot;mypassword&quot;,</span><br><span class="line">    &quot;timeout&quot;: 300,</span><br><span class="line">    &quot;method&quot;: &quot;aes-256-cfb&quot;,</span><br><span class="line">    &quot;fast_open&quot;: true</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>为了让影梭开机自动启动，我们可能还需要安装一些软件。如果是 Ubuntu 系统，可以在<code>/etc/local.rc</code>文件中添加开机脚本。或者向这里介绍的一样使用任务管理软件 supervisor。首先安装 supervisor：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install supervisor</span><br></pre></td></tr></table></figure>
+<p>然后添加 ss 的配置文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nano /etc/supervisor/conf.d/ss.conf</span><br></pre></td></tr></table></figure>
+<p>配置文件内容如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[program:ss]</span><br><span class="line">command=ssserver -c /home/yitian/fq/ss.json</span><br><span class="line">autostart=true</span><br></pre></td></tr></table></figure>
+<p>然后重启 supervisor 服务，就可以看到影梭成功启动了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl restart supervisor</span><br><span class="line">sudo supervisorctl restart ss</span><br></pre></td></tr></table></figure>
+<h2 id="关于-kcptun"><a href="#关于-kcptun" class="headerlink" title="关于 kcptun"></a>关于 kcptun</h2><p>我现在用的服务器是 Hostwinds，速度还是挺快的，所以就不安装 kcptun 了。而且说实话 kcptun 安装起来太麻烦了，首先需要服务端下载、配置、设置自启，然后将配置文件传回电脑端，在电脑端上也下载客户端、配置、设置自启，这么一通下来也没啥用。所以我就先这么用了。等到将来速度不行的时候，我再配置一下 kcptun。不过我感觉过了 6 月搬瓦工应该就解禁了，没必要现在设置地这么麻烦。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://techstay.github.io/2019/06/16/购买VPS之后要做的几件事/" data-id="cjwz4rtov000a7gg53w2ol3hy" class="article-share-link">Share</a>
+      
+        <a href="https://techstay.github.io/2019/06/16/购买VPS之后要做的几件事/#disqus_thread" class="article-comment-link">留言</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-更新Manjaro出现Gpgme错误，无效的加密引擎的解决办法" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="2019/03/06/更新Manjaro出现Gpgme错误，无效的加密引擎的解决办法/" class="article-date">
@@ -92,21 +168,21 @@
 <p>笔记本上遇到的问题是“Gpgme 错误，无效的加密引擎”，英文错误信息是“manjaro gpgme error invalid crypto engine”，谷歌一下果然有很多类似信息，这下就方便多了。不过由于我之前瞎试了几次，走了不少弯路。在此直接说解决办法吧。首先这个错误原因我猜测是在图形界面挂掉的时候正好碰到 gpg 这些软件更新，然后导致 gpg 数据库损坏，进而 pacman 无法安装软件。那么解决办法就很明显了，修复 gpg 软件即可。具体可参考<a href="https://wiki.manjaro.org/index.php/Pacman_troubleshooting#Errors_about_Keys" target="_blank" rel="noopener">官方文档</a>。</p>
 <hr>
 <p>首先删除掉 pacman 原来的可能已经损坏的 key。</p>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo rm -r <span class="regexp">/etc/</span>pacman.d<span class="regexp">/gnupg</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo rm -r /etc/pacman.d/gnupg</span><br></pre></td></tr></table></figure>
 <p>然后重新安装密钥环，一开始我搜索到的解决方案和这个类似，不过没有 gnupg，所以一直失败。这一点上还是官方文档比较好。</p>
-<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">sudo pacman -Sy gnupg archlinux-keyring manjaro-keyring</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -Sy gnupg archlinux-keyring manjaro-keyring</span><br></pre></td></tr></table></figure>
 <p>然后重新初始化密钥环。</p>
-<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman-key <span class="comment">--init</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman-key --init</span><br></pre></td></tr></table></figure>
 <p>然后加载那些密钥。</p>
-<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman-key <span class="comment">--populate archlinux manjaro</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman-key --populate archlinux manjaro</span><br></pre></td></tr></table></figure>
 <p>最后一步是可选的，删除那些密钥损坏时下载的软件包。</p>
-<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">sudo pacman -Sc</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -Sc</span><br></pre></td></tr></table></figure>
 <p>经过这么几步，我终于成功修复了 Manjaro，然后在终端中更新系统并重启之后，终于成功再次进入了 Manjaro 图形界面，真是可喜可贺！</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://techstay.github.io/2019/03/06/更新Manjaro出现Gpgme错误，无效的加密引擎的解决办法/" data-id="cjui8esw1000gpkg5palewq20" class="article-share-link">Share</a>
+      <a data-url="https://techstay.github.io/2019/03/06/更新Manjaro出现Gpgme错误，无效的加密引擎的解决办法/" data-id="cjwz4rtpz000z7gg5xek6llhp" class="article-share-link">Share</a>
       
         <a href="https://techstay.github.io/2019/03/06/更新Manjaro出现Gpgme错误，无效的加密引擎的解决办法/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -153,7 +229,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://techstay.github.io/2019/03/06/FC游戏AV麻将俱乐部牌型表/" data-id="cjui8esvh0000pkg5ckulylop" class="article-share-link">Share</a>
+      <a data-url="https://techstay.github.io/2019/03/06/FC游戏AV麻将俱乐部牌型表/" data-id="cjwz4rto000007gg5nxuxxsj1" class="article-share-link">Share</a>
       
         <a href="https://techstay.github.io/2019/03/06/FC游戏AV麻将俱乐部牌型表/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -199,7 +275,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://techstay.github.io/2018/12/24/Win10系统无法访问局域网文件的解决办法/" data-id="cjui8esvm0001pkg5lk0s89pj" class="article-share-link">Share</a>
+      <a data-url="https://techstay.github.io/2018/12/24/Win10系统无法访问局域网文件的解决办法/" data-id="cjwz4rtq100107gg57g3w7dhh" class="article-share-link">Share</a>
       
         <a href="https://techstay.github.io/2018/12/24/Win10系统无法访问局域网文件的解决办法/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -245,7 +321,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://techstay.github.io/2018/10/15/gnome桌面共享vnc客户端连接失败需要降低加密级别的解决办法/" data-id="cjui8esvq0004pkg5qzm1vc8g" class="article-share-link">Share</a>
+      <a data-url="https://techstay.github.io/2018/10/15/gnome桌面共享vnc客户端连接失败需要降低加密级别的解决办法/" data-id="cjwz4rtor00067gg5p9n6hyk0" class="article-share-link">Share</a>
       
         <a href="https://techstay.github.io/2018/10/15/gnome桌面共享vnc客户端连接失败需要降低加密级别的解决办法/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -286,9 +362,9 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>在查找资料的偶然间，我发现一个博客上有非常可爱的Live 2D模型，当时我就被打动了，马上开启审查元素，试图找出这个Live 2D模型的信息，可是找了半天没找到。最后通过截图-&gt;谷歌图片的方式，终于一层一层的找到了相关资料，我正好有一个Hexo博客，所以今天就来在博客上添加一波Live 2D模型！</p>
-<p>首先，安装npm包：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm <span class="keyword">install</span> <span class="comment">--save hexo-helper-live2d</span></span><br></pre></td></tr></table></figure></p>
-<p>然后在hexo的配置文件<code>_config.yml</code>中添加如下配置，详细配置可以参考<a href="https://github.com/EYHN/hexo-helper-live2d/blob/master/README.zh-CN.md" target="_blank" rel="noopener">文档</a>：<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">live2d:</span></span><br><span class="line"><span class="attr">  enable:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">  scriptFrom:</span> <span class="string">local</span></span><br><span class="line"><span class="attr">  pluginRootPath:</span> <span class="string">live2dw/</span></span><br><span class="line"><span class="attr">  pluginJsPath:</span> <span class="string">lib/</span></span><br><span class="line"><span class="attr">  pluginModelPath:</span> <span class="string">assets/</span></span><br><span class="line"><span class="attr">  tagMode:</span> <span class="literal">false</span></span><br><span class="line"><span class="attr">  debug:</span> <span class="literal">false</span></span><br><span class="line"><span class="attr">  model:</span></span><br><span class="line"><span class="attr">    use:</span> <span class="string">live2d-widget-model-shizuku</span></span><br><span class="line"><span class="attr">  display:</span></span><br><span class="line"><span class="attr">    position:</span> <span class="string">right</span></span><br><span class="line"><span class="attr">    width:</span> <span class="number">150</span></span><br><span class="line"><span class="attr">    height:</span> <span class="number">300</span></span><br><span class="line"><span class="attr">  mobile:</span></span><br><span class="line"><span class="attr">    show:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure></p>
-<p>然后下载模型，模型名称可以到<a href="https://github.com/xiazeyu/live2d-widget-models" target="_blank" rel="noopener">这里</a>参考，一些模型的预览可以在<a href="https://huaji8.top/post/live2d-plugin-2.0/" target="_blank" rel="noopener">这里</a>。<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm <span class="keyword">install</span> live2d-widget-<span class="keyword">model</span>-shizuku</span><br></pre></td></tr></table></figure></p>
+<p>首先，安装npm包：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save hexo-helper-live2d</span><br></pre></td></tr></table></figure></p>
+<p>然后在hexo的配置文件<code>_config.yml</code>中添加如下配置，详细配置可以参考<a href="https://github.com/EYHN/hexo-helper-live2d/blob/master/README.zh-CN.md" target="_blank" rel="noopener">文档</a>：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">live2d:</span><br><span class="line">  enable: true</span><br><span class="line">  scriptFrom: local</span><br><span class="line">  pluginRootPath: live2dw/</span><br><span class="line">  pluginJsPath: lib/</span><br><span class="line">  pluginModelPath: assets/</span><br><span class="line">  tagMode: false</span><br><span class="line">  debug: false</span><br><span class="line">  model:</span><br><span class="line">    use: live2d-widget-model-shizuku</span><br><span class="line">  display:</span><br><span class="line">    position: right</span><br><span class="line">    width: 150</span><br><span class="line">    height: 300</span><br><span class="line">  mobile:</span><br><span class="line">    show: true</span><br></pre></td></tr></table></figure></p>
+<p>然后下载模型，模型名称可以到<a href="https://github.com/xiazeyu/live2d-widget-models" target="_blank" rel="noopener">这里</a>参考，一些模型的预览可以在<a href="https://huaji8.top/post/live2d-plugin-2.0/" target="_blank" rel="noopener">这里</a>。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install live2d-widget-model-shizuku</span><br></pre></td></tr></table></figure></p>
 <p>所有模型列表如下：</p>
 <ul>
 <li><code>live2d-widget-model-chitose</code></li>
@@ -320,7 +396,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://techstay.github.io/2018/09/15/在Hexo博客上添加可爱的Live-2D模型/" data-id="cjui8esvu0006pkg5jpgl2l3x" class="article-share-link">Share</a>
+      <a data-url="https://techstay.github.io/2018/09/15/在Hexo博客上添加可爱的Live-2D模型/" data-id="cjwz4rtok00047gg5ryr2c4sn" class="article-share-link">Share</a>
       
         <a href="https://techstay.github.io/2018/09/15/在Hexo博客上添加可爱的Live-2D模型/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -365,7 +441,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://techstay.github.io/2017/12/03/windows安装scrapy出现utf-8-codec-can-t-decode-byte的解决办法/" data-id="cjui8esvw000apkg5z7drdxi4" class="article-share-link">Share</a>
+      <a data-url="https://techstay.github.io/2017/12/03/windows安装scrapy出现utf-8-codec-can-t-decode-byte的解决办法/" data-id="cjwz4rtox000b7gg50xha4w9m" class="article-share-link">Share</a>
       
         <a href="https://techstay.github.io/2017/12/03/windows安装scrapy出现utf-8-codec-can-t-decode-byte的解决办法/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -411,7 +487,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://techstay.github.io/2017/11/15/使用FTP向服务器上传文件时出现550-The-filename-directory-name-or-volume-label-syntax-is-incorrect错误的解决办法/" data-id="cjui8esvy000bpkg5dipokym8" class="article-share-link">Share</a>
+      <a data-url="https://techstay.github.io/2017/11/15/使用FTP向服务器上传文件时出现550-The-filename-directory-name-or-volume-label-syntax-is-incorrect错误的解决办法/" data-id="cjwz4rtod00017gg5uw3zx4y2" class="article-share-link">Share</a>
       
         <a href="https://techstay.github.io/2017/11/15/使用FTP向服务器上传文件时出现550-The-filename-directory-name-or-volume-label-syntax-is-incorrect错误的解决办法/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -454,43 +530,43 @@
         <p>博客是一个老东西了，如果我们想写博客的话，有两种选择，第一种是在博客网站上，例如QQ空间、新浪博客、简书等网站上申请账号，然后编写博客；第二种就是自己找服务器搭一个博客。搭建博客也有两种选择，第一种是搭建动态博客，这方面最流行的就是WordPress，第二种就是搭建静态博客，这方面有很多选择。说到功能上，动态博客当然更胜一筹，但是所需的服务器资源比较大，如果想取得较好的效果，就必须花钱购买服务器资源。静态博客功能比较单一，但是由于省资源，所以可以找到很多免费部署的资源（例如Github Pages）。</p>
 <p>搭建静态博客这方面有很多工具可供选择，我看了看<a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>是一个很不错的选择，使用人数比较多，功能也挺丰富，所以这里我就选择Hexo来搭建静态博客。这篇文章在很多地方也参考了<a href="https://hexo.io/docs/" target="_blank" rel="noopener">Hexo 官方文档</a>。</p>
 <h2 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h2><p>在安装Hexo之前，首先需要安装<a href="http://nodejs.org/" target="_blank" rel="noopener">Node.js</a>和<a href="http://git-scm.com/" target="_blank" rel="noopener">Git</a>两个工具。</p>
-<p>然后输入下面命令来安装Hexo。<br><figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g hexo-<span class="keyword">cli</span></span><br></pre></td></tr></table></figure></p>
-<h2 id="建立博客"><a href="#建立博客" class="headerlink" title="建立博客"></a>建立博客</h2><p>安装好Hexo之后，就可以建立博客了。建立博客需要输入以下命令。<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> hexo init &lt;folder&gt;</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">cd</span> &lt;folder&gt;</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> npm install</span></span><br></pre></td></tr></table></figure></p>
-<p>等待npm安装好所有依赖包之后，博客就算建立好了。博客的文件结构如下面所示。<br><figure class="highlight sqf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── <span class="variable">_config</span>.yml</span><br><span class="line">├── package.json</span><br><span class="line">├── scaffolds</span><br><span class="line">├── source</span><br><span class="line">|   ├── <span class="variable">_drafts</span></span><br><span class="line">|   └── <span class="variable">_posts</span></span><br><span class="line">└── themes</span><br></pre></td></tr></table></figure></p>
-<h2 id="配置博客"><a href="#配置博客" class="headerlink" title="配置博客"></a>配置博客</h2><p>在项目外层文件夹中有一个<code>_config.yml</code>，这是博客项目的全局配置文件，在这里有很多选项需要我们修改。例如博客主标题、子标题、描述、作者、语言、时区、博客地址和根地址等等。这里列举的这些地址都需要我们根据自己需求进行修改。<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">title:</span> <span class="string">易天的静态个人博客</span></span><br><span class="line"><span class="attr">subtitle:</span></span><br><span class="line"><span class="attr">description:</span></span><br><span class="line"><span class="attr">author:</span> <span class="string">易天</span></span><br><span class="line"><span class="attr">language:</span> <span class="string">zh-CN</span></span><br><span class="line"><span class="attr">timezone:</span> <span class="string">Asia/Shanghai</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># URL</span></span><br><span class="line"><span class="comment">## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'</span></span><br><span class="line"><span class="attr">url:</span> <span class="attr">http://yoursite.com</span></span><br><span class="line"><span class="attr">root:</span> <span class="string">/</span></span><br></pre></td></tr></table></figure></p>
+<p>然后输入下面命令来安装Hexo。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g hexo-cli</span><br></pre></td></tr></table></figure></p>
+<h2 id="建立博客"><a href="#建立博客" class="headerlink" title="建立博客"></a>建立博客</h2><p>安装好Hexo之后，就可以建立博客了。建立博客需要输入以下命令。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init &lt;folder&gt;</span><br><span class="line">$ cd &lt;folder&gt;</span><br><span class="line">$ npm install</span><br></pre></td></tr></table></figure></p>
+<p>等待npm安装好所有依赖包之后，博客就算建立好了。博客的文件结构如下面所示。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── _config.yml</span><br><span class="line">├── package.json</span><br><span class="line">├── scaffolds</span><br><span class="line">├── source</span><br><span class="line">|   ├── _drafts</span><br><span class="line">|   └── _posts</span><br><span class="line">└── themes</span><br></pre></td></tr></table></figure></p>
+<h2 id="配置博客"><a href="#配置博客" class="headerlink" title="配置博客"></a>配置博客</h2><p>在项目外层文件夹中有一个<code>_config.yml</code>，这是博客项目的全局配置文件，在这里有很多选项需要我们修改。例如博客主标题、子标题、描述、作者、语言、时区、博客地址和根地址等等。这里列举的这些地址都需要我们根据自己需求进行修改。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">title: 易天的静态个人博客</span><br><span class="line">subtitle:</span><br><span class="line">description:</span><br><span class="line">author: 易天</span><br><span class="line">language: zh-CN</span><br><span class="line">timezone: Asia/Shanghai</span><br><span class="line"></span><br><span class="line"># URL</span><br><span class="line">## If your site is put in a subdirectory, set url as &apos;http://yoursite.com/child&apos; and root as &apos;/child/&apos;</span><br><span class="line">url: http://yoursite.com</span><br><span class="line">root: /</span><br></pre></td></tr></table></figure></p>
 <h2 id="Hexo命令"><a href="#Hexo命令" class="headerlink" title="Hexo命令"></a>Hexo命令</h2><p>下面介绍一下Hexo的常用命令，方括号<code>[]</code>中包括的是可选项，尖括号<code>&lt;&gt;</code>中包括的是必选项。</p>
-<h3 id="创建新博客项目"><a href="#创建新博客项目" class="headerlink" title="创建新博客项目"></a>创建新博客项目</h3><p>如果未指定文件夹，hexo会在当前文件夹创建项目文件。<br><figure class="highlight accesslog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init <span class="string">[folder]</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="创建新文章"><a href="#创建新文章" class="headerlink" title="创建新文章"></a>创建新文章</h3><p>如果未指定布局，会使用配置文件中的默认布局选项。如果文章标题中含有空格等字符，需要使用双引号包括标题。<br><figure class="highlight gauss"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo <span class="keyword">new</span> [layout] &lt;<span class="built_in">title</span>&gt;</span><br></pre></td></tr></table></figure></p>
-<h3 id="生成静态博客"><a href="#生成静态博客" class="headerlink" title="生成静态博客"></a>生成静态博客</h3><p>该命令会生成博客的静态文件。<br><figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo <span class="keyword">generate</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="启动本地服务器"><a href="#启动本地服务器" class="headerlink" title="启动本地服务器"></a>启动本地服务器</h3><p>启动本地服务器来开发博客，默认地址为 <a href="http://localhost:4000/" target="_blank" rel="noopener">http://localhost:4000/</a> 。<br><figure class="highlight axapta"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo <span class="keyword">server</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="创建新博客项目"><a href="#创建新博客项目" class="headerlink" title="创建新博客项目"></a>创建新博客项目</h3><p>如果未指定文件夹，hexo会在当前文件夹创建项目文件。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init [folder]</span><br></pre></td></tr></table></figure></p>
+<h3 id="创建新文章"><a href="#创建新文章" class="headerlink" title="创建新文章"></a>创建新文章</h3><p>如果未指定布局，会使用配置文件中的默认布局选项。如果文章标题中含有空格等字符，需要使用双引号包括标题。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new [layout] &lt;title&gt;</span><br></pre></td></tr></table></figure></p>
+<h3 id="生成静态博客"><a href="#生成静态博客" class="headerlink" title="生成静态博客"></a>生成静态博客</h3><p>该命令会生成博客的静态文件。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure></p>
+<h3 id="启动本地服务器"><a href="#启动本地服务器" class="headerlink" title="启动本地服务器"></a>启动本地服务器</h3><p>启动本地服务器来开发博客，默认地址为 <a href="http://localhost:4000/" target="_blank" rel="noopener">http://localhost:4000/</a> 。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure></p>
 <p>还有一些命令这里就不介绍了，需要详细了解的话可以直接查看官方文档。</p>
-<h2 id="编写新文章"><a href="#编写新文章" class="headerlink" title="编写新文章"></a>编写新文章</h2><p>编写新文章使用下面的命令。<br><figure class="highlight gauss"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo <span class="keyword">new</span> [layout] &lt;<span class="built_in">title</span>&gt;</span><br></pre></td></tr></table></figure></p>
+<h2 id="编写新文章"><a href="#编写新文章" class="headerlink" title="编写新文章"></a>编写新文章</h2><p>编写新文章使用下面的命令。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new [layout] &lt;title&gt;</span><br></pre></td></tr></table></figure></p>
 <p>默认情况下布局有<code>post</code>、<code>page</code>、<code>draft</code>三个，它们所在的文件夹位置也不同。默认使用<code>post</code>布局，生成的文章会放在<code>source/_posts</code>下。执行完这个命令之后，在该文件夹会出现名为<code>&lt;title&gt;.md</code>的markdown格式文件，这就是我们的博客文件，我们可以按照markdown语法来编辑它。</p>
 <p>项目中还有一个名为<code>scaffolds</code>的文件夹，里面存放的不同布局的模板。我希望所有文章都有分类属性，所以需要在<code>post.md</code>中添加<code>categories:</code>一行。这里在<code>---</code>之间包括的代码是文章的属性，将会由Hexo渲染为实际的样式。我们的博客文章需要写在这一部分的后面。</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">&#123;&#123;</span> <span class="string">title</span> <span class="string">&#125;&#125;</span></span><br><span class="line"><span class="attr">date:</span> <span class="string">&#123;&#123;</span> <span class="string">date</span> <span class="string">&#125;&#125;</span></span><br><span class="line"><span class="attr">tags:</span></span><br><span class="line"><span class="attr">categories:</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure>
-<p>这里我写了一篇小文章，介绍了一点经验。<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">在客户端上登录微软邮箱时提示您输出的用户名或密码不起作用的解决办法</span></span><br><span class="line"><span class="attr">date:</span> <span class="number">2017</span><span class="bullet">-11</span><span class="bullet">-13</span> <span class="number">18</span><span class="string">:42:56</span></span><br><span class="line"><span class="attr">tags:</span></span><br><span class="line"><span class="bullet"> -</span> <span class="string">疑难杂症</span></span><br><span class="line"><span class="bullet"> -</span> <span class="string">电子邮箱</span></span><br><span class="line"><span class="attr">categories:</span></span><br><span class="line"><span class="bullet"> -</span> <span class="string">疑难杂症</span></span><br><span class="line"><span class="meta">---</span></span><br><span class="line"></span><br><span class="line"><span class="string">有些同学可能会在用微软邮箱登录outlook或者其他邮箱客户端的时候，明明输入的是正确的用户名和密码，但是却提示“您输入的用户名或密码不起作用”。其实原因很简单，这是因为你的微软账号开启了二次验证，而邮箱客户端并不支持这个功能。</span></span><br><span class="line"></span><br><span class="line"><span class="string">当然解决办法也很简单，登录[微软账户更多安全选项](https://account.live.com/proofs/Manage/additional)中，然后找到应用密码这个，将应用密码作为邮箱密码输入到邮箱客户端中即可解决问题。当然对于Xbox等无法登陆的问题，也可以使用这个方法来解决。</span></span><br></pre></td></tr></table></figure></p>
-<p>写完之后，使用下面的命令启动本地服务器，然后访问<a href="http://localhost:4000/" target="_blank" rel="noopener">http://localhost:4000/</a>查看一下博客效果。<br><figure class="highlight axapta"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo <span class="keyword">server</span></span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: &#123;&#123; title &#125;&#125;</span><br><span class="line">date: &#123;&#123; date &#125;&#125;</span><br><span class="line">tags:</span><br><span class="line">categories:</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+<p>这里我写了一篇小文章，介绍了一点经验。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: 在客户端上登录微软邮箱时提示您输出的用户名或密码不起作用的解决办法</span><br><span class="line">date: 2017-11-13 18:42:56</span><br><span class="line">tags:</span><br><span class="line"> - 疑难杂症</span><br><span class="line"> - 电子邮箱</span><br><span class="line">categories:</span><br><span class="line"> - 疑难杂症</span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">有些同学可能会在用微软邮箱登录outlook或者其他邮箱客户端的时候，明明输入的是正确的用户名和密码，但是却提示“您输入的用户名或密码不起作用”。其实原因很简单，这是因为你的微软账号开启了二次验证，而邮箱客户端并不支持这个功能。</span><br><span class="line"></span><br><span class="line">当然解决办法也很简单，登录[微软账户更多安全选项](https://account.live.com/proofs/Manage/additional)中，然后找到应用密码这个，将应用密码作为邮箱密码输入到邮箱客户端中即可解决问题。当然对于Xbox等无法登陆的问题，也可以使用这个方法来解决。</span><br></pre></td></tr></table></figure></p>
+<p>写完之后，使用下面的命令启动本地服务器，然后访问<a href="http://localhost:4000/" target="_blank" rel="noopener">http://localhost:4000/</a>查看一下博客效果。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure></p>
 <p><img src="http://upload-images.jianshu.io/upload_images/832668-63febdf496729638.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="博客效果"></p>
 <h2 id="添加Disqus评论支持"><a href="#添加Disqus评论支持" class="headerlink" title="添加Disqus评论支持"></a>添加Disqus评论支持</h2><p>静态博客因为是静态的，所以没有办法支持评论等功能。不过很多第三方评论服务都可以通过添加JS代码的方式让博客可以支持评论功能。原来国内比较著名的第三方评论系统有多说，可惜因为无法盈利已经关闭了。Hexo官方支持<a href="https://disqus.com/" target="_blank" rel="noopener">Disqus</a>，一个国外的第三方评论平台。当然，为了使用Disqus，首先你需要去注册一个账号，并添加一个网站。</p>
-<p>默认情况下，Hexo的默认主题landscape是支持Disqus的，相应的源代码可以查看<code>themes\landscape\layout\_partial/after-footer.ejs</code>文件。当主配置文件中存在<code>disqus_shortname</code>选项，而且相应URL正确配置的话，Hexo就会自动显示Disqus评论。这是我的配置，这里的名称是我的网站的名称。<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">disqus_shortname:</span> yitian-<span class="keyword">static</span>-blog</span><br></pre></td></tr></table></figure></p>
+<p>默认情况下，Hexo的默认主题landscape是支持Disqus的，相应的源代码可以查看<code>themes\landscape\layout\_partial/after-footer.ejs</code>文件。当主配置文件中存在<code>disqus_shortname</code>选项，而且相应URL正确配置的话，Hexo就会自动显示Disqus评论。这是我的配置，这里的名称是我的网站的名称。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">disqus_shortname: yitian-static-blog</span><br></pre></td></tr></table></figure></p>
 <p>成功配置之后，在每篇文章下面，应该就会看到一个Disqus评论框了。</p>
 <h2 id="静态资源处理"><a href="#静态资源处理" class="headerlink" title="静态资源处理"></a>静态资源处理</h2><p>假如整个博客只有少量图片等静态资源，我们可以在<code>source</code>文件夹中新建一个<code>image</code>文件夹，然后将图片放置进去，在文章中使用MarkDown标准格式<code>[图片上传失败...(image-180063-1510595721877)]</code>即可访问。但是假如大部分文章都需要图片，那么这种方式就不太适用了。</p>
-<p>这时候，我们可以在配置文件中设置<code>post_asset_folder</code>选项为<code>true</code>。这样在创建文章时，Hexo会同时创建一个和文章同名的文件夹，我们可以将每个文章单独的资源放入该文件夹，然后以相对路径的方使引用。<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">post_asset_folder:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure></p>
+<p>这时候，我们可以在配置文件中设置<code>post_asset_folder</code>选项为<code>true</code>。这样在创建文章时，Hexo会同时创建一个和文章同名的文件夹，我们可以将每个文章单独的资源放入该文件夹，然后以相对路径的方使引用。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">post_asset_folder: true</span><br></pre></td></tr></table></figure></p>
 <p>举个例子，假如图片名为<code>hello.jpg</code>，已经放置到文章同名的文件夹中，那么在文章中引用图片，可以使用标准Markdown形式<code>[图片上传失败...(image-22e4b0-1510595721878)]</code>。不过这种方式仅适用于在文章页面下，假如在主页或者归档页面查看文章，由于相对路径不同，图片是无法正常显示的。</p>
-<p>对于这个问题，我们需要使用Hexo的标签插件来解决。这个插件在Hexo 3中已经包括到核心包中，所以我们可以直接使用，使用语法如下。如果图片名或标题有空格，需要使用双引号包括。<br><figure class="highlight django"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"></span><span class="template-tag">&#123;% <span class="name">asset_link</span> 图片名 图片标题 %&#125;</span><span class="xml"></span></span><br></pre></td></tr></table></figure></p>
+<p>对于这个问题，我们需要使用Hexo的标签插件来解决。这个插件在Hexo 3中已经包括到核心包中，所以我们可以直接使用，使用语法如下。如果图片名或标题有空格，需要使用双引号包括。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% asset_link 图片名 图片标题 %&#125;</span><br></pre></td></tr></table></figure></p>
 <p>这样一来，不管在哪个页面，图片都可以正常显示了。</p>
-<h2 id="发布博客"><a href="#发布博客" class="headerlink" title="发布博客"></a>发布博客</h2><p>发布博客有很多种方式，如果你有一个自己的服务器，可以选择FTP、RSync、Git等多种方式发布到服务器。当然这里为了省事就直接发布到Github Pages上。由于Github Pages要求静态网站在项目的根目录或者<code>docs</code>目录下，所以这里还要对项目进行一下小修改，在配置文件中将发布路径改为<code>docs</code>。<br><figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">public_dir:</span> docs</span><br></pre></td></tr></table></figure></p>
-<p>然后生成静态页面。<br><figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo <span class="keyword">generate</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="发布博客"><a href="#发布博客" class="headerlink" title="发布博客"></a>发布博客</h2><p>发布博客有很多种方式，如果你有一个自己的服务器，可以选择FTP、RSync、Git等多种方式发布到服务器。当然这里为了省事就直接发布到Github Pages上。由于Github Pages要求静态网站在项目的根目录或者<code>docs</code>目录下，所以这里还要对项目进行一下小修改，在配置文件中将发布路径改为<code>docs</code>。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public_dir: docs</span><br></pre></td></tr></table></figure></p>
+<p>然后生成静态页面。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure></p>
 <p>然后将所有代码一起提交到Github上，并在设置中选择<code>docs</code>选项，然后保存。</p>
 <p><img src="http://upload-images.jianshu.io/upload_images/832668-3f6285f159931e02.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Github Pages设置"></p>
-<p>然后访问Github Pages的路径，就会发现项目已经出现了，当然样式都是乱的。因为我们还没有设置合适的URL。本地开发的话，路径直接就是域名。但是Github Pages的路径一般都不是以域名开头的，所以需要我们按照自己的项目路径进行修改，下面是我的项目配置。<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">url:</span> <span class="string">https:</span><span class="comment">//techstay.github.io</span></span><br><span class="line"><span class="string">root:</span> <span class="regexp">/my-static-blog/</span></span><br></pre></td></tr></table></figure></p>
+<p>然后访问Github Pages的路径，就会发现项目已经出现了，当然样式都是乱的。因为我们还没有设置合适的URL。本地开发的话，路径直接就是域名。但是Github Pages的路径一般都不是以域名开头的，所以需要我们按照自己的项目路径进行修改，下面是我的项目配置。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">url: https://techstay.github.io</span><br><span class="line">root: /my-static-blog/</span><br></pre></td></tr></table></figure></p>
 <p>修改完毕之后别忘了执行<code>hexo generate</code>重新生成静态文件，然后再次提交，就可以发现这次项目完美的出现了。</p>
 <p>当然这篇文章仅仅介绍了Hexo的一点点知识，Hexo还有丰富的主题、插件可供探索。这里就仅仅抛砖引玉，各位如果有兴趣的话请自行探索吧！最后附上我的静态博客地址<a href="https://techstay.github.io/my-static-blog/">https://techstay.github.io/my-static-blog/</a>，欢迎大家查看！</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://techstay.github.io/2017/11/14/用Hexo制作自己的静态博客/" data-id="cjui8eswn0014pkg5cpdet1vo" class="article-share-link">Share</a>
+      <a data-url="https://techstay.github.io/2017/11/14/用Hexo制作自己的静态博客/" data-id="cjwz4rtqu00157gg52xci7vca" class="article-share-link">Share</a>
       
         <a href="https://techstay.github.io/2017/11/14/用Hexo制作自己的静态博客/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -536,7 +612,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://techstay.github.io/2017/11/13/在客户端上登录微软邮箱时提示您输出的用户名或密码不起作用的解决办法/" data-id="cjui8esvs0005pkg5e5fbtg5m" class="article-share-link">Share</a>
+      <a data-url="https://techstay.github.io/2017/11/13/在客户端上登录微软邮箱时提示您输出的用户名或密码不起作用的解决办法/" data-id="cjwz4rton00057gg5w48ai2ca" class="article-share-link">Share</a>
       
         <a href="https://techstay.github.io/2017/11/13/在客户端上登录微软邮箱时提示您输出的用户名或密码不起作用的解决办法/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -589,7 +665,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="archives/2019/03/">三月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2018/10/">十月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2018/09/">九月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2017/12/">十二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2017/11/">十一月 2017</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="archives/2019/06/">六月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2019/03/">三月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2018/10/">十月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2018/09/">九月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2017/12/">十二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2017/11/">十一月 2017</a></li></ul>
     </div>
   </div>
 
@@ -600,6 +676,10 @@
     <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="2019/06/16/购买VPS之后要做的几件事/">购买VPS之后要做的几件事</a>
+          </li>
         
           <li>
             <a href="2019/03/06/更新Manjaro出现Gpgme错误，无效的加密引擎的解决办法/">更新Manjaro出现Gpgme错误，无效的加密引擎的解决办法</a>
@@ -615,10 +695,6 @@
         
           <li>
             <a href="2018/10/15/gnome桌面共享vnc客户端连接失败需要降低加密级别的解决办法/">gnome桌面共享vnc客户端连接失败需要降低加密级别的解决办法</a>
-          </li>
-        
-          <li>
-            <a href="2018/09/15/在Hexo博客上添加可爱的Live-2D模型/">在Hexo博客上添加可爱的Live 2D模型</a>
           </li>
         
       </ul>

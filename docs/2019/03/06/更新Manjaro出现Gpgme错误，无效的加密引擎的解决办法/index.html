@@ -95,21 +95,21 @@
 <p>笔记本上遇到的问题是“Gpgme 错误，无效的加密引擎”，英文错误信息是“manjaro gpgme error invalid crypto engine”，谷歌一下果然有很多类似信息，这下就方便多了。不过由于我之前瞎试了几次，走了不少弯路。在此直接说解决办法吧。首先这个错误原因我猜测是在图形界面挂掉的时候正好碰到 gpg 这些软件更新，然后导致 gpg 数据库损坏，进而 pacman 无法安装软件。那么解决办法就很明显了，修复 gpg 软件即可。具体可参考<a href="https://wiki.manjaro.org/index.php/Pacman_troubleshooting#Errors_about_Keys" target="_blank" rel="noopener">官方文档</a>。</p>
 <hr>
 <p>首先删除掉 pacman 原来的可能已经损坏的 key。</p>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo rm -r <span class="regexp">/etc/</span>pacman.d<span class="regexp">/gnupg</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo rm -r /etc/pacman.d/gnupg</span><br></pre></td></tr></table></figure>
 <p>然后重新安装密钥环，一开始我搜索到的解决方案和这个类似，不过没有 gnupg，所以一直失败。这一点上还是官方文档比较好。</p>
-<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">sudo pacman -Sy gnupg archlinux-keyring manjaro-keyring</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -Sy gnupg archlinux-keyring manjaro-keyring</span><br></pre></td></tr></table></figure>
 <p>然后重新初始化密钥环。</p>
-<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman-key <span class="comment">--init</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman-key --init</span><br></pre></td></tr></table></figure>
 <p>然后加载那些密钥。</p>
-<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman-key <span class="comment">--populate archlinux manjaro</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman-key --populate archlinux manjaro</span><br></pre></td></tr></table></figure>
 <p>最后一步是可选的，删除那些密钥损坏时下载的软件包。</p>
-<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">sudo pacman -Sc</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -Sc</span><br></pre></td></tr></table></figure>
 <p>经过这么几步，我终于成功修复了 Manjaro，然后在终端中更新系统并重启之后，终于成功再次进入了 Manjaro 图形界面，真是可喜可贺！</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://techstay.github.io/2019/03/06/更新Manjaro出现Gpgme错误，无效的加密引擎的解决办法/" data-id="cjui8esw1000gpkg5palewq20" class="article-share-link">Share</a>
+      <a data-url="https://techstay.github.io/2019/03/06/更新Manjaro出现Gpgme错误，无效的加密引擎的解决办法/" data-id="cjwz4rtpz000z7gg5xek6llhp" class="article-share-link">Share</a>
       
         <a href="https://techstay.github.io/2019/03/06/更新Manjaro出现Gpgme错误，无效的加密引擎的解决办法/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -121,6 +121,15 @@
   
     
 <nav id="article-nav">
+  
+    <a href="../../../06/16/购买VPS之后要做的几件事/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          购买VPS之后要做的几件事
+        
+      </div>
+    </a>
   
   
     <a href="../FC游戏AV麻将俱乐部牌型表/" id="article-nav-older" class="article-nav-link-wrap">
@@ -176,7 +185,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../../../archives/2019/03/">三月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../archives/2018/10/">十月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../archives/2018/09/">九月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../archives/2017/12/">十二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../archives/2017/11/">十一月 2017</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../../../archives/2019/06/">六月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../archives/2019/03/">三月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../archives/2018/10/">十月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../archives/2018/09/">九月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../archives/2017/12/">十二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../archives/2017/11/">十一月 2017</a></li></ul>
     </div>
   </div>
 
@@ -187,6 +196,10 @@
     <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="../../../06/16/购买VPS之后要做的几件事/">购买VPS之后要做的几件事</a>
+          </li>
         
           <li>
             <a href>更新Manjaro出现Gpgme错误，无效的加密引擎的解决办法</a>
@@ -202,10 +215,6 @@
         
           <li>
             <a href="../../../../2018/10/15/gnome桌面共享vnc客户端连接失败需要降低加密级别的解决办法/">gnome桌面共享vnc客户端连接失败需要降低加密级别的解决办法</a>
-          </li>
-        
-          <li>
-            <a href="../../../../2018/09/15/在Hexo博客上添加可爱的Live-2D模型/">在Hexo博客上添加可爱的Live 2D模型</a>
           </li>
         
       </ul>

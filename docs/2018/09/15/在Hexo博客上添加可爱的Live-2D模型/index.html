@@ -92,9 +92,9 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>在查找资料的偶然间，我发现一个博客上有非常可爱的Live 2D模型，当时我就被打动了，马上开启审查元素，试图找出这个Live 2D模型的信息，可是找了半天没找到。最后通过截图-&gt;谷歌图片的方式，终于一层一层的找到了相关资料，我正好有一个Hexo博客，所以今天就来在博客上添加一波Live 2D模型！</p>
-<p>首先，安装npm包：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm <span class="keyword">install</span> <span class="comment">--save hexo-helper-live2d</span></span><br></pre></td></tr></table></figure></p>
-<p>然后在hexo的配置文件<code>_config.yml</code>中添加如下配置，详细配置可以参考<a href="https://github.com/EYHN/hexo-helper-live2d/blob/master/README.zh-CN.md" target="_blank" rel="noopener">文档</a>：<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">live2d:</span></span><br><span class="line"><span class="attr">  enable:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">  scriptFrom:</span> <span class="string">local</span></span><br><span class="line"><span class="attr">  pluginRootPath:</span> <span class="string">live2dw/</span></span><br><span class="line"><span class="attr">  pluginJsPath:</span> <span class="string">lib/</span></span><br><span class="line"><span class="attr">  pluginModelPath:</span> <span class="string">assets/</span></span><br><span class="line"><span class="attr">  tagMode:</span> <span class="literal">false</span></span><br><span class="line"><span class="attr">  debug:</span> <span class="literal">false</span></span><br><span class="line"><span class="attr">  model:</span></span><br><span class="line"><span class="attr">    use:</span> <span class="string">live2d-widget-model-shizuku</span></span><br><span class="line"><span class="attr">  display:</span></span><br><span class="line"><span class="attr">    position:</span> <span class="string">right</span></span><br><span class="line"><span class="attr">    width:</span> <span class="number">150</span></span><br><span class="line"><span class="attr">    height:</span> <span class="number">300</span></span><br><span class="line"><span class="attr">  mobile:</span></span><br><span class="line"><span class="attr">    show:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure></p>
-<p>然后下载模型，模型名称可以到<a href="https://github.com/xiazeyu/live2d-widget-models" target="_blank" rel="noopener">这里</a>参考，一些模型的预览可以在<a href="https://huaji8.top/post/live2d-plugin-2.0/" target="_blank" rel="noopener">这里</a>。<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm <span class="keyword">install</span> live2d-widget-<span class="keyword">model</span>-shizuku</span><br></pre></td></tr></table></figure></p>
+<p>首先，安装npm包：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save hexo-helper-live2d</span><br></pre></td></tr></table></figure></p>
+<p>然后在hexo的配置文件<code>_config.yml</code>中添加如下配置，详细配置可以参考<a href="https://github.com/EYHN/hexo-helper-live2d/blob/master/README.zh-CN.md" target="_blank" rel="noopener">文档</a>：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">live2d:</span><br><span class="line">  enable: true</span><br><span class="line">  scriptFrom: local</span><br><span class="line">  pluginRootPath: live2dw/</span><br><span class="line">  pluginJsPath: lib/</span><br><span class="line">  pluginModelPath: assets/</span><br><span class="line">  tagMode: false</span><br><span class="line">  debug: false</span><br><span class="line">  model:</span><br><span class="line">    use: live2d-widget-model-shizuku</span><br><span class="line">  display:</span><br><span class="line">    position: right</span><br><span class="line">    width: 150</span><br><span class="line">    height: 300</span><br><span class="line">  mobile:</span><br><span class="line">    show: true</span><br></pre></td></tr></table></figure></p>
+<p>然后下载模型，模型名称可以到<a href="https://github.com/xiazeyu/live2d-widget-models" target="_blank" rel="noopener">这里</a>参考，一些模型的预览可以在<a href="https://huaji8.top/post/live2d-plugin-2.0/" target="_blank" rel="noopener">这里</a>。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install live2d-widget-model-shizuku</span><br></pre></td></tr></table></figure></p>
 <p>所有模型列表如下：</p>
 <ul>
 <li><code>live2d-widget-model-chitose</code></li>
@@ -126,7 +126,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://techstay.github.io/2018/09/15/在Hexo博客上添加可爱的Live-2D模型/" data-id="cjui8esvu0006pkg5jpgl2l3x" class="article-share-link">Share</a>
+      <a data-url="https://techstay.github.io/2018/09/15/在Hexo博客上添加可爱的Live-2D模型/" data-id="cjwz4rtok00047gg5ryr2c4sn" class="article-share-link">Share</a>
       
         <a href="https://techstay.github.io/2018/09/15/在Hexo博客上添加可爱的Live-2D模型/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -202,7 +202,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../../../archives/2019/03/">三月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../archives/2018/10/">十月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../archives/2018/09/">九月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../archives/2017/12/">十二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../archives/2017/11/">十一月 2017</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../../../archives/2019/06/">六月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../archives/2019/03/">三月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../archives/2018/10/">十月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../archives/2018/09/">九月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../archives/2017/12/">十二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../archives/2017/11/">十一月 2017</a></li></ul>
     </div>
   </div>
 
@@ -213,6 +213,10 @@
     <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="../../../../2019/06/16/购买VPS之后要做的几件事/">购买VPS之后要做的几件事</a>
+          </li>
         
           <li>
             <a href="../../../../2019/03/06/更新Manjaro出现Gpgme错误，无效的加密引擎的解决办法/">更新Manjaro出现Gpgme错误，无效的加密引擎的解决办法</a>
@@ -228,10 +232,6 @@
         
           <li>
             <a href="../../../10/15/gnome桌面共享vnc客户端连接失败需要降低加密级别的解决办法/">gnome桌面共享vnc客户端连接失败需要降低加密级别的解决办法</a>
-          </li>
-        
-          <li>
-            <a href>在Hexo博客上添加可爱的Live 2D模型</a>
           </li>
         
       </ul>

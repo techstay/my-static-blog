@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0"
+  xmlns:atom="http://www.w3.org/2005/Atom"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>易天部落格</title>
+    <link>https://techstay.github.io/my-static-blog/</link>
+    
+    <atom:link href="/my-static-blog/rss2.xml" rel="self" type="application/rss+xml"/>
+    
+    <description>个人博客，写一点东西</description>
+    <pubDate>Sun, 16 Jun 2019 15:53:50 GMT</pubDate>
+    <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>购买VPS之后要做的几件事</title>
+      <link>https://techstay.github.io/my-static-blog/2019/06/16/%E8%B4%AD%E4%B9%B0VPS%E4%B9%8B%E5%90%8E%E8%A6%81%E5%81%9A%E7%9A%84%E5%87%A0%E4%BB%B6%E4%BA%8B/</link>
+      <guid>https://techstay.github.io/my-static-blog/2019/06/16/%E8%B4%AD%E4%B9%B0VPS%E4%B9%8B%E5%90%8E%E8%A6%81%E5%81%9A%E7%9A%84%E5%87%A0%E4%BB%B6%E4%BA%8B/</guid>
+      <pubDate>Sun, 16 Jun 2019 15:53:50 GMT</pubDate>
+      <description>
+      
+        
+        
+          
+          
+            &lt;h2 id=&quot;配置用户账户&quot;&gt;&lt;a href=&quot;#配置用户账户&quot; class=&quot;headerlink&quot; title=&quot;配置用户账户&quot;&gt;&lt;/a&gt;配置用户账户&lt;/h2&gt;&lt;p&gt;刚买的 VPS，系统给你的肯定只有一个 root 账户，但是一般不要用 root
+          
+        
+      
+      </description>
+      
+      
+      <comments>https://techstay.github.io/my-static-blog/2019/06/16/%E8%B4%AD%E4%B9%B0VPS%E4%B9%8B%E5%90%8E%E8%A6%81%E5%81%9A%E7%9A%84%E5%87%A0%E4%BB%B6%E4%BA%8B/#disqus_thread</comments>
+    </item>
+    
+    <item>
+      <title>更新Manjaro出现Gpgme错误，无效的加密引擎的解决办法</title>
+      <link>https://techstay.github.io/my-static-blog/2019/03/06/%E6%9B%B4%E6%96%B0Manjaro%E5%87%BA%E7%8E%B0Gpgme%E9%94%99%E8%AF%AF%EF%BC%8C%E6%97%A0%E6%95%88%E7%9A%84%E5%8A%A0%E5%AF%86%E5%BC%95%E6%93%8E%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/</link>
+      <guid>https://techstay.github.io/my-static-blog/2019/03/06/%E6%9B%B4%E6%96%B0Manjaro%E5%87%BA%E7%8E%B0Gpgme%E9%94%99%E8%AF%AF%EF%BC%8C%E6%97%A0%E6%95%88%E7%9A%84%E5%8A%A0%E5%AF%86%E5%BC%95%E6%93%8E%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/</guid>
+      <pubDate>Wed, 06 Mar 2019 12:08:24 GMT</pubDate>
+      <description>
+      
+        
+        
+          
+          
+            &lt;p&gt;虽然装了双系统，但是平时我用的主要还是 Windows 系统，另外一个 Manjaro
+          
+        
+      
+      </description>
+      
+      
+      <comments>https://techstay.github.io/my-static-blog/2019/03/06/%E6%9B%B4%E6%96%B0Manjaro%E5%87%BA%E7%8E%B0Gpgme%E9%94%99%E8%AF%AF%EF%BC%8C%E6%97%A0%E6%95%88%E7%9A%84%E5%8A%A0%E5%AF%86%E5%BC%95%E6%93%8E%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/#disqus_thread</comments>
+    </item>
+    
+    <item>
+      <title>FC游戏AV麻将俱乐部牌型表</title>
+      <link>https://techstay.github.io/my-static-blog/2019/03/06/FC%E6%B8%B8%E6%88%8FAV%E9%BA%BB%E5%B0%86%E4%BF%B1%E4%B9%90%E9%83%A8%E7%89%8C%E5%9E%8B%E8%A1%A8/</link>
+      <guid>https://techstay.github.io/my-static-blog/2019/03/06/FC%E6%B8%B8%E6%88%8FAV%E9%BA%BB%E5%B0%86%E4%BF%B1%E4%B9%90%E9%83%A8%E7%89%8C%E5%9E%8B%E8%A1%A8/</guid>
+      <pubDate>Tue, 05 Mar 2019 16:43:50 GMT</pubDate>
+      <description>
+      
+        
+        
+          
+          
+            &lt;p&gt;老早以前玩过一个 FC 双人麻将游戏，能用点数买好牌，很好玩的游戏，可惜看不懂日文搞不清意思。今天废了老大劲对着词典终于把牌名全搞懂了。&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td
+          
+        
+      
+      </description>
+      
+      
+      <comments>https://techstay.github.io/my-static-blog/2019/03/06/FC%E6%B8%B8%E6%88%8FAV%E9%BA%BB%E5%B0%86%E4%BF%B1%E4%B9%90%E9%83%A8%E7%89%8C%E5%9E%8B%E8%A1%A8/#disqus_thread</comments>
+    </item>
+    
+    <item>
+      <title>Win10系统无法访问局域网文件的解决办法</title>
+      <link>https://techstay.github.io/my-static-blog/2018/12/24/Win10%E7%B3%BB%E7%BB%9F%E6%97%A0%E6%B3%95%E8%AE%BF%E9%97%AE%E5%B1%80%E5%9F%9F%E7%BD%91%E6%96%87%E4%BB%B6%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/</link>
+      <guid>https://techstay.github.io/my-static-blog/2018/12/24/Win10%E7%B3%BB%E7%BB%9F%E6%97%A0%E6%B3%95%E8%AE%BF%E9%97%AE%E5%B1%80%E5%9F%9F%E7%BD%91%E6%96%87%E4%BB%B6%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/</guid>
+      <pubDate>Mon, 24 Dec 2018 13:46:11 GMT</pubDate>
+      <description>
+      
+        
+        
+          
+          
+            &lt;p&gt;最近重装了系统，发现无法访问小米路由器连接的移动硬盘了，而且连我局域网里的笔记本的共享文件都没办法访问了。经过一番研究，发现是Win10默认关闭了SMB文件共享，只要打开即可。&lt;/p&gt;
+&lt;p&gt;方法很简单，打开控制面板-&amp;gt;程序和功能-&amp;gt;添加或关闭Windows功能
+          
+        
+      
+      </description>
+      
+      
+      <comments>https://techstay.github.io/my-static-blog/2018/12/24/Win10%E7%B3%BB%E7%BB%9F%E6%97%A0%E6%B3%95%E8%AE%BF%E9%97%AE%E5%B1%80%E5%9F%9F%E7%BD%91%E6%96%87%E4%BB%B6%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/#disqus_thread</comments>
+    </item>
+    
+    <item>
+      <title>gnome桌面共享vnc客户端连接失败需要降低加密级别的解决办法</title>
+      <link>https://techstay.github.io/my-static-blog/2018/10/15/gnome%E6%A1%8C%E9%9D%A2%E5%85%B1%E4%BA%ABvnc%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%BF%9E%E6%8E%A5%E5%A4%B1%E8%B4%A5%E9%9C%80%E8%A6%81%E9%99%8D%E4%BD%8E%E5%8A%A0%E5%AF%86%E7%BA%A7%E5%88%AB%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/</link>
+      <guid>https://techstay.github.io/my-static-blog/2018/10/15/gnome%E6%A1%8C%E9%9D%A2%E5%85%B1%E4%BA%ABvnc%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%BF%9E%E6%8E%A5%E5%A4%B1%E8%B4%A5%E9%9C%80%E8%A6%81%E9%99%8D%E4%BD%8E%E5%8A%A0%E5%AF%86%E7%BA%A7%E5%88%AB%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/</guid>
+      <pubDate>Sun, 14 Oct 2018 16:37:09 GMT</pubDate>
+      <description>
+      
+        
+        
+          
+          
+            &lt;p&gt;由于一些Windows
+          
+        
+      
+      </description>
+      
+      
+      <comments>https://techstay.github.io/my-static-blog/2018/10/15/gnome%E6%A1%8C%E9%9D%A2%E5%85%B1%E4%BA%ABvnc%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%BF%9E%E6%8E%A5%E5%A4%B1%E8%B4%A5%E9%9C%80%E8%A6%81%E9%99%8D%E4%BD%8E%E5%8A%A0%E5%AF%86%E7%BA%A7%E5%88%AB%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/#disqus_thread</comments>
+    </item>
+    
+    <item>
+      <title>在Hexo博客上添加可爱的Live 2D模型</title>
+      <link>https://techstay.github.io/my-static-blog/2018/09/15/%E5%9C%A8Hexo%E5%8D%9A%E5%AE%A2%E4%B8%8A%E6%B7%BB%E5%8A%A0%E5%8F%AF%E7%88%B1%E7%9A%84Live-2D%E6%A8%A1%E5%9E%8B/</link>
+      <guid>https://techstay.github.io/my-static-blog/2018/09/15/%E5%9C%A8Hexo%E5%8D%9A%E5%AE%A2%E4%B8%8A%E6%B7%BB%E5%8A%A0%E5%8F%AF%E7%88%B1%E7%9A%84Live-2D%E6%A8%A1%E5%9E%8B/</guid>
+      <pubDate>Sat, 15 Sep 2018 14:56:47 GMT</pubDate>
+      <description>
+      
+        
+        
+          
+          
+            &lt;p&gt;在查找资料的偶然间，我发现一个博客上有非常可爱的Live 2D模型，当时我就被打动了，马上开启审查元素，试图找出这个Live
+          
+        
+      
+      </description>
+      
+      
+      <comments>https://techstay.github.io/my-static-blog/2018/09/15/%E5%9C%A8Hexo%E5%8D%9A%E5%AE%A2%E4%B8%8A%E6%B7%BB%E5%8A%A0%E5%8F%AF%E7%88%B1%E7%9A%84Live-2D%E6%A8%A1%E5%9E%8B/#disqus_thread</comments>
+    </item>
+    
+    <item>
+      <title>windows安装scrapy出现utf-8 codec can&#39;t decode byte的解决办法</title>
+      <link>https://techstay.github.io/my-static-blog/2017/12/03/windows%E5%AE%89%E8%A3%85scrapy%E5%87%BA%E7%8E%B0utf-8-codec-can-t-decode-byte%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/</link>
+      <guid>https://techstay.github.io/my-static-blog/2017/12/03/windows%E5%AE%89%E8%A3%85scrapy%E5%87%BA%E7%8E%B0utf-8-codec-can-t-decode-byte%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/</guid>
+      <pubDate>Sun, 03 Dec 2017 10:24:07 GMT</pubDate>
+      <description>
+      
+        
+        
+          
+          
+            &lt;p&gt;这种情况是由于scrapy的python包是针对linux编写的，而windows下的Powershell终端编码并不是UTF-8，所以出现了这个编码错误。解决办法就是用支持UTF-8的终端，例如Git Bash来运行&lt;code&gt;pip install
+          
+        
+      
+      </description>
+      
+      
+      <comments>https://techstay.github.io/my-static-blog/2017/12/03/windows%E5%AE%89%E8%A3%85scrapy%E5%87%BA%E7%8E%B0utf-8-codec-can-t-decode-byte%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/#disqus_thread</comments>
+    </item>
+    
+    <item>
+      <title>使用FTP向服务器上传文件时出现550 The filename, directory name, or volume label syntax is incorrect错误的解决办法</title>
+      <link>https://techstay.github.io/my-static-blog/2017/11/15/%E4%BD%BF%E7%94%A8FTP%E5%90%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6%E6%97%B6%E5%87%BA%E7%8E%B0550-The-filename-directory-name-or-volume-label-syntax-is-incorrect%E9%94%99%E8%AF%AF%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/</link>
+      <guid>https://techstay.github.io/my-static-blog/2017/11/15/%E4%BD%BF%E7%94%A8FTP%E5%90%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6%E6%97%B6%E5%87%BA%E7%8E%B0550-The-filename-directory-name-or-volume-label-syntax-is-incorrect%E9%94%99%E8%AF%AF%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/</guid>
+      <pubDate>Tue, 14 Nov 2017 18:59:01 GMT</pubDate>
+      <description>
+      
+        
+        
+          
+          
+            &lt;p&gt;这种情况一般是由于服务器不支持非ASCII字符（例如中文），解决办法很简单，所有文件都改成英文名称！&lt;/p&gt;
+&lt;p&gt;顺便说一下，对于自建Linux服务器，可以通过修改locale等方式让服务器支持中文。对于另外一些不太灵活的应用容器（比如Azure），大概就只能老老实实改文
+          
+        
+      
+      </description>
+      
+      
+      <comments>https://techstay.github.io/my-static-blog/2017/11/15/%E4%BD%BF%E7%94%A8FTP%E5%90%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6%E6%97%B6%E5%87%BA%E7%8E%B0550-The-filename-directory-name-or-volume-label-syntax-is-incorrect%E9%94%99%E8%AF%AF%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/#disqus_thread</comments>
+    </item>
+    
+    <item>
+      <title>用Hexo制作自己的静态博客</title>
+      <link>https://techstay.github.io/my-static-blog/2017/11/14/%E7%94%A8Hexo%E5%88%B6%E4%BD%9C%E8%87%AA%E5%B7%B1%E7%9A%84%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2/</link>
+      <guid>https://techstay.github.io/my-static-blog/2017/11/14/%E7%94%A8Hexo%E5%88%B6%E4%BD%9C%E8%87%AA%E5%B7%B1%E7%9A%84%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2/</guid>
+      <pubDate>Mon, 13 Nov 2017 16:21:20 GMT</pubDate>
+      <description>
+      
+        
+        
+          
+          
+            &lt;p&gt;博客是一个老东西了，如果我们想写博客的话，有两种选择，第一种是在博客网站上，例如QQ空间、新浪博客、简书等网站上申请账号，然后编写博客；第二种就是自己找服务器搭一个博客。搭建博客也有两种选择，第一种是搭建动态博客，这方面最流行的就是WordPress，第二种就是搭建静态博客
+          
+        
+      
+      </description>
+      
+      
+      <comments>https://techstay.github.io/my-static-blog/2017/11/14/%E7%94%A8Hexo%E5%88%B6%E4%BD%9C%E8%87%AA%E5%B7%B1%E7%9A%84%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2/#disqus_thread</comments>
+    </item>
+    
+    <item>
+      <title>在客户端上登录微软邮箱时提示您输出的用户名或密码不起作用的解决办法</title>
+      <link>https://techstay.github.io/my-static-blog/2017/11/13/%E5%9C%A8%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%B8%8A%E7%99%BB%E5%BD%95%E5%BE%AE%E8%BD%AF%E9%82%AE%E7%AE%B1%E6%97%B6%E6%8F%90%E7%A4%BA%E6%82%A8%E8%BE%93%E5%87%BA%E7%9A%84%E7%94%A8%E6%88%B7%E5%90%8D%E6%88%96%E5%AF%86%E7%A0%81%E4%B8%8D%E8%B5%B7%E4%BD%9C%E7%94%A8%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/</link>
+      <guid>https://techstay.github.io/my-static-blog/2017/11/13/%E5%9C%A8%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%B8%8A%E7%99%BB%E5%BD%95%E5%BE%AE%E8%BD%AF%E9%82%AE%E7%AE%B1%E6%97%B6%E6%8F%90%E7%A4%BA%E6%82%A8%E8%BE%93%E5%87%BA%E7%9A%84%E7%94%A8%E6%88%B7%E5%90%8D%E6%88%96%E5%AF%86%E7%A0%81%E4%B8%8D%E8%B5%B7%E4%BD%9C%E7%94%A8%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/</guid>
+      <pubDate>Mon, 13 Nov 2017 10:42:56 GMT</pubDate>
+      <description>
+      
+        
+        
+          
+          
+            &lt;p&gt;有些同学可能会在用微软邮箱登录outlook或者其他邮箱客户端的时候，明明输入的是正确的用户名和密码，但是却提示“您输入的用户名或密码不起作用”。其实原因很简单，这是因为你的微软账号开启了二次验证，而邮箱客户端并不支持这个功能。&lt;/p&gt;
+&lt;p&gt;当然解决办法也很简单，登录&lt;a
+          
+        
+      
+      </description>
+      
+      
+      <comments>https://techstay.github.io/my-static-blog/2017/11/13/%E5%9C%A8%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%B8%8A%E7%99%BB%E5%BD%95%E5%BE%AE%E8%BD%AF%E9%82%AE%E7%AE%B1%E6%97%B6%E6%8F%90%E7%A4%BA%E6%82%A8%E8%BE%93%E5%87%BA%E7%9A%84%E7%94%A8%E6%88%B7%E5%90%8D%E6%88%96%E5%AF%86%E7%A0%81%E4%B8%8D%E8%B5%B7%E4%BD%9C%E7%94%A8%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/#disqus_thread</comments>
+    </item>
+    
+  </channel>
+</rss>

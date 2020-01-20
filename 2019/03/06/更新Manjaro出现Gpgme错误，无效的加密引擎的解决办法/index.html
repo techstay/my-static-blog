@@ -1,32 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-    
+  <meta charset="utf-8">
+  
 
-    
-
-    
-<!-- Baidu Tongji -->
-<script>var _hmt = _hmt || []</script>
-<script async src="//hm.baidu.com/hm.js?3b37accecc2e0ca553fb2043a1c6c906"></script>
-<!-- End Baidu Tongji -->
-
-
-
-
-    <meta charset="utf-8">
-    
-    
-    
-    
-    <title>更新Manjaro出现Gpgme错误，无效的加密引擎的解决办法 | 易天部落格 | 可能什么都写，可能什么都不写</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    
-    <meta name="theme-color" content="#3F51B5">
-    
-    
-    <meta name="keywords" content="疑难杂症">
-    <meta name="description" content="虽然装了双系统，但是平时我用的主要还是 Windows 系统，另外一个 Manjaro 好久没更新了，这几天忽然想起来，于是赶紧打开更新。果然，滚动式更新时间一长想要在更新的话肯定会出问题。这次遇到的问题是更新到一半图形界面会突然挂掉。前几天更新台式机的时候同样也遇到了这个错误，不过切一下终端，然后在终端里面更新完就好了。没想到笔记本这次遇到问题了，由于平时我设置的 locale 是中文，在笔记本">
+  
+  <title>更新Manjaro出现Gpgme错误，无效的加密引擎的解决办法 | 易天部落格</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="虽然装了双系统，但是平时我用的主要还是 Windows 系统，另外一个 Manjaro 好久没更新了，这几天忽然想起来，于是赶紧打开更新。果然，滚动式更新时间一长想要在更新的话肯定会出问题。这次遇到的问题是更新到一半图形界面会突然挂掉。前几天更新台式机的时候同样也遇到了这个错误，不过切一下终端，然后在终端里面更新完就好了。没想到笔记本这次遇到问题了，由于平时我设置的 locale 是中文，在笔记本">
 <meta property="og:type" content="article">
 <meta property="og:title" content="更新Manjaro出现Gpgme错误，无效的加密引擎的解决办法">
 <meta property="og:url" content="https://techstay.github.io/my-static-blog/2019/03/06/%E6%9B%B4%E6%96%B0Manjaro%E5%87%BA%E7%8E%B0Gpgme%E9%94%99%E8%AF%AF%EF%BC%8C%E6%97%A0%E6%95%88%E7%9A%84%E5%8A%A0%E5%AF%86%E5%BC%95%E6%93%8E%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/index.html">
@@ -38,160 +19,85 @@
 <meta property="article:author" content="易天">
 <meta property="article:tag" content="疑难杂症">
 <meta name="twitter:card" content="summary">
-    
-        <link rel="alternate" type="application/atom+xml" title="易天部落格" href="../../../../atom.xml">
-    
-    <link rel="shortcut icon" href="../../../../favicon.ico">
-    <link rel="stylesheet" href="../../../../unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
-    <script>window.lazyScripts=[]</script>
-
-    <!-- custom head -->
-    
+  
+    <link rel="alternate" href="../../../../atom.xml" title="易天部落格" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="../../../../css/style.css">
 
 <meta name="generator" content="Hexo 4.2.0"></head>
 
 <body>
-    <div id="loading" class="active"></div>
-
-    <aside id="menu" class="hide" >
-  <div class="inner flex-row-vertical">
-    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
-        <i class="icon icon-lg icon-close"></i>
-    </a>
-    <div class="brand-wrap" style="background-image:url(../../../../img/brand.jpg)">
-      <div class="brand">
-        <a href="../../../../index.html" class="avatar waves-effect waves-circle waves-light">
-          <img src="../../../../img/avatar.png">
-        </a>
-        <hgroup class="introduce">
-          <h5 class="nickname">易天</h5>
-          <a href="mailto:lovery521@gmail.com" title="lovery521@gmail.com" class="mail">lovery521@gmail.com</a>
-        </hgroup>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="../../../../index.html" id="logo">易天部落格</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="../../../../index.html" id="subtitle">可能什么都写，可能什么都不写</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="../../../../index.html">Home</a>
+        
+          <a class="main-nav-link" href="../../../../archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="../../../../atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://techstay.github.io/my-static-blog"></form>
       </div>
     </div>
-    <div class="scroll-wrap flex-col">
-      <ul class="nav">
-        
-            <li class="waves-block waves-effect">
-              <a href="../../../../index.html"  >
-                <i class="icon icon-lg icon-home"></i>
-                主页
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="../../../../archives"  >
-                <i class="icon icon-lg icon-archives"></i>
-                Archives
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="../../../../tags"  >
-                <i class="icon icon-lg icon-tags"></i>
-                Tags
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="../../../../categories"  >
-                <i class="icon icon-lg icon-th-list"></i>
-                Categories
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="../../../../https:/github.com/techstay" target="_blank" >
-                <i class="icon icon-lg icon-github"></i>
-                Github
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="../../../../https:/www.weibo.com/techstay" target="_blank" >
-                <i class="icon icon-lg icon-weibo"></i>
-                Weibo
-              </a>
-            </li>
-        
-      </ul>
-    </div>
   </div>
-</aside>
-
-    <main id="main">
-        <header class="top-header" id="header">
-    <div class="flex-row">
-        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
-          <i class="icon icon-lg icon-navicon"></i>
-        </a>
-        <div class="flex-col header-title ellipsis">更新Manjaro出现Gpgme错误，无效的加密引擎的解决办法</div>
-        
-        <div class="search-wrap" id="search-wrap">
-            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
-                <i class="icon icon-lg icon-chevron-left"></i>
-            </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
-            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
-                <i class="icon icon-lg icon-search"></i>
-            </a>
-        </div>
-        
-        
-        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
-            <i class="icon icon-lg icon-share-alt"></i>
-        </a>
-        
-    </div>
 </header>
-<header class="content-header post-header">
-
-    <div class="container fade-scale">
-        <h1 class="title">更新Manjaro出现Gpgme错误，无效的加密引擎的解决办法</h1>
-        <h5 class="subtitle">
-            
-                <time datetime="2019-03-06T12:08:24.000Z" itemprop="datePublished" class="page-time">
-  2019-03-06
-</time>
-
-
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="../../../../categories/%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87/">疑难杂症</a></li></ul>
-
-            
-        </h5>
-    </div>
-
+      <div class="outer">
+        <section id="main"><article id="post-更新Manjaro出现Gpgme错误，无效的加密引擎的解决办法" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="" class="article-date">
+  <time datetime="2019-03-06T12:08:24.000Z" itemprop="datePublished">2019-03-06</time>
+</a>
     
+  <div class="article-category">
+    <a class="article-category-link" href="../../../../categories/%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87/">疑难杂症</a>
+  </div>
 
-
-</header>
-
-
-<div class="container body-wrap">
+  </div>
+  <div class="article-inner">
     
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      更新Manjaro出现Gpgme错误，无效的加密引擎的解决办法
+    </h1>
+  
 
-<article id="post-更新Manjaro出现Gpgme错误，无效的加密引擎的解决办法"
-  class="post-article article-type-post fade" itemprop="blogPost">
-
-    <div class="post-card">
-        <h1 class="post-card-title">更新Manjaro出现Gpgme错误，无效的加密引擎的解决办法</h1>
-        <div class="post-meta">
-            <time class="post-time" title="2019-03-06 20:08:24" datetime="2019-03-06T12:08:24.000Z"  itemprop="datePublished">2019-03-06</time>
-
-            
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="../../../../categories/%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87/">疑难杂症</a></li></ul>
-
-
-
-            
-<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
-    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
-</span>
-
-
-        </div>
-        <div class="post-content" id="post-content" itemprop="postContent">
-            <p>虽然装了双系统，但是平时我用的主要还是 Windows 系统，另外一个 Manjaro 好久没更新了，这几天忽然想起来，于是赶紧打开更新。果然，滚动式更新时间一长想要在更新的话肯定会出问题。这次遇到的问题是更新到一半图形界面会突然挂掉。前几天更新台式机的时候同样也遇到了这个错误，不过切一下终端，然后在终端里面更新完就好了。没想到笔记本这次遇到问题了，由于平时我设置的 locale 是中文，在笔记本屏幕上还显示成了一堆方块，没办法还得在台式机上 SSH 过去。</p>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>虽然装了双系统，但是平时我用的主要还是 Windows 系统，另外一个 Manjaro 好久没更新了，这几天忽然想起来，于是赶紧打开更新。果然，滚动式更新时间一长想要在更新的话肯定会出问题。这次遇到的问题是更新到一半图形界面会突然挂掉。前几天更新台式机的时候同样也遇到了这个错误，不过切一下终端，然后在终端里面更新完就好了。没想到笔记本这次遇到问题了，由于平时我设置的 locale 是中文，在笔记本屏幕上还显示成了一堆方块，没办法还得在台式机上 SSH 过去。</p>
 <p>笔记本上遇到的问题是“Gpgme 错误，无效的加密引擎”，英文错误信息是“manjaro gpgme error invalid crypto engine”，谷歌一下果然有很多类似信息，这下就方便多了。不过由于我之前瞎试了几次，走了不少弯路。在此直接说解决办法吧。首先这个错误原因我猜测是在图形界面挂掉的时候正好碰到 gpg 这些软件更新，然后导致 gpg 数据库损坏，进而 pacman 无法安装软件。那么解决办法就很明显了，修复 gpg 软件即可。具体可参考<a href="https://wiki.manjaro.org/index.php/Pacman_troubleshooting#Errors_about_Keys" target="_blank" rel="noopener">官方文档</a>。</p>
 <hr>
 <p>首先删除掉 pacman 原来的可能已经损坏的 key。</p>
@@ -211,315 +117,175 @@
 
 <p>经过这么几步，我终于成功修复了 Manjaro，然后在终端中更新系统并重启之后，终于成功再次进入了 Manjaro 图形界面，真是可喜可贺！</p>
 
-        </div>
-
-        <blockquote class="post-copyright">
-    
-    <div class="content">
-        
-<span class="post-time">
-    最后更新时间：<time datetime="2019-03-06T12:08:24.000Z" itemprop="dateUpdated">2019-03-06 20:08:24</time>
-</span><br>
-
-
-        
+      
     </div>
-    
-    <footer>
-        <a href="https://techstay.github.io/my-static-blog">
-            <img src="../../../../img/avatar.png" alt="易天">
-            易天
-        </a>
+    <footer class="article-footer">
+      <a data-url="https://techstay.github.io/my-static-blog/2019/03/06/%E6%9B%B4%E6%96%B0Manjaro%E5%87%BA%E7%8E%B0Gpgme%E9%94%99%E8%AF%AF%EF%BC%8C%E6%97%A0%E6%95%88%E7%9A%84%E5%8A%A0%E5%AF%86%E5%BC%95%E6%93%8E%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/" data-id="ck5mn5rts000fw8lj7ihnhano" class="article-share-link">Share</a>
+      
+        <a href="https://techstay.github.io/my-static-blog/2019/03/06/%E6%9B%B4%E6%96%B0Manjaro%E5%87%BA%E7%8E%B0Gpgme%E9%94%99%E8%AF%AF%EF%BC%8C%E6%97%A0%E6%95%88%E7%9A%84%E5%8A%A0%E5%AF%86%E5%BC%95%E6%93%8E%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/#disqus_thread" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87/" rel="tag">疑难杂症</a></li></ul>
+
     </footer>
-</blockquote>
-
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="../../../06/16/%E8%B4%AD%E4%B9%B0VPS%E4%B9%8B%E5%90%8E%E8%A6%81%E5%81%9A%E7%9A%84%E5%87%A0%E4%BB%B6%E4%BA%8B/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
         
-<div class="page-reward">
-    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
-</div>
-
-
-
-        <div class="post-footer">
-            
-	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87/" rel="tag">疑难杂症</a></li></ul>
-
-
-            
-<div class="page-share-wrap">
-    
-
-<div class="page-share" id="pageShare">
-    <ul class="reset share-icons">
-      <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://techstay.github.io/my-static-blog/2019/03/06/%E6%9B%B4%E6%96%B0Manjaro%E5%87%BA%E7%8E%B0Gpgme%E9%94%99%E8%AF%AF%EF%BC%8C%E6%97%A0%E6%95%88%E7%9A%84%E5%8A%A0%E5%AF%86%E5%BC%95%E6%93%8E%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/&title=《更新Manjaro出现Gpgme错误，无效的加密引擎的解决办法》 — 易天部落格&pic=https://techstay.github.io/my-static-blogimg/avatar.png" data-title="微博">
-          <i class="icon icon-weibo"></i>
-        </a>
-      </li>
-      <li>
-        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
-          <i class="icon icon-weixin"></i>
-        </a>
-      </li>
-      <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://techstay.github.io/my-static-blog/2019/03/06/%E6%9B%B4%E6%96%B0Manjaro%E5%87%BA%E7%8E%B0Gpgme%E9%94%99%E8%AF%AF%EF%BC%8C%E6%97%A0%E6%95%88%E7%9A%84%E5%8A%A0%E5%AF%86%E5%BC%95%E6%93%8E%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/&title=《更新Manjaro出现Gpgme错误，无效的加密引擎的解决办法》 — 易天部落格&source=个人博客，写一点东西" data-title=" QQ">
-          <i class="icon icon-qq"></i>
-        </a>
-      </li>
-      <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://techstay.github.io/my-static-blog/2019/03/06/%E6%9B%B4%E6%96%B0Manjaro%E5%87%BA%E7%8E%B0Gpgme%E9%94%99%E8%AF%AF%EF%BC%8C%E6%97%A0%E6%95%88%E7%9A%84%E5%8A%A0%E5%AF%86%E5%BC%95%E6%93%8E%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/" data-title=" Facebook">
-          <i class="icon icon-facebook"></i>
-        </a>
-      </li>
-      <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《更新Manjaro出现Gpgme错误，无效的加密引擎的解决办法》 — 易天部落格&url=https://techstay.github.io/my-static-blog/2019/03/06/%E6%9B%B4%E6%96%B0Manjaro%E5%87%BA%E7%8E%B0Gpgme%E9%94%99%E8%AF%AF%EF%BC%8C%E6%97%A0%E6%95%88%E7%9A%84%E5%8A%A0%E5%AF%86%E5%BC%95%E6%93%8E%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/&via=https://techstay.github.io/my-static-blog" data-title=" Twitter">
-          <i class="icon icon-twitter"></i>
-        </a>
-      </li>
-      <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://techstay.github.io/my-static-blog/2019/03/06/%E6%9B%B4%E6%96%B0Manjaro%E5%87%BA%E7%8E%B0Gpgme%E9%94%99%E8%AF%AF%EF%BC%8C%E6%97%A0%E6%95%88%E7%9A%84%E5%8A%A0%E5%AF%86%E5%BC%95%E6%93%8E%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/" data-title=" Google+">
-          <i class="icon icon-google-plus"></i>
-        </a>
-      </li>
-    </ul>
- </div>
-
-
-
-    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
-        <i class="icon icon-share-alt icon-lg"></i>
+          购买VPS之后要做的几件事
+        
+      </div>
     </a>
-</div>
-
-
-
-        </div>
-    </div>
-
-    
-<nav class="post-nav flex-row flex-justify-between">
   
-    <div class="waves-block waves-effect prev">
-      <a href="../../../06/16/%E8%B4%AD%E4%B9%B0VPS%E4%B9%8B%E5%90%8E%E8%A6%81%E5%81%9A%E7%9A%84%E5%87%A0%E4%BB%B6%E4%BA%8B/" id="post-prev" class="post-nav-link">
-        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">购买VPS之后要做的几件事</h4>
-      </a>
-    </div>
   
-
-  
-    <div class="waves-block waves-effect next">
-      <a href="../FC%E6%B8%B8%E6%88%8FAV%E9%BA%BB%E5%B0%86%E4%BF%B1%E4%B9%90%E9%83%A8%E7%89%8C%E5%9E%8B%E8%A1%A8/" id="post-next" class="post-nav-link">
-        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">FC游戏AV麻将俱乐部牌型表</h4>
-      </a>
-    </div>
+    <a href="../FC%E6%B8%B8%E6%88%8FAV%E9%BA%BB%E5%B0%86%E4%BF%B1%E4%B9%90%E9%83%A8%E7%89%8C%E5%9E%8B%E8%A1%A8/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">FC游戏AV麻将俱乐部牌型表</div>
+    </a>
   
 </nav>
 
-
-
-    
-
-
-<section class="comments" id="comments">
-    <div id="disqus_thread"></div>
-    <script>
-    var disqus_shortname = 'true';
-    lazyScripts.push('//' + disqus_shortname + '.disqus.com/embed.js')
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
-</section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  
 </article>
 
-<div id="reward" class="page-modal reward-lay">
-    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <h3 class="reward-title">
-        <i class="icon icon-quote-left"></i>
-        谢谢施主
-        <i class="icon icon-quote-right"></i>
-    </h3>
-    <div class="reward-content">
+
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+</section>
         
-        <div class="reward-code">
-            <img id="rewardCode" src="../../../../img/wechatpay.png" alt="打赏二维码">
-        </div>
-        
-        <label class="reward-toggle">
-            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
-                data-wechat="../../../../img/wechatpay.png" data-alipay="../../../../img/alipay.jpg">
-            <div class="reward-toggle-ctrol">
-                <span class="reward-toggle-item wechat">微信</span>
-                <span class="reward-toggle-label"></span>
-                <span class="reward-toggle-item alipay">支付宝</span>
-            </div>
-        </label>
-        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="../../../../categories/%E5%89%8D%E7%AB%AF/">前端</a></li><li class="category-list-item"><a class="category-list-link" href="../../../../categories/%E6%B8%B8%E6%88%8F/">游戏</a></li><li class="category-list-item"><a class="category-list-link" href="../../../../categories/%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87/">疑难杂症</a></li></ul>
     </div>
-</div>
+  </div>
 
 
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="../../../../tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../../../tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../../../tags/%E6%B8%B8%E6%88%8F/" rel="tag">游戏</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../../../tags/%E7%94%B5%E5%AD%90%E9%82%AE%E7%AE%B1/" rel="tag">电子邮箱</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../../../tags/%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87/" rel="tag">疑难杂症</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../../../tags/%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2/" rel="tag">静态博客</a></li></ul>
+    </div>
+  </div>
 
-</div>
 
-        <footer class="footer">
-    <div class="top">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="../../../../tags/Hexo/" style="font-size: 15px;">Hexo</a> <a href="../../../../tags/%E5%89%8D%E7%AB%AF/" style="font-size: 15px;">前端</a> <a href="../../../../tags/%E6%B8%B8%E6%88%8F/" style="font-size: 10px;">游戏</a> <a href="../../../../tags/%E7%94%B5%E5%AD%90%E9%82%AE%E7%AE%B1/" style="font-size: 10px;">电子邮箱</a> <a href="../../../../tags/%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87/" style="font-size: 20px;">疑难杂症</a> <a href="../../../../tags/%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2/" style="font-size: 15px;">静态博客</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../../../archives/2019/06/">六月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../archives/2019/03/">三月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../archives/2018/10/">十月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../archives/2018/09/">九月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../archives/2017/12/">十二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../../../archives/2017/11/">十一月 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
         
-<p>
-    <span id="busuanzi_container_site_uv" style='display:none'>
-        站点总访客数：<span id="busuanzi_value_site_uv"></span>
-    </span>
-    <span id="busuanzi_container_site_pv" style='display:none'>
-        站点总访问量：<span id="busuanzi_value_site_pv"></span>
-    </span>
-</p>
-
-
-        <p>
-            
-                <span><a href="../../../../atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
-            
-            <span>博客内容遵循 <a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
-        </p>
+          <li>
+            <a href="../../../06/16/%E8%B4%AD%E4%B9%B0VPS%E4%B9%8B%E5%90%8E%E8%A6%81%E5%81%9A%E7%9A%84%E5%87%A0%E4%BB%B6%E4%BA%8B/">购买VPS之后要做的几件事</a>
+          </li>
+        
+          <li>
+            <a href="">更新Manjaro出现Gpgme错误，无效的加密引擎的解决办法</a>
+          </li>
+        
+          <li>
+            <a href="../FC%E6%B8%B8%E6%88%8FAV%E9%BA%BB%E5%B0%86%E4%BF%B1%E4%B9%90%E9%83%A8%E7%89%8C%E5%9E%8B%E8%A1%A8/">FC游戏AV麻将俱乐部牌型表</a>
+          </li>
+        
+          <li>
+            <a href="../../../../2018/12/24/Win10%E7%B3%BB%E7%BB%9F%E6%97%A0%E6%B3%95%E8%AE%BF%E9%97%AE%E5%B1%80%E5%9F%9F%E7%BD%91%E6%96%87%E4%BB%B6%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/">Win10系统无法访问局域网文件的解决办法</a>
+          </li>
+        
+          <li>
+            <a href="../../../../2018/10/15/gnome%E6%A1%8C%E9%9D%A2%E5%85%B1%E4%BA%ABvnc%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%BF%9E%E6%8E%A5%E5%A4%B1%E8%B4%A5%E9%9C%80%E8%A6%81%E9%99%8D%E4%BD%8E%E5%8A%A0%E5%AF%86%E7%BA%A7%E5%88%AB%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/">gnome桌面共享vnc客户端连接失败需要降低加密级别的解决办法</a>
+          </li>
+        
+      </ul>
     </div>
-    <div class="bottom">
-        <p><span>易天 &copy; 2018 - 2020</span>
-            <span>
-                
-                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
-            </span>
-        </p>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 易天<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
+  </div>
 </footer>
-
-    </main>
-    <div class="mask" id="mask"></div>
-<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
-
-
-
-<div class="global-share" id="globalShare">
-    <ul class="reset share-icons">
-      <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://techstay.github.io/my-static-blog/2019/03/06/%E6%9B%B4%E6%96%B0Manjaro%E5%87%BA%E7%8E%B0Gpgme%E9%94%99%E8%AF%AF%EF%BC%8C%E6%97%A0%E6%95%88%E7%9A%84%E5%8A%A0%E5%AF%86%E5%BC%95%E6%93%8E%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/&title=《更新Manjaro出现Gpgme错误，无效的加密引擎的解决办法》 — 易天部落格&pic=https://techstay.github.io/my-static-blogimg/avatar.png" data-title="微博">
-          <i class="icon icon-weibo"></i>
-        </a>
-      </li>
-      <li>
-        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
-          <i class="icon icon-weixin"></i>
-        </a>
-      </li>
-      <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://techstay.github.io/my-static-blog/2019/03/06/%E6%9B%B4%E6%96%B0Manjaro%E5%87%BA%E7%8E%B0Gpgme%E9%94%99%E8%AF%AF%EF%BC%8C%E6%97%A0%E6%95%88%E7%9A%84%E5%8A%A0%E5%AF%86%E5%BC%95%E6%93%8E%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/&title=《更新Manjaro出现Gpgme错误，无效的加密引擎的解决办法》 — 易天部落格&source=个人博客，写一点东西" data-title=" QQ">
-          <i class="icon icon-qq"></i>
-        </a>
-      </li>
-      <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://techstay.github.io/my-static-blog/2019/03/06/%E6%9B%B4%E6%96%B0Manjaro%E5%87%BA%E7%8E%B0Gpgme%E9%94%99%E8%AF%AF%EF%BC%8C%E6%97%A0%E6%95%88%E7%9A%84%E5%8A%A0%E5%AF%86%E5%BC%95%E6%93%8E%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/" data-title=" Facebook">
-          <i class="icon icon-facebook"></i>
-        </a>
-      </li>
-      <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《更新Manjaro出现Gpgme错误，无效的加密引擎的解决办法》 — 易天部落格&url=https://techstay.github.io/my-static-blog/2019/03/06/%E6%9B%B4%E6%96%B0Manjaro%E5%87%BA%E7%8E%B0Gpgme%E9%94%99%E8%AF%AF%EF%BC%8C%E6%97%A0%E6%95%88%E7%9A%84%E5%8A%A0%E5%AF%86%E5%BC%95%E6%93%8E%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/&via=https://techstay.github.io/my-static-blog" data-title=" Twitter">
-          <i class="icon icon-twitter"></i>
-        </a>
-      </li>
-      <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://techstay.github.io/my-static-blog/2019/03/06/%E6%9B%B4%E6%96%B0Manjaro%E5%87%BA%E7%8E%B0Gpgme%E9%94%99%E8%AF%AF%EF%BC%8C%E6%97%A0%E6%95%88%E7%9A%84%E5%8A%A0%E5%AF%86%E5%BC%95%E6%93%8E%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/" data-title=" Google+">
-          <i class="icon icon-google-plus"></i>
-        </a>
-      </li>
-    </ul>
- </div>
-
-
-<div class="page-modal wx-share" id="wxShare">
-    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://techstay.github.io/my-static-blog/2019/03/06/%E6%9B%B4%E6%96%B0Manjaro%E5%87%BA%E7%8E%B0Gpgme%E9%94%99%E8%AF%AF%EF%BC%8C%E6%97%A0%E6%95%88%E7%9A%84%E5%8A%A0%E5%AF%86%E5%BC%95%E6%93%8E%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/" alt="微信分享二维码">
-</div>
-
-
-
-
-    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="../../../../index.html" class="mobile-nav-link">Home</a>
+  
+    <a href="../../../../archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
 <script>
-var BLOG = { ROOT: '/my-static-blog/', SHARE: true, REWARD: true };
-
-
-lazyScripts.push('//s95.cnzz.com/z_stat.php?id=1278586023&web_id=1278586023')
-
-</script>
-
-<script src="../../../../unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
-
-
-<div class="search-panel" id="search-panel">
-    <ul class="search-result" id="search-result"></ul>
-</div>
-<template id="search-tpl">
-<li class="item">
-    <a href="{path}" class="waves-block waves-effect">
-        <div class="title ellipsis" title="{title}">{title}</div>
-        <div class="flex-row flex-middle">
-            <div class="tags ellipsis">
-                {tags}
-            </div>
-            <time class="flex-col time">{date}</time>
-        </div>
-    </a>
-</li>
-</template>
-
-<script src="../../../../unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
-
-
-
-
-
-
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
-
-
-<script>
-(function() {
-    var OriginTitile = document.title, titleTime;
-    document.addEventListener('visibilitychange', function() {
-        if (document.hidden) {
-            document.title = '死鬼去哪里了！';
-            clearTimeout(titleTime);
-        } else {
-            document.title = '(つェ⊂)咦!又好了!';
-            titleTime = setTimeout(function() {
-                document.title = OriginTitile;
-            },2000);
-        }
-    });
-})();
+  var disqus_shortname = 'yitian-static-blog';
+  
+  var disqus_url = 'https://techstay.github.io/my-static-blog/2019/03/06/%E6%9B%B4%E6%96%B0Manjaro%E5%87%BA%E7%8E%B0Gpgme%E9%94%99%E8%AF%AF%EF%BC%8C%E6%97%A0%E6%95%88%E7%9A%84%E5%8A%A0%E5%AF%86%E5%BC%95%E6%93%8E%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
 </script>
 
 
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
+
+  
+<link rel="stylesheet" href="../../../../fancybox/jquery.fancybox.css">
+
+  
+<script src="../../../../fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="../../../../js/script.js"></script>
+
+
+
+
+  </div>
 <script src="/my-static-blog/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/my-static-blog/live2dw/assets/shizuku.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
 </html>

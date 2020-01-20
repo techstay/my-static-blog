@@ -1,4 +1,4 @@
-# my-static-blog
+# my-static-blog [![Build Status](https://travis-ci.com/techstay/my-static-blog.svg?branch=master)](https://travis-ci.com/techstay/my-static-blog)
 
 我的基于Hexo的静态博客
 

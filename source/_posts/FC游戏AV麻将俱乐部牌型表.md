@@ -37,4 +37,4 @@ categories: 游戏
 国士无双
 ```
 
-{%  asset_img 牌型表.png 牌型表 %}
+{% asset_img 牌型表.png 牌型表 %}

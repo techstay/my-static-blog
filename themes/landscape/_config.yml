@@ -1,8 +1,8 @@
 # Header
 menu:
   Home: /
-  Archives: /archives
-rss: /atom.xml
+  Archives: archives
+rss: atom.xml
 
 # Content
 excerpt_link: Read More
@@ -11,11 +11,11 @@ fancybox: true
 # Sidebar
 sidebar: right
 widgets:
-- category
-- tag
-- tagcloud
-- archive
-- recent_posts
+  - category
+  - tag
+  - tagcloud
+  - archive
+  - recent_posts
 
 # display widgets at the bottom of index pages (pagination == 2)
 index_widgets:
@@ -24,7 +24,7 @@ index_widgets:
 # - archive
 
 # widget behavior
-archive_type: 'monthly'
+archive_type: "monthly"
 show_count: false
 
 # Miscellaneous
@@ -35,20 +35,3 @@ twitter:
 google_plus:
 fb_admins:
 fb_app_id:
-
-live2d:
-  enable: true
-  scriptFrom: local
-  pluginRootPath: live2dw/
-  pluginJsPath: lib/
-  pluginModelPath: assets/
-  tagMode: false
-  debug: false
-  model:
-    use: live2d-widget-model-shizuku
-  display:
-    position: right
-    width: 150
-    height: 300
-  mobile:
-    show: true

@@ -11,4 +11,4 @@ categories:
 
 之后再次连接，可以发现这时候就可以连接到Linux桌面啦！
 
-{%  asset_img dconf.png dconf编辑器 %}
+{% asset_img dconf.png dconf编辑器 %}

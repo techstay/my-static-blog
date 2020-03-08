@@ -84,7 +84,7 @@ sudo systemctl enable shadowsocks-libev-local@config
 
 然后打开软件，由于是图形界面配置，这里我就不介绍了，是个人就会用。
 
-{% 影梭客户端配置.png 影梭客户端配置 %}
+{% asset_img 影梭客户端配置.png 影梭客户端配置 %}
 
 ## gost配置
 

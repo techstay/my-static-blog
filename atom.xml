@@ -6,7 +6,7 @@
   <link href="/my-static-blog/atom.xml" rel="self"/>
   
   <link href="https://techstay.github.io/my-static-blog/"/>
-  <updated>2019-06-16T15:53:50.000Z</updated>
+  <updated>2020-10-29T11:31:37.000Z</updated>
   <id>https://techstay.github.io/my-static-blog/</id>
   
   <author>
@@ -15,6 +15,178 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>翻墙工具trojan-go篇</title>
+    <link href="https://techstay.github.io/my-static-blog/2020/10/29/%E7%BF%BB%E5%A2%99%E5%B7%A5%E5%85%B7trojan-go%E7%AF%87/"/>
+    <id>https://techstay.github.io/my-static-blog/2020/10/29/%E7%BF%BB%E5%A2%99%E5%B7%A5%E5%85%B7trojan-go%E7%AF%87/</id>
+    <published>2020-10-29T11:31:37.000Z</published>
+    <updated>2020-10-29T11:31:37.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;trojan-go是什么&quot;&gt;&lt;a href=&quot;#trojan-go是什么&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="翻墙" scheme="https://techstay.github.io/my-static-blog/categories/%E7%BF%BB%E5%A2%99/"/>
+    
+    
+      <category term="翻墙" scheme="https://techstay.github.io/my-static-blog/tags/%E7%BF%BB%E5%A2%99/"/>
+    
+      <category term="代理工具" scheme="https://techstay.github.io/my-static-blog/tags/%E4%BB%A3%E7%90%86%E5%B7%A5%E5%85%B7/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Ubuntu 18.04 VPS配置教程</title>
+    <link href="https://techstay.github.io/my-static-blog/2020/03/19/Ubuntu-18-04-VPS%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/"/>
+    <id>https://techstay.github.io/my-static-blog/2020/03/19/Ubuntu-18-04-VPS%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/</id>
+    <published>2020-03-19T11:26:23.000Z</published>
+    <updated>2020-03-19T11:26:23.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;最近我hostwind服务器又不能用了，正好干脆把它重装一下算了。这里简单记录一下重装之后简单的配置过程，以后也好作为参考。&lt;/p&gt;
+&lt;h2 id=&quot;配置系统&quot;&gt;&lt;a href=&quot;#配置系统&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="linux" scheme="https://techstay.github.io/my-static-blog/categories/linux/"/>
+    
+    
+      <category term="linux" scheme="https://techstay.github.io/my-static-blog/tags/linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>各大发行版软件源镜像配置</title>
+    <link href="https://techstay.github.io/my-static-blog/2020/02/26/%E5%90%84%E5%A4%A7%E5%8F%91%E8%A1%8C%E7%89%88%E8%BD%AF%E4%BB%B6%E6%BA%90%E9%95%9C%E5%83%8F%E9%85%8D%E7%BD%AE/"/>
+    <id>https://techstay.github.io/my-static-blog/2020/02/26/%E5%90%84%E5%A4%A7%E5%8F%91%E8%A1%8C%E7%89%88%E8%BD%AF%E4%BB%B6%E6%BA%90%E9%95%9C%E5%83%8F%E9%85%8D%E7%BD%AE/</id>
+    <published>2020-02-26T12:53:57.000Z</published>
+    <updated>2020-02-26T12:53:57.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;最近研究Linux，试了一些Linux发行版，但是大多数发行版的软件源速度都不是很理想。所以我这里干脆做了一个收集，把我用过的一些常用发行版的软件源设置方法做个总结，大家也可以做个参考。&lt;/p&gt;
+&lt;h2 id=&quot;Ubuntu-18-04&quot;&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+    
+      <category term="linux" scheme="https://techstay.github.io/my-static-blog/categories/linux/"/>
+    
+    
+      <category term="linux" scheme="https://techstay.github.io/my-static-blog/tags/linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>翻墙工具wireguard篇</title>
+    <link href="https://techstay.github.io/my-static-blog/2020/02/10/%E7%BF%BB%E5%A2%99%E5%B7%A5%E5%85%B7wireguard%E7%AF%87/"/>
+    <id>https://techstay.github.io/my-static-blog/2020/02/10/%E7%BF%BB%E5%A2%99%E5%B7%A5%E5%85%B7wireguard%E7%AF%87/</id>
+    <published>2020-02-10T13:01:48.000Z</published>
+    <updated>2020-02-10T13:01:48.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;wireguard是什么&quot;&gt;&lt;a href=&quot;#wireguard是什么&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="翻墙" scheme="https://techstay.github.io/my-static-blog/categories/%E7%BF%BB%E5%A2%99/"/>
+    
+    
+      <category term="翻墙" scheme="https://techstay.github.io/my-static-blog/tags/%E7%BF%BB%E5%A2%99/"/>
+    
+      <category term="代理工具" scheme="https://techstay.github.io/my-static-blog/tags/%E4%BB%A3%E7%90%86%E5%B7%A5%E5%85%B7/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>shadowsocks安装和配置</title>
+    <link href="https://techstay.github.io/my-static-blog/2020/01/21/shadowsocks%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE/"/>
+    <id>https://techstay.github.io/my-static-blog/2020/01/21/shadowsocks%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE/</id>
+    <published>2020-01-21T12:33:41.000Z</published>
+    <updated>2020-01-21T12:33:41.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;shadowsocks-libev配置&quot;&gt;&lt;a href=&quot;#shadowsocks-libev配置&quot; class=&quot;headerlink&quot; title=&quot;shadowsocks-libev配置&quot;&gt;&lt;/a&gt;shadowsocks-libev配置&lt;/h2&gt;&lt;h3
+        
+      
+    
+    </summary>
+    
+    
+      <category term="linux" scheme="https://techstay.github.io/my-static-blog/categories/linux/"/>
+    
+    
+      <category term="shadowsocks" scheme="https://techstay.github.io/my-static-blog/tags/shadowsocks/"/>
+    
+      <category term="影梭" scheme="https://techstay.github.io/my-static-blog/tags/%E5%BD%B1%E6%A2%AD/"/>
+    
+      <category term="gost" scheme="https://techstay.github.io/my-static-blog/tags/gost/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Github Desktop cannot run gpg: No such file or directory 的解决办法</title>
+    <link href="https://techstay.github.io/my-static-blog/2020/01/21/Github-Desktop-cannot-run-gpg-No-such-file-or-directory-%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/"/>
+    <id>https://techstay.github.io/my-static-blog/2020/01/21/Github-Desktop-cannot-run-gpg-No-such-file-or-directory-%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/</id>
+    <published>2020-01-20T18:11:54.000Z</published>
+    <updated>2020-01-20T18:11:54.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;给Git配置了gpg密钥验证之后，使用Github桌面客户端的时候却出现了如题的错误。其实解决办法也很简单，因为虽然Git Bash自带了gpg工具，但是Github
+        
+      
+    
+    </summary>
+    
+    
+      <category term="疑难杂症" scheme="https://techstay.github.io/my-static-blog/categories/%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87/"/>
+    
+    
+      <category term="疑难杂症" scheme="https://techstay.github.io/my-static-blog/tags/%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87/"/>
+    
+  </entry>
   
   <entry>
     <title>购买VPS之后要做的几件事</title>

@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>翻墙工具trojan-go篇 | 易天部落格</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="trojan-go是什么trojan是另外一个很好用的翻墙工具，名气虽然没有影梭大，但是功能也不错。而且trojan设计的时候就考虑到了防范检测的问题，通过HTTPS流量来达到非常安全的翻墙目的，抗干扰性也更好一点。trojan-go就是trojan的一个go语言实现，相较于原版trojan来说配置和使用更加简单，我试了一下效果也很不错，于是来给大家介绍一下。 准备条件：配置域名购买和配置域名tr">
+<meta property="og:type" content="article">
+<meta property="og:title" content="翻墙工具trojan-go篇">
+<meta property="og:url" content="https://techstay.github.io/my-static-blog/2020/10/29/%E7%BF%BB%E5%A2%99%E5%B7%A5%E5%85%B7trojan-go%E7%AF%87/index.html">
+<meta property="og:site_name" content="易天部落格">
+<meta property="og:description" content="trojan-go是什么trojan是另外一个很好用的翻墙工具，名气虽然没有影梭大，但是功能也不错。而且trojan设计的时候就考虑到了防范检测的问题，通过HTTPS流量来达到非常安全的翻墙目的，抗干扰性也更好一点。trojan-go就是trojan的一个go语言实现，相较于原版trojan来说配置和使用更加简单，我试了一下效果也很不错，于是来给大家介绍一下。 准备条件：配置域名购买和配置域名tr">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://techstay.github.io/my-static-blog/2020/10/29/%E7%BF%BB%E5%A2%99%E5%B7%A5%E5%85%B7trojan-go%E7%AF%87/android.jpg">
+<meta property="article:published_time" content="2020-10-29T11:31:37.000Z">
+<meta property="article:modified_time" content="2020-10-29T11:31:37.000Z">
+<meta property="article:author" content="易天">
+<meta property="article:tag" content="翻墙">
+<meta property="article:tag" content="代理工具">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://techstay.github.io/my-static-blog/2020/10/29/%E7%BF%BB%E5%A2%99%E5%B7%A5%E5%85%B7trojan-go%E7%AF%87/android.jpg">
+  
+    <link rel="alternate" href="/my-static-blog/atom.xml" title="易天部落格" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/my-static-blog/css/style.css">
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/my-static-blog/" id="logo">易天部落格</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/my-static-blog/" id="subtitle">可能什么都写，可能什么都不写</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/my-static-blog/">Home</a>
+        
+          <a class="main-nav-link" href="/my-static-blog/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/my-static-blog/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://techstay.github.io/my-static-blog"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-翻墙工具trojan-go篇" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/my-static-blog/2020/10/29/%E7%BF%BB%E5%A2%99%E5%B7%A5%E5%85%B7trojan-go%E7%AF%87/" class="article-date">
+  <time datetime="2020-10-29T11:31:37.000Z" itemprop="datePublished">2020-10-29</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/my-static-blog/categories/%E7%BF%BB%E5%A2%99/">翻墙</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      翻墙工具trojan-go篇
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="trojan-go是什么"><a href="#trojan-go是什么" class="headerlink" title="trojan-go是什么"></a>trojan-go是什么</h2><p>trojan是另外一个很好用的翻墙工具，名气虽然没有影梭大，但是功能也不错。而且trojan设计的时候就考虑到了防范检测的问题，通过HTTPS流量来达到非常安全的翻墙目的，抗干扰性也更好一点。trojan-go就是trojan的一个go语言实现，相较于原版trojan来说配置和使用更加简单，我试了一下效果也很不错，于是来给大家介绍一下。</p>
+<h2 id="准备条件：配置域名"><a href="#准备条件：配置域名" class="headerlink" title="准备条件：配置域名"></a>准备条件：配置域名</h2><h3 id="购买和配置域名"><a href="#购买和配置域名" class="headerlink" title="购买和配置域名"></a>购买和配置域名</h3><p>trojan在使用的时候将自己伪装成一个普通的HTTPS网站，普通用户访问的时候，看到的就是一个普通的网页。一旦发现请求的是trojan协议，trojan就开始干正事了。正因为此，trojan的配置比影梭一些，一个必要的步骤就是购买域名，并在自己的服务器上将域名和证书配置好。所以首先就来讲讲如何配置域名。</p>
+<p>第一步，去一个域名网站上买一个域名，最好选择国外的网站，如果嫌麻烦，国内的阿里云什么的也行，但是安全性可能要差一点。购买域名之后，在相应网站上配置好域名解析，将域名解析到你的服务器上面。这样第一步就做好了。</p>
+<h3 id="申请免费证书"><a href="#申请免费证书" class="headerlink" title="申请免费证书"></a>申请免费证书</h3><p>为了使用HTTPS功能，我们还需要去相应的证书服务商那里申请一个免费证书。这样的网站有很多，不过大部分免费证书时间都只有几个月，到期以后还要自己重新申请一遍，操作比较麻烦。所以这里介绍另外一种方法，利用acme.sh这个脚本来自动化处理过程。该工具的详细用法可以参考<a href="https://github.com/acmesh-official/acme.sh/wiki/%E8%AF%B4%E6%98%8E" target="_blank" rel="noopener">其wiki</a>。</p>
+<p>首先安装acme.sh：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl  https://get.acme.sh | sh</span><br></pre></td></tr></table></figure>
+
+<p>然后需要验证域名，如果你的服务器上现在运行着80端口服务，先把他关掉。然后运行下面的命令，acme.sh会临时启动一个服务器来完成验证过程。验证完毕后就会自动在其目录下生成证书。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">acme.sh  --issue -d mydomain.com   --standalone</span><br></pre></td></tr></table></figure>
+
+<h3 id="复制证书"><a href="#复制证书" class="headerlink" title="复制证书"></a>复制证书</h3><p>虽然有了证书，但是证书放在acme.sh的内部，还需要将其复制出来。acme.sh也提供了相应的命令。这里假设我们的linux服务器用户名是hello，证书和trojan配置文件放在<code>/home/hello/config/</code>中。那么复制命令应该是这样的：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">acme.sh --install-cert -d example.com \</span><br><span class="line">--key-file       /home/hello/config/key.pem  \</span><br><span class="line">--fullchain-file /home/hello/config/cert.pem \</span><br><span class="line">--reloadcmd     <span class="string">"sudo service nginx force-reload"</span></span><br></pre></td></tr></table></figure>
+
+<p>这样在证书临近到期的时候，acme.sh就会自动开始验证并续期证书，然后将新的证书复制过来。如果指定了最后一行的<code>--reloadcmd</code>，那么还会自动用后面的命令来重新加载服务器，让新证书生效。命令成功运行之后，目录里应该会多出三个pem文件，这就是准备好的证书了。</p>
+<h2 id="配置trojan-go服务端"><a href="#配置trojan-go服务端" class="headerlink" title="配置trojan-go服务端"></a>配置trojan-go服务端</h2><h3 id="配置nginx服务器"><a href="#配置nginx服务器" class="headerlink" title="配置nginx服务器"></a>配置nginx服务器</h3><p>好了，下面就是比较麻烦的一个部分了。trojan的配置需要我们服务器上运行两个HTTP服务，一个是80端口服务，用来当做假的HTTP服务器，另一个是1234端口（可以自定义其他端口号）的400状态码服务，用来在trojan协议遇到问题的时候来作为默认错误显示（这可以一定程度上防止防火墙的检测）。所以这里就来配置一下nginx这个东西。这里仍然假设我们linux用户名是hello，nginx的HTML文件是<code>/home/hello/html/index.html</code>。</p>
+<p>然后编辑<code>/etc/nginx/sites-enabled/default</code>文件，将文件内容修改成类似下面这样的。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen 80 default_server;</span><br><span class="line">    listen [::]:80 default_server;</span><br><span class="line"></span><br><span class="line">    root /home/hello/html; <span class="comment"># 这里修改为你的HTML文件存放目录</span></span><br><span class="line"></span><br><span class="line">    index index.html index.htm index.nginx-debian.html;</span><br><span class="line"></span><br><span class="line">    server_name _;</span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">            try_files <span class="variable">$uri</span> <span class="variable">$uri</span>/ =404;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 这里添加一个新的服务</span></span><br><span class="line">server &#123;</span><br><span class="line">    listen 1234; <span class="comment"># 这里可以自定义端口号</span></span><br><span class="line">    <span class="built_in">return</span> 400;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>至于<code>index.html</code>文件的内容，这个就比较随意了。甚至你可以只写下面一行，不用惊讶，这也是合法的HTML文件，只不过省略了那些标签而已。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>主页<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>配置完毕之后，就可以启动nginx服务器看看效果了，如果配置正确，那么服务器就可以启动，我们就可以在浏览器中使用域名或者IP地址来访问服务了。查看一下80端口号的网页是否可以正常访问，再看看1234端口号是否可以显示400 Bad Request错误页面。验证正确之后，就可以将nginx服务器设为自启状态。</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 验证服务器</span><br><span class="line">sudo systemctl <span class="built_in">start</span> nginx</span><br><span class="line"># 验证无误后开机自启</span><br><span class="line">sudo systemctl enable nginx</span><br></pre></td></tr></table></figure>
+
+<h3 id="配置trojan-go服务"><a href="#配置trojan-go服务" class="headerlink" title="配置trojan-go服务"></a>配置trojan-go服务</h3><p>好了，下面终于可以开始配置trojan-go服务了。经过一番研究，我现在比较喜欢docker运行这类服务，一方面docker是一种非常方便的应用分发手段，另一方面，docker有个restart policy参数，允许docker服务在系统启动的同时也一起启动，这样就达到了类似开机自启动的目的，而且还不用配置supervisor那些东西，真的是非常方便。当然docker的问题在于容器内部和外部的配置文件不共通，所以命令看起来就比较冗长，而且如果不熟悉docker的话，可能会遇到一些小问题。所以这里还是建议大家事先学习一下docker的用法，真的非常好用。</p>
+<p>前面其实我提到了将证书和trojan配置文件放到一个目录里，这是因为trojan-go的docker镜像会自动使用容器内部的配置文件，所以比较简便的做法就是把容器需要的配置文件放到一起，然后塞到容器里面。docker可以利用<code>-v</code>参数来支持这样的行为。这里的配置文件和证书假设放到<code>/home/hello/config/</code>中，配置文件名字务必是<code>config.json</code>，因为trojan-go默认会以这个名字来读取配置。如果想要了解更多trojan-go配置的话，可以直接参考<a href="https://p4gefau1t.github.io/trojan-go/basic/config/" target="_blank" rel="noopener">它的wiki</a>。</p>
+<p>服务端配置文件大体上长这样，主要改一下密码就可以了，保存为<code>config.json</code>即可。</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"run_type"</span>: <span class="string">"server"</span>,</span><br><span class="line">    <span class="attr">"local_addr"</span>: <span class="string">"0.0.0.0"</span>,</span><br><span class="line">    <span class="attr">"local_port"</span>: <span class="number">443</span>,</span><br><span class="line">    <span class="attr">"remote_addr"</span>: <span class="string">"localhost"</span>,</span><br><span class="line">    <span class="attr">"remote_port"</span>: <span class="number">80</span>,</span><br><span class="line">    <span class="attr">"password"</span>: [</span><br><span class="line">        <span class="string">"longlonglongpassword"</span></span><br><span class="line">    ],</span><br><span class="line">    <span class="attr">"ssl"</span>: &#123;</span><br><span class="line">        <span class="attr">"cert"</span>: <span class="string">"/etc/trojan-go/cert.pem"</span>,</span><br><span class="line">        <span class="attr">"key"</span>: <span class="string">"/etc/trojan-go/key.pem"</span>,</span><br><span class="line">        <span class="attr">"fallback_port"</span>: <span class="number">1234</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后就可以使用docker来运行trojan-go服务了，虽然命令看起来挺长的，但是无需操心trojan-go的安装/更新/自启，全部由docker搞定，这也正是docker的魅力。第一次运行可能有错误，所以这里采用<code>--rm</code>参数，一旦停止服务就会删除容器，不留下垃圾，而且日志会在前台打印，方便定位和解决错误。一旦验证发现服务端没有问题，就可以将<code>--rm</code>参数改为<code>-d</code>参数，这样trojan端就可以在后台静静的运行，不用我们操心了。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">docker run --rm --name trojan --restart always \</span><br><span class="line">    -v /home/hello/config/:/etc/trojan-go/ \</span><br><span class="line">    --network host \</span><br><span class="line">    p4gefau1t/trojan-go</span><br></pre></td></tr></table></figure>
+
+<p>验证服务端是否正常运行的方法很简单，直接在浏览器中访问<code>https://你的域名</code>，因为nginx服务器上配置的只有80端口和1234端口，所以如果这里443端口可以正常访问，说明trojan-go服务端已经成功运行了。第一次访问<code>https</code>的时候会多等待几秒，因为trojan会故意停几秒，防止按时间探测的攻击。当然为了保险起见，最好再用客户端连接一下，如果可以正常翻墙，那么就是真的成功了。</p>
+<h2 id="配置trojan客户端"><a href="#配置trojan客户端" class="headerlink" title="配置trojan客户端"></a>配置trojan客户端</h2><h3 id="电脑客户端"><a href="#电脑客户端" class="headerlink" title="电脑客户端"></a>电脑客户端</h3><p>从<a href="https://github.com/p4gefau1t/trojan-go/releases" target="_blank" rel="noopener">这里</a>下载trojan-go的客户端，解压。客户端配置文件和服务端类似。</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"run_type"</span>: <span class="string">"client"</span>,</span><br><span class="line">    <span class="attr">"local_addr"</span>: <span class="string">"localhost"</span>,</span><br><span class="line">    <span class="attr">"local_port"</span>: <span class="number">1080</span>,</span><br><span class="line">    <span class="attr">"remote_addr"</span>: <span class="string">"你的域名"</span>,</span><br><span class="line">    <span class="attr">"remote_port"</span>: <span class="number">443</span>,</span><br><span class="line">    <span class="attr">"password"</span>: [</span><br><span class="line">        <span class="string">"你的密码"</span></span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后用下面的命令即可运行trojan客户端。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">trojan-go.exe -config config.json</span><br></pre></td></tr></table></figure>
+
+<h3 id="移动客户端"><a href="#移动客户端" class="headerlink" title="移动客户端"></a>移动客户端</h3><p>具体参考<a href="https://github.com/trojan-gfw/trojan/wiki/Mobile-Platforms" target="_blank" rel="noopener">这个页面</a>，安卓客户端推荐igniter，开源客户端，使用放心。</p>
+<p>配置方法如图所示，SNI不用写，备注随意，域名和密码写服务端对应的即可，底下的三个选项全不选。</p>
+<img src="/my-static-blog/2020/10/29/%E7%BF%BB%E5%A2%99%E5%B7%A5%E5%85%B7trojan-go%E7%AF%87/android.jpg" class="" title="安卓客户端配置">
+
+<p>好吧，关于翻墙工具的介绍就到这里。其实每次写这类文章，我个人也感觉很麻烦，服务端的配置文件一大堆，而且客户端配置文件也一大堆。所以我准备做一个一站式的Web应用，将这些常用的翻墙工具囊括进去，做成可以在Web端轻松管理的工具，同时还可以直接导出客户端配置，到时候也不用在到处找一键配置脚本什么的了。不过这个计划可能要等些时间，到时候也请大家多多支持。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://techstay.github.io/my-static-blog/2020/10/29/%E7%BF%BB%E5%A2%99%E5%B7%A5%E5%85%B7trojan-go%E7%AF%87/" data-id="ckguvtbp40012n4lj1btm3cjd" class="article-share-link">Share</a>
+      
+        <a href="https://techstay.github.io/my-static-blog/2020/10/29/%E7%BF%BB%E5%A2%99%E5%B7%A5%E5%85%B7trojan-go%E7%AF%87/#disqus_thread" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/my-static-blog/tags/%E4%BB%A3%E7%90%86%E5%B7%A5%E5%85%B7/" rel="tag">代理工具</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/my-static-blog/tags/%E7%BF%BB%E5%A2%99/" rel="tag">翻墙</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/my-static-blog/2020/03/19/Ubuntu-18-04-VPS%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Ubuntu 18.04 VPS配置教程</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/my-static-blog/categories/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/my-static-blog/categories/%E5%89%8D%E7%AB%AF/">前端</a></li><li class="category-list-item"><a class="category-list-link" href="/my-static-blog/categories/%E6%B8%B8%E6%88%8F/">游戏</a></li><li class="category-list-item"><a class="category-list-link" href="/my-static-blog/categories/%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87/">疑难杂症</a></li><li class="category-list-item"><a class="category-list-link" href="/my-static-blog/categories/%E7%BF%BB%E5%A2%99/">翻墙</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/my-static-blog/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/my-static-blog/tags/gost/" rel="tag">gost</a></li><li class="tag-list-item"><a class="tag-list-link" href="/my-static-blog/tags/linux/" rel="tag">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/my-static-blog/tags/shadowsocks/" rel="tag">shadowsocks</a></li><li class="tag-list-item"><a class="tag-list-link" href="/my-static-blog/tags/%E4%BB%A3%E7%90%86%E5%B7%A5%E5%85%B7/" rel="tag">代理工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/my-static-blog/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/my-static-blog/tags/%E5%BD%B1%E6%A2%AD/" rel="tag">影梭</a></li><li class="tag-list-item"><a class="tag-list-link" href="/my-static-blog/tags/%E6%B8%B8%E6%88%8F/" rel="tag">游戏</a></li><li class="tag-list-item"><a class="tag-list-link" href="/my-static-blog/tags/%E7%94%B5%E5%AD%90%E9%82%AE%E7%AE%B1/" rel="tag">电子邮箱</a></li><li class="tag-list-item"><a class="tag-list-link" href="/my-static-blog/tags/%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87/" rel="tag">疑难杂症</a></li><li class="tag-list-item"><a class="tag-list-link" href="/my-static-blog/tags/%E7%BF%BB%E5%A2%99/" rel="tag">翻墙</a></li><li class="tag-list-item"><a class="tag-list-link" href="/my-static-blog/tags/%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2/" rel="tag">静态博客</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/my-static-blog/tags/Hexo/" style="font-size: 15px;">Hexo</a> <a href="/my-static-blog/tags/gost/" style="font-size: 10px;">gost</a> <a href="/my-static-blog/tags/linux/" style="font-size: 15px;">linux</a> <a href="/my-static-blog/tags/shadowsocks/" style="font-size: 10px;">shadowsocks</a> <a href="/my-static-blog/tags/%E4%BB%A3%E7%90%86%E5%B7%A5%E5%85%B7/" style="font-size: 15px;">代理工具</a> <a href="/my-static-blog/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 15px;">前端</a> <a href="/my-static-blog/tags/%E5%BD%B1%E6%A2%AD/" style="font-size: 10px;">影梭</a> <a href="/my-static-blog/tags/%E6%B8%B8%E6%88%8F/" style="font-size: 10px;">游戏</a> <a href="/my-static-blog/tags/%E7%94%B5%E5%AD%90%E9%82%AE%E7%AE%B1/" style="font-size: 10px;">电子邮箱</a> <a href="/my-static-blog/tags/%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87/" style="font-size: 20px;">疑难杂症</a> <a href="/my-static-blog/tags/%E7%BF%BB%E5%A2%99/" style="font-size: 15px;">翻墙</a> <a href="/my-static-blog/tags/%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2/" style="font-size: 15px;">静态博客</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/my-static-blog/archives/2020/10/">十月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/my-static-blog/archives/2020/03/">三月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/my-static-blog/archives/2020/02/">二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/my-static-blog/archives/2020/01/">一月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/my-static-blog/archives/2019/06/">六月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/my-static-blog/archives/2019/03/">三月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/my-static-blog/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/my-static-blog/archives/2018/10/">十月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/my-static-blog/archives/2018/09/">九月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/my-static-blog/archives/2017/12/">十二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/my-static-blog/archives/2017/11/">十一月 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/my-static-blog/2020/10/29/%E7%BF%BB%E5%A2%99%E5%B7%A5%E5%85%B7trojan-go%E7%AF%87/">翻墙工具trojan-go篇</a>
+          </li>
+        
+          <li>
+            <a href="/my-static-blog/2020/03/19/Ubuntu-18-04-VPS%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/">Ubuntu 18.04 VPS配置教程</a>
+          </li>
+        
+          <li>
+            <a href="/my-static-blog/2020/02/26/%E5%90%84%E5%A4%A7%E5%8F%91%E8%A1%8C%E7%89%88%E8%BD%AF%E4%BB%B6%E6%BA%90%E9%95%9C%E5%83%8F%E9%85%8D%E7%BD%AE/">各大发行版软件源镜像配置</a>
+          </li>
+        
+          <li>
+            <a href="/my-static-blog/2020/02/10/%E7%BF%BB%E5%A2%99%E5%B7%A5%E5%85%B7wireguard%E7%AF%87/">翻墙工具wireguard篇</a>
+          </li>
+        
+          <li>
+            <a href="/my-static-blog/2020/01/21/shadowsocks%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE/">shadowsocks安装和配置</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 易天 &nbsp;
+      <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>&nbsp;
+      &nbsp;
+      <span id="busuanzi_container_site_uv">本站访客数<span id="busuanzi_value_site_uv"></span>人次</span>
+      <br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/my-static-blog/" class="mobile-nav-link">Home</a>
+  
+    <a href="/my-static-blog/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+<script>
+  var disqus_shortname = 'yitian-static-blog';
+  
+  var disqus_url = 'https://techstay.github.io/my-static-blog/2020/10/29/%E7%BF%BB%E5%A2%99%E5%B7%A5%E5%85%B7trojan-go%E7%AF%87/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/my-static-blog/fancybox/jquery.fancybox.css">
+
+  
+<script src="/my-static-blog/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/my-static-blog/js/script.js"></script>
+
+
+
+
+  </div>
+<script src="/my-static-blog/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/my-static-blog/live2dw/assets/shizuku.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>

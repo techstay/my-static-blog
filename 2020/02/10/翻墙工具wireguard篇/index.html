@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>翻墙工具wireguard篇 | 易天部落格</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="wireguard是什么wireguard是一个全新的高性能的VPN，使用最新的技术实现的强大VPN。它设计精巧，核心代码仅4000多行，被Linux之父林纳斯亲切的称为“艺术品”，可见wireguard是多么的优秀。所以如果有使用VPN需求的话，可以考虑使用wireguard。 安装wireguardwireguard安装起来稍微有些麻烦，因为它需要内核的支持，所以如果你是OpenVZ架构的VP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="翻墙工具wireguard篇">
+<meta property="og:url" content="https://techstay.github.io/my-static-blog/2020/02/10/%E7%BF%BB%E5%A2%99%E5%B7%A5%E5%85%B7wireguard%E7%AF%87/index.html">
+<meta property="og:site_name" content="易天部落格">
+<meta property="og:description" content="wireguard是什么wireguard是一个全新的高性能的VPN，使用最新的技术实现的强大VPN。它设计精巧，核心代码仅4000多行，被Linux之父林纳斯亲切的称为“艺术品”，可见wireguard是多么的优秀。所以如果有使用VPN需求的话，可以考虑使用wireguard。 安装wireguardwireguard安装起来稍微有些麻烦，因为它需要内核的支持，所以如果你是OpenVZ架构的VP">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-02-10T13:01:48.000Z">
+<meta property="article:modified_time" content="2020-02-10T13:01:48.000Z">
+<meta property="article:author" content="易天">
+<meta property="article:tag" content="翻墙">
+<meta property="article:tag" content="代理工具">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/my-static-blog/atom.xml" title="易天部落格" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/my-static-blog/css/style.css">
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/my-static-blog/" id="logo">易天部落格</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/my-static-blog/" id="subtitle">可能什么都写，可能什么都不写</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/my-static-blog/">Home</a>
+        
+          <a class="main-nav-link" href="/my-static-blog/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/my-static-blog/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://techstay.github.io/my-static-blog"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-翻墙工具wireguard篇" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/my-static-blog/2020/02/10/%E7%BF%BB%E5%A2%99%E5%B7%A5%E5%85%B7wireguard%E7%AF%87/" class="article-date">
+  <time datetime="2020-02-10T13:01:48.000Z" itemprop="datePublished">2020-02-10</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/my-static-blog/categories/%E7%BF%BB%E5%A2%99/">翻墙</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      翻墙工具wireguard篇
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="wireguard是什么"><a href="#wireguard是什么" class="headerlink" title="wireguard是什么"></a>wireguard是什么</h2><p>wireguard是一个全新的高性能的VPN，使用最新的技术实现的强大VPN。它设计精巧，核心代码仅4000多行，被Linux之父林纳斯亲切的称为“艺术品”，可见wireguard是多么的优秀。所以如果有使用VPN需求的话，可以考虑使用wireguard。</p>
+<h2 id="安装wireguard"><a href="#安装wireguard" class="headerlink" title="安装wireguard"></a>安装wireguard</h2><p>wireguard安装起来稍微有些麻烦，因为它需要内核的支持，所以如果你是OpenVZ架构的VPS的话，基本不用想了，万年2.7的内核，什么也干不了。</p>
+<p>Ubuntu 18.04目前可以通过手动安装的方式来使用wireguard。等到今年4月份，Ubuntu 20.04长期支持版出来以后，我们就有原生的wireguard可以使用了。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Ubuntu 19.10及更新的系统</span></span><br><span class="line">$ sudo apt install wireguard</span><br><span class="line"></span><br><span class="line"><span class="comment"># Ubuntu 19.04及更旧的系统</span></span><br><span class="line">$ sudo add-apt-repository ppa:wireguard/wireguard</span><br><span class="line">$ sudo apt-get update</span><br><span class="line">$ sudo apt-get install wireguard</span><br></pre></td></tr></table></figure>
+
+<p>这里注意一下，如果你用的是搬瓦工的的VPS，可能会提示<code>add-apt-repository</code>命令未找到，这需要安装另外一个包才可以正常使用。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install software-properties-common</span><br></pre></td></tr></table></figure>
+
+<p>Arch系发行版因为一直都是滚动更新，所以安装wireguard十分简单，随系统更新新版本内核，然后安装一下wireguard的命令行工具即可。</p>
+<h2 id="配置wireguard"><a href="#配置wireguard" class="headerlink" title="配置wireguard"></a>配置wireguard</h2><p>说实话这里耗费了我不少时间，因为和一般程序服务端、客户端配置文件不同，wireguard是点对点的，而且涉及到了一些网络和防火墙的配置，所以导致我很不理解配置文件的各项含义。</p>
+<p>不过熟悉了之后，我完全可以表示，wireguard配置起来一点也不难，相对于OpenVpn之类的甚至还简单多了。为了省事我这里还写了一个配置脚本，自动生成wireguard配置文件和客户端配置文件，方便大家使用。</p>
+<p>这里简单复制一下脚本，大家看看内容就明白了，配置起来很简单，顶多修改一下端口号就行了。密钥对都是随机生成的，绝对安全可靠。当然脚本后续可能更新，如果想要最新版的话，请大家关注我的<a href="https://github.com/techstay/climbthewall" target="_blank" rel="noopener">Gitub项目</a>。</p>
+<p>使用脚本文件也很简单，直接下载我项目中的最新版脚本，用bash运行即可，注意事项写在项目的README中了，大家注意一下即可。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget https://raw.githubusercontent.com/techstay/climbthewall/master/wg.sh</span><br><span class="line">bash wg.sh</span><br></pre></td></tr></table></figure>
+
+<p>以下是脚本文件内容。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#! /bin/bash</span></span><br><span class="line"></span><br><span class="line">config_dir=<span class="string">"<span class="variable">$HOME</span>/.wireguard/"</span></span><br><span class="line"></span><br><span class="line">mkdir -p <span class="string">"<span class="variable">$config_dir</span>"</span></span><br><span class="line"><span class="built_in">cd</span> <span class="string">"<span class="variable">$config_dir</span>"</span> || &#123;</span><br><span class="line">    <span class="built_in">echo</span> 切换目录失败，程序退出</span><br><span class="line">    <span class="built_in">exit</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment"># 生成两对密钥，分别用作服务器和客户端使用</span></span><br><span class="line">wg genkey | tee pri1 | wg pubkey &gt;pub1</span><br><span class="line">wg genkey | tee pri2 | wg pubkey &gt;pub2</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置密钥访问权限</span></span><br><span class="line">chmod 600 pri1</span><br><span class="line">chmod 600 pri2</span><br><span class="line"></span><br><span class="line">interface=$(ip -o -4 route show to default | awk <span class="string">'&#123;print $5&#125;'</span>)</span><br><span class="line">ip=$(ip -4 addr show <span class="string">"<span class="variable">$interface</span>"</span> | grep -oP <span class="string">'(?&lt;=inet\s)\d+(\.\d+)&#123;3&#125;'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 生成服务端配置文件</span></span><br><span class="line">cat &gt;wg0.conf &lt;&lt;EOL</span><br><span class="line">[Interface]</span><br><span class="line">PrivateKey = $(cat pri1)</span><br><span class="line">Address = 10.10.10.1</span><br><span class="line">ListenPort = 54321</span><br><span class="line">PostUp   = iptables -A FORWARD -i wg0 -j ACCEPT; iptables -A FORWARD -o wg0 -j ACCEPT; iptables -t nat -A POSTROUTING -o <span class="variable">$interface</span> -j MASQUERADE</span><br><span class="line">PostDown = iptables -D FORWARD -i wg0 -j ACCEPT; iptables -D FORWARD -o wg0 -j ACCEPT; iptables -t nat -D POSTROUTING -o <span class="variable">$interface</span> -j MASQUERADE</span><br><span class="line">[Peer]</span><br><span class="line">PublicKey = $(cat pub2)</span><br><span class="line">AllowedIPs = 10.10.10.2/32</span><br><span class="line">EOL</span><br><span class="line"></span><br><span class="line"><span class="comment"># 生成客户端配置文件</span></span><br><span class="line">cat &gt;client.conf &lt;&lt;EOL</span><br><span class="line">[Interface]</span><br><span class="line">PrivateKey = $(cat pri2)</span><br><span class="line">Address = 10.10.10.2</span><br><span class="line">DNS = 8.8.8.8</span><br><span class="line"></span><br><span class="line">[Peer]</span><br><span class="line">PublicKey = $(cat pub1)</span><br><span class="line">Endpoint = <span class="variable">$ip</span>:54321</span><br><span class="line">AllowedIPs = 0.0.0.0/0</span><br><span class="line">EOL</span><br><span class="line"></span><br><span class="line"><span class="comment"># 复制配置文件并启动</span></span><br><span class="line">sudo cp wg0.conf /etc/wireguard/ || &#123;</span><br><span class="line">    <span class="built_in">echo</span> 复制失败,请检查/etc/wireguard目录或wg0.conf是否已经存在</span><br><span class="line">    <span class="built_in">exit</span></span><br><span class="line">&#125;</span><br><span class="line">sudo wg-quick up wg0 || &#123;</span><br><span class="line">    <span class="built_in">echo</span> 启动wireguard失败，请检查/etc/wireguard/wg0.conf是否存在错误</span><br><span class="line">    <span class="built_in">exit</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示客户端配置文件</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"----------以下是客户端配置文件，请保存并在客户端中使用----------"</span></span><br><span class="line">cat client.conf</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://techstay.github.io/my-static-blog/2020/02/10/%E7%BF%BB%E5%A2%99%E5%B7%A5%E5%85%B7wireguard%E7%AF%87/" data-id="ckguvtbp60015n4ljcf7v7nye" class="article-share-link">Share</a>
+      
+        <a href="https://techstay.github.io/my-static-blog/2020/02/10/%E7%BF%BB%E5%A2%99%E5%B7%A5%E5%85%B7wireguard%E7%AF%87/#disqus_thread" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/my-static-blog/tags/%E4%BB%A3%E7%90%86%E5%B7%A5%E5%85%B7/" rel="tag">代理工具</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/my-static-blog/tags/%E7%BF%BB%E5%A2%99/" rel="tag">翻墙</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/my-static-blog/2020/02/26/%E5%90%84%E5%A4%A7%E5%8F%91%E8%A1%8C%E7%89%88%E8%BD%AF%E4%BB%B6%E6%BA%90%E9%95%9C%E5%83%8F%E9%85%8D%E7%BD%AE/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          各大发行版软件源镜像配置
+        
+      </div>
+    </a>
+  
+  
+    <a href="/my-static-blog/2020/01/21/shadowsocks%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">shadowsocks安装和配置</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/my-static-blog/categories/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/my-static-blog/categories/%E5%89%8D%E7%AB%AF/">前端</a></li><li class="category-list-item"><a class="category-list-link" href="/my-static-blog/categories/%E6%B8%B8%E6%88%8F/">游戏</a></li><li class="category-list-item"><a class="category-list-link" href="/my-static-blog/categories/%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87/">疑难杂症</a></li><li class="category-list-item"><a class="category-list-link" href="/my-static-blog/categories/%E7%BF%BB%E5%A2%99/">翻墙</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/my-static-blog/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/my-static-blog/tags/gost/" rel="tag">gost</a></li><li class="tag-list-item"><a class="tag-list-link" href="/my-static-blog/tags/linux/" rel="tag">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/my-static-blog/tags/shadowsocks/" rel="tag">shadowsocks</a></li><li class="tag-list-item"><a class="tag-list-link" href="/my-static-blog/tags/%E4%BB%A3%E7%90%86%E5%B7%A5%E5%85%B7/" rel="tag">代理工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/my-static-blog/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/my-static-blog/tags/%E5%BD%B1%E6%A2%AD/" rel="tag">影梭</a></li><li class="tag-list-item"><a class="tag-list-link" href="/my-static-blog/tags/%E6%B8%B8%E6%88%8F/" rel="tag">游戏</a></li><li class="tag-list-item"><a class="tag-list-link" href="/my-static-blog/tags/%E7%94%B5%E5%AD%90%E9%82%AE%E7%AE%B1/" rel="tag">电子邮箱</a></li><li class="tag-list-item"><a class="tag-list-link" href="/my-static-blog/tags/%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87/" rel="tag">疑难杂症</a></li><li class="tag-list-item"><a class="tag-list-link" href="/my-static-blog/tags/%E7%BF%BB%E5%A2%99/" rel="tag">翻墙</a></li><li class="tag-list-item"><a class="tag-list-link" href="/my-static-blog/tags/%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2/" rel="tag">静态博客</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/my-static-blog/tags/Hexo/" style="font-size: 15px;">Hexo</a> <a href="/my-static-blog/tags/gost/" style="font-size: 10px;">gost</a> <a href="/my-static-blog/tags/linux/" style="font-size: 15px;">linux</a> <a href="/my-static-blog/tags/shadowsocks/" style="font-size: 10px;">shadowsocks</a> <a href="/my-static-blog/tags/%E4%BB%A3%E7%90%86%E5%B7%A5%E5%85%B7/" style="font-size: 15px;">代理工具</a> <a href="/my-static-blog/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 15px;">前端</a> <a href="/my-static-blog/tags/%E5%BD%B1%E6%A2%AD/" style="font-size: 10px;">影梭</a> <a href="/my-static-blog/tags/%E6%B8%B8%E6%88%8F/" style="font-size: 10px;">游戏</a> <a href="/my-static-blog/tags/%E7%94%B5%E5%AD%90%E9%82%AE%E7%AE%B1/" style="font-size: 10px;">电子邮箱</a> <a href="/my-static-blog/tags/%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87/" style="font-size: 20px;">疑难杂症</a> <a href="/my-static-blog/tags/%E7%BF%BB%E5%A2%99/" style="font-size: 15px;">翻墙</a> <a href="/my-static-blog/tags/%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2/" style="font-size: 15px;">静态博客</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/my-static-blog/archives/2020/10/">十月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/my-static-blog/archives/2020/03/">三月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/my-static-blog/archives/2020/02/">二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/my-static-blog/archives/2020/01/">一月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/my-static-blog/archives/2019/06/">六月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/my-static-blog/archives/2019/03/">三月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/my-static-blog/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/my-static-blog/archives/2018/10/">十月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/my-static-blog/archives/2018/09/">九月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/my-static-blog/archives/2017/12/">十二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/my-static-blog/archives/2017/11/">十一月 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/my-static-blog/2020/10/29/%E7%BF%BB%E5%A2%99%E5%B7%A5%E5%85%B7trojan-go%E7%AF%87/">翻墙工具trojan-go篇</a>
+          </li>
+        
+          <li>
+            <a href="/my-static-blog/2020/03/19/Ubuntu-18-04-VPS%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/">Ubuntu 18.04 VPS配置教程</a>
+          </li>
+        
+          <li>
+            <a href="/my-static-blog/2020/02/26/%E5%90%84%E5%A4%A7%E5%8F%91%E8%A1%8C%E7%89%88%E8%BD%AF%E4%BB%B6%E6%BA%90%E9%95%9C%E5%83%8F%E9%85%8D%E7%BD%AE/">各大发行版软件源镜像配置</a>
+          </li>
+        
+          <li>
+            <a href="/my-static-blog/2020/02/10/%E7%BF%BB%E5%A2%99%E5%B7%A5%E5%85%B7wireguard%E7%AF%87/">翻墙工具wireguard篇</a>
+          </li>
+        
+          <li>
+            <a href="/my-static-blog/2020/01/21/shadowsocks%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE/">shadowsocks安装和配置</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 易天 &nbsp;
+      <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>&nbsp;
+      &nbsp;
+      <span id="busuanzi_container_site_uv">本站访客数<span id="busuanzi_value_site_uv"></span>人次</span>
+      <br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/my-static-blog/" class="mobile-nav-link">Home</a>
+  
+    <a href="/my-static-blog/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+<script>
+  var disqus_shortname = 'yitian-static-blog';
+  
+  var disqus_url = 'https://techstay.github.io/my-static-blog/2020/02/10/%E7%BF%BB%E5%A2%99%E5%B7%A5%E5%85%B7wireguard%E7%AF%87/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/my-static-blog/fancybox/jquery.fancybox.css">
+
+  
+<script src="/my-static-blog/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/my-static-blog/js/script.js"></script>
+
+
+
+
+  </div>
+<script src="/my-static-blog/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/my-static-blog/live2dw/assets/shizuku.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>

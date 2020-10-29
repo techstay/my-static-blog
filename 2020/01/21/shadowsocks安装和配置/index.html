@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>shadowsocks安装和配置 | 易天部落格</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="shadowsocks-libev配置服务端配置以下配置全部以Ubuntu系统为例。首先安装shadowsocks： 1sudo apt install shadowsocks-libev  安装完成之后编辑配置文件&#x2F;etc&#x2F;shadowsocks-libev&#x2F;config.json，改成类似下面的内容。其中端口号port以及密码password需要修改，其他配置无需变动。特别提一点，原来默认的a">
+<meta property="og:type" content="article">
+<meta property="og:title" content="shadowsocks安装和配置">
+<meta property="og:url" content="https://techstay.github.io/my-static-blog/2020/01/21/shadowsocks%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE/index.html">
+<meta property="og:site_name" content="易天部落格">
+<meta property="og:description" content="shadowsocks-libev配置服务端配置以下配置全部以Ubuntu系统为例。首先安装shadowsocks： 1sudo apt install shadowsocks-libev  安装完成之后编辑配置文件&#x2F;etc&#x2F;shadowsocks-libev&#x2F;config.json，改成类似下面的内容。其中端口号port以及密码password需要修改，其他配置无需变动。特别提一点，原来默认的a">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://techstay.github.io/my-static-blog/2020/01/21/shadowsocks%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE/%E5%BD%B1%E6%A2%AD%E5%AE%A2%E6%88%B7%E7%AB%AF%E9%85%8D%E7%BD%AE.png">
+<meta property="og:image" content="https://techstay.github.io/my-static-blog/2020/01/21/shadowsocks%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE/%E5%BD%B1%E6%A2%AD%E6%96%87%E4%BB%B6%E5%A4%B9.png">
+<meta property="og:image" content="https://techstay.github.io/my-static-blog/2020/01/21/shadowsocks%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE/%E6%8F%92%E4%BB%B6%E5%8F%82%E6%95%B0%E9%85%8D%E7%BD%AE.png">
+<meta property="article:published_time" content="2020-01-21T12:33:41.000Z">
+<meta property="article:modified_time" content="2020-01-21T12:33:41.000Z">
+<meta property="article:author" content="易天">
+<meta property="article:tag" content="shadowsocks">
+<meta property="article:tag" content="影梭">
+<meta property="article:tag" content="gost">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://techstay.github.io/my-static-blog/2020/01/21/shadowsocks%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE/%E5%BD%B1%E6%A2%AD%E5%AE%A2%E6%88%B7%E7%AB%AF%E9%85%8D%E7%BD%AE.png">
+  
+    <link rel="alternate" href="/my-static-blog/atom.xml" title="易天部落格" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/my-static-blog/css/style.css">
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/my-static-blog/" id="logo">易天部落格</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/my-static-blog/" id="subtitle">可能什么都写，可能什么都不写</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/my-static-blog/">Home</a>
+        
+          <a class="main-nav-link" href="/my-static-blog/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/my-static-blog/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://techstay.github.io/my-static-blog"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-shadowsocks安装和配置" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/my-static-blog/2020/01/21/shadowsocks%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE/" class="article-date">
+  <time datetime="2020-01-21T12:33:41.000Z" itemprop="datePublished">2020-01-21</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/my-static-blog/categories/linux/">linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      shadowsocks安装和配置
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="shadowsocks-libev配置"><a href="#shadowsocks-libev配置" class="headerlink" title="shadowsocks-libev配置"></a>shadowsocks-libev配置</h2><h3 id="服务端配置"><a href="#服务端配置" class="headerlink" title="服务端配置"></a>服务端配置</h3><p>以下配置全部以Ubuntu系统为例。首先安装shadowsocks：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install shadowsocks-libev</span><br></pre></td></tr></table></figure>
+
+<p>安装完成之后编辑配置文件<code>/etc/shadowsocks-libev/config.json</code>，改成类似下面的内容。其中端口号port以及密码password需要修改，其他配置无需变动。特别提一点，原来默认的aes-256-cfb有安全漏洞，所以推荐使用下面的全新协议chacha20-ietf-poly1305.</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"server"</span>:[<span class="string">"::0"</span>, <span class="string">"0.0.0.0"</span>],</span><br><span class="line">    <span class="attr">"server_port"</span>:<span class="number">12345</span>,</span><br><span class="line">    <span class="attr">"local_port"</span>:<span class="number">1080</span>,</span><br><span class="line">    <span class="attr">"password"</span>:<span class="string">"123456"</span>,</span><br><span class="line">    <span class="attr">"timeout"</span>:<span class="number">60</span>,</span><br><span class="line">    <span class="attr">"method"</span>:<span class="string">"chacha20-ietf-poly1305"</span>,</span><br><span class="line">    <span class="attr">"fast_open"</span>:<span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"prefer_ipv6"</span>:<span class="literal">true</span>,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>配置完成之后启动服务端。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl start shadowsocks-libev-server@config</span><br></pre></td></tr></table></figure>
+
+<p>然后查看一下服务状态，如果成功运行的话，使用客户端连接，看看能否科学上网。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl status shadowsocks-libev-server@config</span><br></pre></td></tr></table></figure>
+
+<p>成功连接上的话，就可以让服务开机自启动了，这样以后我们就不用管它了。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl <span class="built_in">enable</span> shadowsocks-libev-server@config</span><br></pre></td></tr></table></figure>
+
+<h3 id="客户端配置"><a href="#客户端配置" class="headerlink" title="客户端配置"></a>客户端配置</h3><p>虽然一般我们都是用windows客户端或者安卓客户端之类的来连接，但是既然提到了，就顺便说一下shadowsocks-libev客户端的配置方法吧。首先还是需要一个配置文件<code>/etc/shadowsocks-libev/config.json</code>。</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"server"</span>:[<span class="string">"这里改成你的服务器的IP地址"</span>],</span><br><span class="line">    <span class="attr">"server_port"</span>:<span class="number">12345</span>,</span><br><span class="line">    <span class="attr">"local_port"</span>:<span class="number">1080</span>,</span><br><span class="line">    <span class="attr">"password"</span>:<span class="string">"123456"</span>,</span><br><span class="line">    <span class="attr">"timeout"</span>:<span class="number">60</span>,</span><br><span class="line">    <span class="attr">"method"</span>:<span class="string">"chacha20-ietf-poly1305"</span>,</span><br><span class="line">    <span class="attr">"fast_open"</span>:<span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"prefer_ipv6"</span>:<span class="literal">true</span>,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后启动客户端服务。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl start shadowsocks-libev-local@config</span><br><span class="line"><span class="comment"># 成功之后让客户端服务开机自启</span></span><br><span class="line">sudo systemctl <span class="built_in">enable</span> shadowsocks-libev-local@config</span><br></pre></td></tr></table></figure>
+
+<h3 id="Windows客户端配置"><a href="#Windows客户端配置" class="headerlink" title="Windows客户端配置"></a>Windows客户端配置</h3><p>这里推荐的是影梭Windows版，一个利用.NET实现的小软件，直接就可以在<a href="https://github.com/shadowsocks/shadowsocks-windows/releases" target="_blank" rel="noopener">Github</a>下载到。</p>
+<p>然后打开软件，由于是图形界面配置，这里我就不介绍了，是个人就会用。</p>
+<img src="/my-static-blog/2020/01/21/shadowsocks%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE/%E5%BD%B1%E6%A2%AD%E5%AE%A2%E6%88%B7%E7%AB%AF%E9%85%8D%E7%BD%AE.png" class="" title="影梭客户端配置">
+
+<h2 id="gost配置"><a href="#gost配置" class="headerlink" title="gost配置"></a>gost配置</h2><p><a href="https://github.com/ginuerzh/gost" target="_blank" rel="noopener">gost</a>是go语言实现的一个安全隧道，可以用来做很多事情。而且它还非常贴心的内置了影梭协议，用起来比shadowsocks-libev更加方便，而且支持kcp等其他一些协议。</p>
+<h3 id="服务端配置-1"><a href="#服务端配置-1" class="headerlink" title="服务端配置"></a>服务端配置</h3><p>gost有中文官方，介绍的非常详细，这里就不多做介绍了。gost是一个单纯的命令行工具，而且并不是每个发行版的软件仓库中都有gost。所以最简单的办法就是利用docker来运行gost，恰好docker可以通过配置重启策略的方式来达到类似于自启服务的效果。</p>
+<p>先来安装docker。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装docker</span></span><br><span class="line">sudo apt install docker.io</span><br><span class="line"><span class="comment"># 将用户添加到docker用户组中，方便直接执行命令无需管理员权限</span></span><br><span class="line">sudo gpasswd docker -a $(whoami)</span><br><span class="line"><span class="comment"># 启动docker</span></span><br><span class="line">sudo systemctl start docker</span><br><span class="line"><span class="comment"># 设置docker开机自启</span></span><br><span class="line">sudo systemctl <span class="built_in">enable</span> docker</span><br></pre></td></tr></table></figure>
+
+<p>以上命令成功执行以后，测试一下docker是否可以正常启动。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --rm hello-world</span><br></pre></td></tr></table></figure>
+
+<p>然后安装gost镜像。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull ginuerzh/gost</span><br></pre></td></tr></table></figure>
+
+<p>然后就可以启动gost服务了。如果你不熟悉docker的话，可以先用下面的命令试试，它结束之后会自动删除docker容器，不用担心有残留文件。命令在前台运行成功之后，在客户端中测试一下，看看能否成功上网。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker run --rm \</span><br><span class="line">    --net=host \</span><br><span class="line">    ginuerzh/gost -L=ss://AEAD_CHACHA20_POLY1305:password@:8338</span><br></pre></td></tr></table></figure>
+
+<p>等到测试成功之后，用<code>Ctrl-C</code>停止容器，因为它有<code>--rm</code>参数，所以停止后会自动销毁。然后改用这个命令让容器在后台持续运行，并在docker服务重启或者系统重启之后自动跟着重启。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">docker run -d \</span><br><span class="line">    --net=host \</span><br><span class="line">    --restart=always \</span><br><span class="line">    ginuerzh/gost -L=ss://AEAD_CHACHA20_POLY1305:password@:8338</span><br></pre></td></tr></table></figure>
+
+<p>这里建议大家学习一下docker的用法，一来他也算个重要的软件，二来以后应该会经常和docker容器打交道，如果不熟悉的话，遇到问题还是不太好解决的。</p>
+<h3 id="客户端配置-1"><a href="#客户端配置-1" class="headerlink" title="客户端配置"></a>客户端配置</h3><p>服务端运行成功之后，就可以使用客户端来连接了。gost的影梭协议完全兼容shadowsocks-libev，所以可以直接用它来连接，配置方法如上。</p>
+<p>如果你用linux服务端的话，也可以像配置服务端一样来配置客户端。安装方法和上面一样，用docker方式安装即可。直接来看看如何用docker来运行客户端连接吧。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">docker run -d \</span><br><span class="line">    --net=host \</span><br><span class="line">    --restart=always \</span><br><span class="line">    ginuerzh/gost -L=:10800 -F=ss://AEAD_CHACHA20_POLY1305:password@server_ip:8338</span><br></pre></td></tr></table></figure>
+
+<h2 id="启用kcp协议加速"><a href="#启用kcp协议加速" class="headerlink" title="启用kcp协议加速"></a>启用kcp协议加速</h2><h3 id="kcp默认配置"><a href="#kcp默认配置" class="headerlink" title="kcp默认配置"></a>kcp默认配置</h3><p>gost内置了kcp协议的支持，使用kcp非常简单，只需要在协议那里添加<code>+kcp</code>即可。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker run -d \</span><br><span class="line">    --net=host --restart=always \</span><br><span class="line">        ginuerzh/gost -L=ss+kcp://AEAD_CHACHA20_POLY1305:123456@:12222</span><br></pre></td></tr></table></figure>
+
+<p>gost客户端也需要做相应的修改。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">docker run -d \</span><br><span class="line">    --net=host --restart=always \</span><br><span class="line">        ginuerzh/gost -L :1080 \</span><br><span class="line">         -F=ss+kcp://AEAD_CHACHA20_POLY1305:123456@1.2.3.4:12222</span><br></pre></td></tr></table></figure>
+
+<p>这种方式启动的kcp使用的是默认配置，对应的配置文件如下。</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"key"</span>: <span class="string">"it's a secrect"</span>,</span><br><span class="line">    <span class="attr">"crypt"</span>: <span class="string">"aes"</span>,</span><br><span class="line">    <span class="attr">"mode"</span>: <span class="string">"fast"</span>,</span><br><span class="line">    <span class="attr">"mtu"</span> : <span class="number">1350</span>,</span><br><span class="line">    <span class="attr">"sndwnd"</span>: <span class="number">1024</span>,</span><br><span class="line">    <span class="attr">"rcvwnd"</span>: <span class="number">1024</span>,</span><br><span class="line">    <span class="attr">"datashard"</span>: <span class="number">10</span>,</span><br><span class="line">    <span class="attr">"parityshard"</span>: <span class="number">3</span>,</span><br><span class="line">    <span class="attr">"dscp"</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="attr">"nocomp"</span>: <span class="literal">false</span>,</span><br><span class="line">    <span class="attr">"acknodelay"</span>: <span class="literal">false</span>,</span><br><span class="line">    <span class="attr">"nodelay"</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="attr">"interval"</span>: <span class="number">40</span>,</span><br><span class="line">    <span class="attr">"resend"</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="attr">"nc"</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="attr">"sockbuf"</span>: <span class="number">4194304</span>,</span><br><span class="line">    <span class="attr">"keepalive"</span>: <span class="number">10</span>,</span><br><span class="line">    <span class="attr">"snmplog"</span>: <span class="string">""</span>,</span><br><span class="line">    <span class="attr">"snmpperiod"</span>: <span class="number">60</span>,</span><br><span class="line">    <span class="attr">"tcp"</span>: <span class="literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="自定义kcp配置"><a href="#自定义kcp配置" class="headerlink" title="自定义kcp配置"></a>自定义kcp配置</h3><p>如果你的VPS只有自己用的话，可以考虑将加速模式改成fast2或者fast3，来增强加速效果，相对应地，流量消耗也会增大。不过根据我几年的VPS使用经验来看，一般一个月1T的流量，我平时最多用个50G，照这个用法，就算有个fast10模式，也不用担心流量。例如我有下面的配置文件。</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"key"</span>: <span class="string">"it's a secrect"</span>,</span><br><span class="line">    <span class="attr">"crypt"</span>: <span class="string">"aes"</span>,</span><br><span class="line">    <span class="attr">"mode"</span>: <span class="string">"fast3"</span>,</span><br><span class="line">    <span class="attr">"mtu"</span> : <span class="number">1350</span>,</span><br><span class="line">    <span class="attr">"sndwnd"</span>: <span class="number">1024</span>,</span><br><span class="line">    <span class="attr">"rcvwnd"</span>: <span class="number">1024</span>,</span><br><span class="line">    <span class="attr">"datashard"</span>: <span class="number">10</span>,</span><br><span class="line">    <span class="attr">"parityshard"</span>: <span class="number">3</span>,</span><br><span class="line">    <span class="attr">"dscp"</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="attr">"nocomp"</span>: <span class="literal">false</span>,</span><br><span class="line">    <span class="attr">"acknodelay"</span>: <span class="literal">false</span>,</span><br><span class="line">    <span class="attr">"nodelay"</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="attr">"interval"</span>: <span class="number">40</span>,</span><br><span class="line">    <span class="attr">"resend"</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="attr">"nc"</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="attr">"sockbuf"</span>: <span class="number">4194304</span>,</span><br><span class="line">    <span class="attr">"keepalive"</span>: <span class="number">10</span>,</span><br><span class="line">    <span class="attr">"snmplog"</span>: <span class="string">""</span>,</span><br><span class="line">    <span class="attr">"snmpperiod"</span>: <span class="number">60</span>,</span><br><span class="line">    <span class="attr">"tcp"</span>: <span class="literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>把上面的配置文件保存为<code>~/.kcp/kcp.json</code>文件。然后运行服务端的时候手动指定配置文件。注意shell会转义<code>?</code>字符，所以整个参数需要用单引号括起来。后面使用<code>?c=xxx.json</code>的时候同样需要注意这个问题。因为容器的文件系统和本地的文件系统并不一致，所以需要<code>-v</code>参数将文件传递到容器内部，因此命令看起来稍微复杂一点。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">docker run -d \</span><br><span class="line">    --net=host --restart=always \</span><br><span class="line">    -v ~/.kcp/kcp.json:/kcp.json \</span><br><span class="line">        ginuerzh/gost <span class="string">'-L=ss+kcp://AEAD_CHACHA20_POLY1305:123456@:12222?c=/kcp.json'</span></span><br></pre></td></tr></table></figure>
+
+<p>同样地，客户端命令也需要变成这种形式。当然，客户端需要同样的配置文件。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">docker run -d \</span><br><span class="line">    --net=host --restart=always \</span><br><span class="line">    -v ~/.kcp/kcp.json:/kcp.json \</span><br><span class="line">        ginuerzh/gost \</span><br><span class="line">        -L=:10800 \</span><br><span class="line">        <span class="string">'-F=ss+kcp://AEAD_CHACHA20_POLY1305:123456@1.2.3.4:12222?c=/kcp.json'</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Windows客户端配置-1"><a href="#Windows客户端配置-1" class="headerlink" title="Windows客户端配置"></a>Windows客户端配置</h3><p>默认情况下影梭的Windows客户端不支持kcptun，所以需要进行额外配置。</p>
+<p>首先下载<a href="https://github.com/xtaci/kcptun/releases" target="_blank" rel="noopener">kcptun</a>，然后将<code>client_windows_amd64.exe</code>重命名为<code>kcptun.exe</code>，然后把它放到影梭程序的同级目录下。</p>
+<img src="/my-static-blog/2020/01/21/shadowsocks%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE/%E5%BD%B1%E6%A2%AD%E6%96%87%E4%BB%B6%E5%A4%B9.png" class="" title="影梭文件夹">
+
+<p>然后在服务器编辑对话框中额外添加几个参数。</p>
+<ul>
+<li>插件程序，就是刚刚改完名字的kcptun。如果不和影梭在同一目录的话，需要改成绝对路径。</li>
+<li>插件选项，你改了多少项默认配置，这里就要添加多少项。所以为了省事，我建议只改一下mode。</li>
+<li>需要命令行参数的对勾必须打上，然后在对话框中添加<code>-l %SS_LOCAL_HOST%:%SS_LOCAL_PORT% -r %SS_REMOTE_HOST%:%SS_REMOTE_PORT%</code>。这样IP、端口号等参数就会传递给kcptun。</li>
+</ul>
+<img src="/my-static-blog/2020/01/21/shadowsocks%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE/%E6%8F%92%E4%BB%B6%E5%8F%82%E6%95%B0%E9%85%8D%E7%BD%AE.png" class="" title="插件参数配置">
+
+<p>配置完毕之后，应该就可以连接了。测试一下，速度应该比裸的影梭更快。</p>
+<h2 id="脚本快捷配置"><a href="#脚本快捷配置" class="headerlink" title="脚本快捷配置"></a>脚本快捷配置</h2><p>我有个计划，准备编写一个脚本来帮助快速配置程序并生成相应的客户端配置信息。不过脚本编写过程中，因为想得太多，最后脚本难产了。后来我又重新缕了一下需求，把实现比较困难的去掉了，最后终于把脚本写出来了。大家可以试用一下。</p>
+<p>脚本使用Python写成，使用的时候要保证无需管理员权限即可运行docker命令。脚本运行成功之后，会显示gost以及影梭客户端的配置文件，方便用户在客户端上配置。为了方便起见，在脚本中我没有提供设置其他kcp参数的选项，可以设置的只有mode参数，这也是比较常用的一个参数。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 下载脚本</span></span><br><span class="line">wget https://raw.githubusercontent.com/techstay/climbthewall/master/gost_ss.sh</span><br><span class="line"></span><br><span class="line"><span class="comment"># 用python运行脚本</span></span><br><span class="line">python gost_ss.py -h</span><br><span class="line">usage: gost_ss.py [-h] [-password PASSWORD] [-port PORT] [-k] [-mode &#123;fast,fast2,fast3&#125;]</span><br><span class="line"></span><br><span class="line">optional arguments:</span><br><span class="line">  -h, --<span class="built_in">help</span>            show this <span class="built_in">help</span> message and <span class="built_in">exit</span></span><br><span class="line">  -password PASSWORD    密码，未指定则使用随机密码</span><br><span class="line">  -port PORT            端口号，未指定则使用随机端口号</span><br><span class="line"></span><br><span class="line">kcp:</span><br><span class="line">  -k                    是否使用kcp协议加速</span><br><span class="line">  -mode &#123;fast,fast2,fast3&#125;</span><br><span class="line">                        kcp协议的加速模式，流量充足可使用fast3</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://techstay.github.io/my-static-blog/2020/01/21/shadowsocks%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE/" data-id="ckguvtbol000an4lje4eeetky" class="article-share-link">Share</a>
+      
+        <a href="https://techstay.github.io/my-static-blog/2020/01/21/shadowsocks%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE/#disqus_thread" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/my-static-blog/tags/gost/" rel="tag">gost</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/my-static-blog/tags/shadowsocks/" rel="tag">shadowsocks</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/my-static-blog/tags/%E5%BD%B1%E6%A2%AD/" rel="tag">影梭</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/my-static-blog/2020/02/10/%E7%BF%BB%E5%A2%99%E5%B7%A5%E5%85%B7wireguard%E7%AF%87/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          翻墙工具wireguard篇
+        
+      </div>
+    </a>
+  
+  
+    <a href="/my-static-blog/2020/01/21/Github-Desktop-cannot-run-gpg-No-such-file-or-directory-%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Github Desktop cannot run gpg: No such file or directory 的解决办法</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/my-static-blog/categories/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/my-static-blog/categories/%E5%89%8D%E7%AB%AF/">前端</a></li><li class="category-list-item"><a class="category-list-link" href="/my-static-blog/categories/%E6%B8%B8%E6%88%8F/">游戏</a></li><li class="category-list-item"><a class="category-list-link" href="/my-static-blog/categories/%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87/">疑难杂症</a></li><li class="category-list-item"><a class="category-list-link" href="/my-static-blog/categories/%E7%BF%BB%E5%A2%99/">翻墙</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/my-static-blog/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/my-static-blog/tags/gost/" rel="tag">gost</a></li><li class="tag-list-item"><a class="tag-list-link" href="/my-static-blog/tags/linux/" rel="tag">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/my-static-blog/tags/shadowsocks/" rel="tag">shadowsocks</a></li><li class="tag-list-item"><a class="tag-list-link" href="/my-static-blog/tags/%E4%BB%A3%E7%90%86%E5%B7%A5%E5%85%B7/" rel="tag">代理工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/my-static-blog/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/my-static-blog/tags/%E5%BD%B1%E6%A2%AD/" rel="tag">影梭</a></li><li class="tag-list-item"><a class="tag-list-link" href="/my-static-blog/tags/%E6%B8%B8%E6%88%8F/" rel="tag">游戏</a></li><li class="tag-list-item"><a class="tag-list-link" href="/my-static-blog/tags/%E7%94%B5%E5%AD%90%E9%82%AE%E7%AE%B1/" rel="tag">电子邮箱</a></li><li class="tag-list-item"><a class="tag-list-link" href="/my-static-blog/tags/%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87/" rel="tag">疑难杂症</a></li><li class="tag-list-item"><a class="tag-list-link" href="/my-static-blog/tags/%E7%BF%BB%E5%A2%99/" rel="tag">翻墙</a></li><li class="tag-list-item"><a class="tag-list-link" href="/my-static-blog/tags/%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2/" rel="tag">静态博客</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/my-static-blog/tags/Hexo/" style="font-size: 15px;">Hexo</a> <a href="/my-static-blog/tags/gost/" style="font-size: 10px;">gost</a> <a href="/my-static-blog/tags/linux/" style="font-size: 15px;">linux</a> <a href="/my-static-blog/tags/shadowsocks/" style="font-size: 10px;">shadowsocks</a> <a href="/my-static-blog/tags/%E4%BB%A3%E7%90%86%E5%B7%A5%E5%85%B7/" style="font-size: 15px;">代理工具</a> <a href="/my-static-blog/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 15px;">前端</a> <a href="/my-static-blog/tags/%E5%BD%B1%E6%A2%AD/" style="font-size: 10px;">影梭</a> <a href="/my-static-blog/tags/%E6%B8%B8%E6%88%8F/" style="font-size: 10px;">游戏</a> <a href="/my-static-blog/tags/%E7%94%B5%E5%AD%90%E9%82%AE%E7%AE%B1/" style="font-size: 10px;">电子邮箱</a> <a href="/my-static-blog/tags/%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87/" style="font-size: 20px;">疑难杂症</a> <a href="/my-static-blog/tags/%E7%BF%BB%E5%A2%99/" style="font-size: 15px;">翻墙</a> <a href="/my-static-blog/tags/%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2/" style="font-size: 15px;">静态博客</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/my-static-blog/archives/2020/10/">十月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/my-static-blog/archives/2020/03/">三月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/my-static-blog/archives/2020/02/">二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/my-static-blog/archives/2020/01/">一月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/my-static-blog/archives/2019/06/">六月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/my-static-blog/archives/2019/03/">三月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/my-static-blog/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/my-static-blog/archives/2018/10/">十月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/my-static-blog/archives/2018/09/">九月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/my-static-blog/archives/2017/12/">十二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/my-static-blog/archives/2017/11/">十一月 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/my-static-blog/2020/10/29/%E7%BF%BB%E5%A2%99%E5%B7%A5%E5%85%B7trojan-go%E7%AF%87/">翻墙工具trojan-go篇</a>
+          </li>
+        
+          <li>
+            <a href="/my-static-blog/2020/03/19/Ubuntu-18-04-VPS%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/">Ubuntu 18.04 VPS配置教程</a>
+          </li>
+        
+          <li>
+            <a href="/my-static-blog/2020/02/26/%E5%90%84%E5%A4%A7%E5%8F%91%E8%A1%8C%E7%89%88%E8%BD%AF%E4%BB%B6%E6%BA%90%E9%95%9C%E5%83%8F%E9%85%8D%E7%BD%AE/">各大发行版软件源镜像配置</a>
+          </li>
+        
+          <li>
+            <a href="/my-static-blog/2020/02/10/%E7%BF%BB%E5%A2%99%E5%B7%A5%E5%85%B7wireguard%E7%AF%87/">翻墙工具wireguard篇</a>
+          </li>
+        
+          <li>
+            <a href="/my-static-blog/2020/01/21/shadowsocks%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE/">shadowsocks安装和配置</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 易天 &nbsp;
+      <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>&nbsp;
+      &nbsp;
+      <span id="busuanzi_container_site_uv">本站访客数<span id="busuanzi_value_site_uv"></span>人次</span>
+      <br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/my-static-blog/" class="mobile-nav-link">Home</a>
+  
+    <a href="/my-static-blog/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+<script>
+  var disqus_shortname = 'yitian-static-blog';
+  
+  var disqus_url = 'https://techstay.github.io/my-static-blog/2020/01/21/shadowsocks%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/my-static-blog/fancybox/jquery.fancybox.css">
+
+  
+<script src="/my-static-blog/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/my-static-blog/js/script.js"></script>
+
+
+
+
+  </div>
+<script src="/my-static-blog/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/my-static-blog/live2dw/assets/shizuku.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>

@@ -76,7 +76,7 @@ ip=$(ip -4 addr show "$interface" | grep -oP '(?<=inet\s)\d+(\.\d+){3}')
 
 # 生成服务端配置文件
 cat >wg0.conf <<EOL
-[Interface] 
+[Interface]
 PrivateKey = $(cat pri1)
 Address = 10.10.10.1
 ListenPort = 54321
@@ -114,8 +114,3 @@ sudo wg-quick up wg0 || {
 echo "----------以下是客户端配置文件，请保存并在客户端中使用----------"
 cat client.conf
 ```
-
-
-
-
-
